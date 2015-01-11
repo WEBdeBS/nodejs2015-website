@@ -1,0 +1,14 @@
+{
+  "name": "nodejs2015-theme",
+  "version": "1.0.0",
+  "authors": [
+    "Sandro Paganotti <sandro.paganotti@gmail.com>"
+  ],
+  "description": "NodeJS Conf 2015 Theme",
+  "main": "index.php",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.1"
+  }
+}
