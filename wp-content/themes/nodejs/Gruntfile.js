@@ -7,11 +7,13 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         
         sass: {
-            options: {
-                loadPath: 'bower_components/bootstrap-sass-official/assets/stylesheets'
-            },
             dev:{
-                'style.css': 'sass/style.scss'
+                options: {
+                    loadPath: 'bower_components/bootstrap-sass-official/assets/stylesheets'
+                },
+                files: {
+                    'style.css': 'sass/style.scss'
+                }
             }        
         },
         
