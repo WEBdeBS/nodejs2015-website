@@ -1,0 +1,20 @@
+
+body
+{
+  -webkit-font-smoothing: antialiased;
+}
+
+a
+{
+  &:hover
+  {
+    text-decoration: none;
+  }
+}
+
+ul
+{
+  padding-left: 0px;
+  margin-bottom: 0px;
+  list-style: none;
+}
