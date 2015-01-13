@@ -5,20 +5,20 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        
+
         sass: {
-            dev:{
+            dev: {
                 options: {
                     loadPath: 'bower_components/bootstrap-sass-official/assets/stylesheets'
                 },
                 files: {
                     'style.css': 'sass/style.scss'
                 }
-            }        
+            }
         },
-        
+
         uglify: {
-            dev:{
+            dev: {
                 files: {
                     'app.js': [
                         'js/*.js',
@@ -27,15 +27,27 @@ module.exports = function(grunt) {
                 }
             }
         },
-        
+
         watch: {
             sass: {
-                files: ['sass/*.scss'],
-                tasks: 'sass'
+                files: ['sass/**/*.scss'],
+                tasks: 'sass',
+                options: {
+                    livereload: true,
+                }
             },
             js: {
                 files: ['js/*.js'],
-                tasks: 'uglify'
+                tasks: 'uglify',
+                options: {
+                    livereload: true,
+                }
+            },
+            php: {
+                files: ['*.php'],
+                options: {
+                    livereload: true,
+                }
             }
         }
     });
