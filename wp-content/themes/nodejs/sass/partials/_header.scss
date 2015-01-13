@@ -1,0 +1,59 @@
+
+.topbar
+{
+  height: 26px;
+  background-color: $color-red;
+}
+
+.header
+{
+  background-image: url('images/header-node-corner.png');
+  background-repeat: no-repeat;
+  background-position: right top;
+
+  h1,
+  h3
+  {
+    font-family: $font-title;
+  }
+  h1
+  {
+    font-size: 130px;
+    color: $color-blue;
+  }
+  h2
+  {
+    display: inline;
+    background-color: $color-red;
+    color: $color-white;
+    text-transform: uppercase;
+    padding: 0 50px;
+  }
+  h3
+  {
+    font-size: 65px;
+    color: $color-grey;
+    background-image: url('images/header-filigrana-node.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    line-height: 100px;
+  }
+}
+
+.header__title
+{
+  @extend .container;
+  @extend .text-center;
+}
+
+.nav
+{
+  background-color: $color-blue;
+}
+
+.nav__footer
+{
+  height: 20px;
+  $gradient: top, $color-white 0%, $color-white 25%, $color-blue 25%, $color-blue 50%, $color-white 50%, $color-white 75%, $color-blue 75%, $color-blue 100%;
+  @include linear-gradient($gradient);
+}

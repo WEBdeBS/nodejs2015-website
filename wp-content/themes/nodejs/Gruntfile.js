@@ -21,8 +21,8 @@ module.exports = function(grunt) {
             dev: {
                 files: {
                     'app.js': [
-                        'js/*.js',
-                        'bower_components/jquery/dist/jquery.js'
+                        'bower_components/jquery/dist/jquery.js',
+                        'js/*.js'
                     ]
                 }
             }
