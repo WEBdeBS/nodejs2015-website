@@ -48,12 +48,70 @@
 
 .nav
 {
+  @extend .text-center;
   background-color: $color-blue;
+
+  li
+  {
+    display: inline-block;
+    margin: 20px;
+  }
 }
 
-.nav__footer
+.page_item
 {
-  height: 20px;
-  $gradient: top, $color-white 0%, $color-white 25%, $color-blue 25%, $color-blue 50%, $color-white 50%, $color-white 75%, $color-blue 75%, $color-blue 100%;
-  @include linear-gradient($gradient);
+  a
+  {
+    display: inline-block;
+    font-family: $font-title;
+    color: $color-white;
+    font-size: 32px;
+
+    &::before
+    {
+      content: '';
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.page-item-4
+{
+  a::before
+  {
+    background-image: url('images/menu-c4p-icon.png');
+    width: 97px;
+    height: 63px;
+  }
+}
+
+.page-item-6
+{
+  a::before
+  {
+    background-image: url('images/menu-past-edition-icon.png');
+    width: 62px;
+    height: 85px;
+  }
+}
+
+.page-item-8
+{
+  a::before
+  {
+    background-image: url('images/menu-whoweare-icon.png');
+    width: 67px;
+    height: 80px;
+  }
+}
+
+.page-item-10
+{
+  a::before
+  {
+    background-image: url('images/menu-supporter-icon.png');
+    width: 72px;
+    height: 58px;
+  }
 }

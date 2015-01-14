@@ -36,3 +36,10 @@ ul
   margin-bottom: 0px;
   list-style: none;
 }
+
+.hr
+{
+  height: 20px;
+  $gradient: top, $color-white 0%, $color-white 25%, $color-blue 25%, $color-blue 50%, $color-white 50%, $color-white 75%, $color-blue 75%, $color-blue 100%;
+  @include linear-gradient($gradient);
+}

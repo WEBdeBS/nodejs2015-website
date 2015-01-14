@@ -27,5 +27,5 @@
     </div>
     <nav class="nav">
       <?php wp_nav_menu(); ?>
-      <div class="nav__footer"></div>
+      <div class="hr"></div>
     </nav>

@@ -1,0 +1,58 @@
+
+.content
+{
+  @extend .container;
+}
+
+.main-page
+{
+  @extend .row;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.main-page__title
+{
+  @extend .col-md-4;
+  @extend .text-center;
+  font-family: $font-title;
+  color: $color-grey;
+  font-size: 64px;
+
+  img
+  {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.main-page__content
+{
+  @extend .col-md-offset-1;
+  @extend .col-md-7;
+
+  h1
+  {
+    color: $color-red;
+    text-transform: uppercase;
+  }
+  h2
+  {
+    font-weight: 700;
+  }
+  p
+  {
+    font-size: 24px;
+  }
+}
+
+.main-page__button
+{
+  font-size: 28px;
+  font-weight: 500;
+  display: inline;
+  background-color: $color-red;
+  color: $color-white;
+  text-transform: uppercase;
+  padding: 0 25px;
+}
