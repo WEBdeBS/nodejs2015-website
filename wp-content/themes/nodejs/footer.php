@@ -11,25 +11,27 @@
             <img src="<?php echo get_template_directory_uri(); ?>/images/bg-node.png" alt="">
           </div>
           <div class="footer__box">
-            <strong>
-              NodejsConfIT
-            </strong> 
-            is proudly organized by 
-            <img src="<?php echo get_template_directory_uri(); ?>/images/webdebs.png" alt="WEBdeBS">
-            <a href="#">
-              www.webdebs.org
-            </a>
-            <a href="#">
-              info@webdebs.org
-            </a>
-            <a href="#">
-              facebook.com/webdebs
-            </a>
+            <p>
+              <strong>
+                NodejsConfIT
+              </strong> 
+              is proudly organized by 
+              <img src="<?php echo get_template_directory_uri(); ?>/images/webdebs.png" alt="WEBdeBS">
+              <a href="#">
+                www.webdebs.org
+              </a>
+              <a href="#">
+                info@webdebs.org
+              </a>
+              <a href="#">
+                facebook.com/webdebs
+              </a>
+            </p>
           </div>
         </footer>
       </div>
     </div>
-    <div class="decorations"></div>
+    <div class="strips"></div>
     <script src="<?php echo get_template_directory_uri(); ?>/app.js"></script>
     <?php wp_footer(); ?>
   </body>

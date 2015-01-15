@@ -1,15 +1,21 @@
 
 .topbar
 {
+  @extend .text-right;
   height: 26px;
   background-color: $color-red;
+  padding-right: 3px;
+
+  a
+  {
+    margin: 0 3px;
+  }
 }
 
 .header
 {
-  background-image: url('images/header-node-corner.png');
-  background-repeat: no-repeat;
-  background-position: right top;
+  position: relative;
+  overflow: hidden;
 
   h1,
   h3
@@ -18,8 +24,10 @@
   }
   h1
   {
-    font-size: 130px;
+    font-size: 140px;
     color: $color-blue;
+    margin: 40px 0 0 0;
+    height: 130px;
   }
   h2
   {
@@ -40,6 +48,13 @@
   }
 }
 
+.header__knot
+{
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}
+
 .header__title
 {
   @extend .container;
@@ -54,7 +69,7 @@
   li
   {
     display: inline-block;
-    margin: 20px;
+    margin: 25px;
   }
 }
 
@@ -79,6 +94,10 @@
       content: '';
       display: block;
       margin: 0 auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 97px;
+      height: 85px;
     }
   }
 }
@@ -88,8 +107,6 @@
   a::before
   {
     background-image: url('images/menu-c4p-icon.png');
-    width: 97px;
-    height: 63px;
   }
 }
 
@@ -98,8 +115,6 @@
   a::before
   {
     background-image: url('images/menu-past-edition-icon.png');
-    width: 62px;
-    height: 85px;
   }
 }
 
@@ -108,8 +123,6 @@
   a::before
   {
     background-image: url('images/menu-whoweare-icon.png');
-    width: 67px;
-    height: 80px;
   }
 }
 
@@ -118,7 +131,5 @@
   a::before
   {
     background-image: url('images/menu-supporter-icon.png');
-    width: 72px;
-    height: 58px;
   }
 }

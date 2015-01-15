@@ -1073,7 +1073,7 @@ mark,
 .text-left {
   text-align: left; }
 
-.text-right {
+.text-right, .topbar {
   text-align: right; }
 
 .text-center, .header__title, .nav, .title, .page, .footer__box--main {
@@ -5448,18 +5448,22 @@ ul {
 
 .topbar {
   height: 26px;
-  background-color: #cc0001; }
+  background-color: #cc0001;
+  padding-right: 3px; }
+  .topbar a {
+    margin: 0 3px; }
 
 .header {
-  background-image: url("images/header-node-corner.png");
-  background-repeat: no-repeat;
-  background-position: right top; }
+  position: relative;
+  overflow: hidden; }
   .header h1,
   .header h3 {
     font-family: "marina"; }
   .header h1 {
-    font-size: 130px;
-    color: #031930; }
+    font-size: 140px;
+    color: #031930;
+    margin: 40px 0 0 0;
+    height: 130px; }
   .header h2 {
     display: inline;
     background-color: #cc0001;
@@ -5474,11 +5478,16 @@ ul {
     background-position: center;
     line-height: 100px; }
 
+.header__knot {
+  position: absolute;
+  top: -20px;
+  right: -20px; }
+
 .nav {
   background-color: #031930; }
   .nav li {
     display: inline-block;
-    margin: 20px; }
+    margin: 25px; }
 
 .page_item {
   transition: top .1s; }
@@ -5492,27 +5501,23 @@ ul {
     .page_item a::before {
       content: '';
       display: block;
-      margin: 0 auto; }
+      margin: 0 auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 97px;
+      height: 85px; }
 
 .page-item-4 a::before {
-  background-image: url("images/menu-c4p-icon.png");
-  width: 97px;
-  height: 63px; }
+  background-image: url("images/menu-c4p-icon.png"); }
 
 .page-item-6 a::before {
-  background-image: url("images/menu-past-edition-icon.png");
-  width: 62px;
-  height: 85px; }
+  background-image: url("images/menu-past-edition-icon.png"); }
 
 .page-item-8 a::before {
-  background-image: url("images/menu-whoweare-icon.png");
-  width: 67px;
-  height: 80px; }
+  background-image: url("images/menu-whoweare-icon.png"); }
 
 .page-item-10 a::before {
-  background-image: url("images/menu-supporter-icon.png");
-  width: 72px;
-  height: 58px; }
+  background-image: url("images/menu-supporter-icon.png"); }
 
 .main-page {
   margin-top: 50px;
@@ -5528,21 +5533,24 @@ ul {
 
 .main-page__content h1 {
   color: #cc0001;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 45px; }
 .main-page__content h2 {
   font-weight: 700; }
 .main-page__content p {
-  font-size: 24px; }
+  font-size: 22px; }
 
 .main-page__button {
   font-size: 28px;
   font-weight: 500;
-  display: inline;
+  display: inline-block;
   background-color: #cc0001;
   color: #fff;
   text-transform: uppercase;
   padding: 0 25px;
-  position: relative; }
+  position: relative;
+  margin-top: 15px; }
   .main-page__button:active {
     top: 2px; }
 
@@ -5552,7 +5560,8 @@ ul {
 
 .page h1 {
   color: #cc0001;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-weight: 300; }
 .page h2 {
   font-weight: 700; }
 .page p {
@@ -5570,6 +5579,8 @@ ul {
   padding-top: 20px;
   padding-bottom: 30px; }
 
+.footer__box p {
+  font-size: 18px; }
 .footer__box a {
   display: block;
   color: #fff;
@@ -5577,16 +5588,18 @@ ul {
 
 .footer__title {
   font-family: "marina";
-  font-size: 50px; }
+  font-size: 50px;
+  height: 60px; }
 
 .footer__subtitle {
   display: inline-block;
   background-color: #fff;
   color: #cc0001;
   text-transform: uppercase;
-  padding: 0 10px; }
+  padding: 0 10px;
+  margin-bottom: 10px; }
 
-.decorations {
+.strips {
   background-image: -webkit-linear-gradient(top, #fff 0%, #fff 10%, #cc0001 10%, #cc0001 20%, #fff 20%, #fff 30%, #cc0001 30%, #cc0001 40%, #fff 40%, #fff 50%, #cc0001 50%, #cc0001 60%, #fff 60%, #fff 70%, #cc0001 70%, #cc0001 80%, #fff 80%, #fff 90%, #cc0001 90%, #cc0001 100%);
   background-image: -moz-linear-gradient(top, #fff 0%, #fff 10%, #cc0001 10%, #cc0001 20%, #fff 20%, #fff 30%, #cc0001 30%, #cc0001 40%, #fff 40%, #fff 50%, #cc0001 50%, #cc0001 60%, #fff 60%, #fff 70%, #cc0001 70%, #cc0001 80%, #fff 80%, #fff 90%, #cc0001 90%, #cc0001 100%);
   background-image: -ms-linear-gradient(top, #fff 0%, #fff 10%, #cc0001 10%, #cc0001 20%, #fff 20%, #fff 30%, #cc0001 30%, #cc0001 40%, #fff 40%, #fff 50%, #cc0001 50%, #cc0001 60%, #fff 60%, #fff 70%, #cc0001 70%, #cc0001 80%, #fff 80%, #fff 90%, #cc0001 90%, #cc0001 100%);
