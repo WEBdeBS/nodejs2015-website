@@ -11,9 +11,8 @@
   margin-bottom: 40px;
 }
 
-.main-page__title
+.title
 {
-  @extend .col-md-4;
   @extend .text-center;
   font-family: $font-title;
   color: $color-grey;
@@ -26,10 +25,15 @@
   }
 }
 
+.title--main-page
+{
+  @extend .col-sm-4;
+}
+
 .main-page__content
 {
-  @extend .col-md-offset-1;
-  @extend .col-md-7;
+  @extend .col-sm-offset-1;
+  @extend .col-sm-7;
 
   h1
   {
@@ -55,4 +59,45 @@
   color: $color-white;
   text-transform: uppercase;
   padding: 0 25px;
+  position: relative;
+
+  &:active
+  {
+    top: 2px;
+  }
+}
+
+.pages
+{
+  @extend .row;
+  margin-top: 30px;
+  margin-bottom: 80px;
+}
+
+.page
+{
+  @extend .col-sm-6;
+  @extend .text-center;
+
+  h1
+  {
+    color: $color-red;
+    text-transform: uppercase;
+  }
+  h2
+  {
+    font-weight: 700;
+  }
+  p
+  {
+    font-size: 18px;
+  }
+}
+
+.page__separator
+{
+  font-family: $font-title;
+  font-size: 120px;
+  height: 50px;
+  margin-top: -40px;
 }

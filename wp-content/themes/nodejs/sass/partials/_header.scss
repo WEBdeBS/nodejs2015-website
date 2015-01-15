@@ -60,6 +60,13 @@
 
 .page_item
 {
+  transition: top .1s;
+
+  &:hover
+  {
+    opacity: .7;
+  }
+
   a
   {
     display: inline-block;
