@@ -5586,6 +5586,10 @@ ul {
   color: #fff;
   text-decoration: underline; }
 
+.footer__box--main img {
+  display: block;
+  margin: 0 auto 30px auto; }
+
 .footer__title {
   font-family: "marina";
   font-size: 50px;
@@ -5605,5 +5609,18 @@ ul {
   background-image: -ms-linear-gradient(top, #fff 0%, #fff 10%, #cc0001 10%, #cc0001 20%, #fff 20%, #fff 30%, #cc0001 30%, #cc0001 40%, #fff 40%, #fff 50%, #cc0001 50%, #cc0001 60%, #fff 60%, #fff 70%, #cc0001 70%, #cc0001 80%, #fff 80%, #fff 90%, #cc0001 90%, #cc0001 100%);
   background-image: linear-gradient(top, #fff 0%, #fff 10%, #cc0001 10%, #cc0001 20%, #fff 20%, #fff 30%, #cc0001 30%, #cc0001 40%, #fff 40%, #fff 50%, #cc0001 50%, #cc0001 60%, #fff 60%, #fff 70%, #cc0001 70%, #cc0001 80%, #fff 80%, #fff 90%, #cc0001 90%, #cc0001 100%);
   height: 180px; }
+
+@media (max-width: 767px) {
+  .header__knot {
+    display: none; }
+
+  .main-page__content {
+    text-align: center; }
+
+  .page:first-of-type {
+    margin-bottom: 80px; }
+
+  .footer__box {
+    text-align: center; } }
 
 /*# sourceMappingURL=style.css.map */

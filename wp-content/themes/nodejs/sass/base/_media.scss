@@ -1,0 +1,24 @@
+
+@media (max-width: $screen-xs-max) {
+
+  .header__knot
+  {
+    display: none;
+  }
+
+  .main-page__content
+  {
+    text-align: center;
+  }
+
+  .page:first-of-type
+  {
+    margin-bottom: 80px;
+  }
+
+  .footer__box
+  {
+    text-align: center;
+  }
+
+}
