@@ -3,3 +3,4 @@
 wp-config.php
 wp-content/themes/nodejs/bower_components/
 wp-content/themes/nodejs/node_modules/
+.DS_Store
