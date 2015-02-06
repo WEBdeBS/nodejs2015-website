@@ -18,7 +18,7 @@
         <p>
           <?php echo get_post_field("post_content", $id); ?>
         </p>
-        <a class="main-page__button" href="#">
+        <a class="main-page__button" target="_blank" href="https://docs.google.com/a/webdebs.org/forms/d/11gvSPQ4h1dHzILhnmtp1iNhI62iNCKI-FM2OR3ttZ_k/viewform">
           Send now!
         </a>
       </div>

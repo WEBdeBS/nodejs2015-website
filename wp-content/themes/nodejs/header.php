@@ -12,13 +12,13 @@
   </head>
   <body>
     <div class="topbar">
-      <a href="#">
+      <a target="_blank" href="https://www.facebook.com/groups/webdebs/">
         <img src="<?php echo get_template_directory_uri(); ?>/images/facebook.png" alt="">
       </a>
-      <a href="#">
+      <a target="_blank" href="https://twitter.com/webdebresa">
         <img src="<?php echo get_template_directory_uri(); ?>/images/twitter.png" alt="">
       </a>
-      <a href="#">
+      <a target="_blank" href="http://vimeo.com/user8514282">
         <img src="<?php echo get_template_directory_uri(); ?>/images/vimeo.png" alt="">
       </a>
     </div>
@@ -32,7 +32,7 @@
           Italian Conference - IV Edition
         </h2>
         <h3>
-          September 2015
+          October 2015
         </h3>
       </header>
     </div>

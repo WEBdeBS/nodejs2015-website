@@ -17,13 +17,13 @@
               </strong> 
               is proudly organized by 
               <img src="<?php echo get_template_directory_uri(); ?>/images/webdebs.png" alt="WEBdeBS">
-              <a href="#">
+              <a target="_blank" href="http://webdebs.org/">
                 www.webdebs.org
               </a>
-              <a href="#">
+              <a href="mailto:info@webdebs.org">
                 info@webdebs.org
               </a>
-              <a href="#">
+              <a target="_blank" href="https://www.facebook.com/groups/webdebs/">
                 facebook.com/webdebs
               </a>
             </p>
@@ -31,7 +31,7 @@
         </footer>
       </div>
     </div>
-    <div class="strips"></div>
+    <div class="decorations"></div>
     <script src="<?php echo get_template_directory_uri(); ?>/app.js"></script>
     <?php wp_footer(); ?>
   </body>
