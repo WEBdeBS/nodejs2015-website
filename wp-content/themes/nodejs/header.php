@@ -28,8 +28,11 @@
         <h1>
           - Node.js -
         </h1>
-        <h2>
+        <h2 class="desktop-header">
           Italian Conference - IV Edition
+        </h2>
+        <h2 class="phone-header">
+          Italian Conference<span></span><br/><span></span>IV Edition
         </h2>
         <h3>
           October 2015

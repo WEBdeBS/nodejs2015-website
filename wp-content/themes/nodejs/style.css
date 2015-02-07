@@ -5483,6 +5483,8 @@ ul {
     color: white;
     text-transform: uppercase;
     padding: 0 50px; }
+    .header h2.phone-header {
+      display: none; }
   .header h3 {
     font-size: 65px;
     color: #878787;
@@ -5640,11 +5642,18 @@ ul {
     text-align: center; } }
 @media (max-width: 480px) {
   .header h1 {
-    font-size: 100px;
-    height: 100px; }
+    font-size: 85px;
+    height: 85px; }
   .header h2 {
     font-size: 22px;
     padding: 0px 15px; }
+    .header h2.phone-header {
+      display: inline; }
+      .header h2.phone-header span {
+        display: inline-block;
+        width: 15px; }
+    .header h2.desktop-header {
+      display: none; }
 
   .nav li {
     margin: 25px 10px; } }

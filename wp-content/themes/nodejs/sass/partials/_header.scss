@@ -36,6 +36,10 @@
     color: $color-white;
     text-transform: uppercase;
     padding: 0 50px;
+    
+    &.phone-header{
+      display: none;
+    }
   }
   h3
   {
