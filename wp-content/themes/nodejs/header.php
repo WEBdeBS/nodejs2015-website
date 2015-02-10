@@ -9,6 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php bloginfo("stylesheet_url"); ?>">
     <?php wp_head(); ?>
+	  <script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-46921107-1']);
+		  _gaq.push(['_setDomainName', 'nodejsconf.it']);
+		  _gaq.push(['_setAllowLinker', true]);
+		  _gaq.push(['_trackPageview']);
+		  _gaq.push(function() {
+		    var pageTracker = _gat._getTrackerByName();
+		    var iframe = document.getElementById('myIFrame');
+		    iframe.src = pageTracker._getLinkerUrl('http://www.eventbrite.it/tickets-external?eid=9509179211&ref=etckt&v=2');
+		  });
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
   </head>
   <body>
     <div class="topbar">
@@ -35,7 +55,7 @@
           Italian Conference<span></span><br/><span></span>IV Edition
         </h2>
         <h3>
-          October 2015
+          October 2015 - Desenzano (BS)
         </h3>
       </header>
     </div>
