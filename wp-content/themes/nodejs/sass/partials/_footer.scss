@@ -40,6 +40,19 @@
   }
 }
 
+.footer__box--sponsors
+{
+  @extend .col-sm-6;
+
+  font-variant: small-caps;
+
+  a
+  {
+    font-size: 18px;
+    display: inline;
+  }
+}
+
 .footer__title
 {
   font-family: $font-title;

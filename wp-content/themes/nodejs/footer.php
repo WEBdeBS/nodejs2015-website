@@ -28,10 +28,27 @@
               </a>
             </p>
           </div>
+          <div class="footer__box footer__box--sponsors">
+            <a href="<?php echo get_permalink(8); ?>">
+              Become a supporter
+            </a>
+            <p>
+              Follow us on
+              <a target="_blank" href="https://www.facebook.com/groups/webdebs/">
+                Facebook
+              </a>,
+              <a target="_blank" href="https://twitter.com/webdebresa">
+                Twitter
+              </a> and
+              <a target="_blank" href="http://vimeo.com/user8514282">
+                Vimeo
+              </a>
+            </p>
+          </div>
         </footer>
       </div>
     </div>
-    <div class="decorations"></div>
+    <div class="strips"></div>
     <script src="<?php echo get_template_directory_uri(); ?>/app.js"></script>
     <?php wp_footer(); ?>
   </body>
