@@ -55,7 +55,7 @@
           Italian Conference<span></span><br/><span></span>IV Edition
         </h2>
         <h3>
-          October 2015 - Desenzano (BS)
+          10 October 2015 - Desenzano (BS)
         </h3>
       </header>
     </div>
