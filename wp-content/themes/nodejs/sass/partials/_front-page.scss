@@ -1,5 +1,6 @@
 
-.main-page
+.main-page,
+.side-page
 {
   @extend .row;
   margin-top: 50px;
@@ -20,15 +21,37 @@
   }
 }
 
-.title--main-page
+.side-page__content
 {
-  @extend .col-sm-4;
+  @extend .col-sm-6;
+  background: $color-red url(images/bg-venue.png) no-repeat 10px 60px; 
+  color: $color-white;
+  box-sizing: border-box;
+  padding-left: 90px;
+  padding-top: 1px;
+  position: relative;
+  min-height: 240px;
+  
+  h1
+  {
+    font-family: $font-title;
+  }
+  
+  img
+  {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    /*transform: rotate(5deg) translateY(10px);*/
+    @media (max-width: $screen-lg-min) {
+      display: none;
+    }
+  }
 }
 
 .main-page__content
 {
-  @extend .col-sm-offset-1;
-  @extend .col-sm-7;
+  @extend .col-sm-6;
 
   h1
   {
@@ -104,4 +127,23 @@
   font-size: 120px;
   height: 50px;
   margin-top: -40px;
+}
+
+.tickets__container{
+		@extend .row;
+}
+
+.tickets__title{
+		width: 30%;
+		@media (max-width: $screen-lg-min) {
+      width: 100%;
+    }
+}
+
+.tickets__eventbrite-container{
+		width: 70%;
+		height: 400px;
+		@media (max-width: $screen-lg-min) {
+      width: 100%;
+    }
 }

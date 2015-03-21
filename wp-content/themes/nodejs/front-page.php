@@ -1,12 +1,8 @@
 <?php get_header(); ?>
   <div class="content">
     <?php $id = 4; ?>
-    <article id="<?php echo get_post_field("post_name", $id); ?>" class="main-page">
-      <div class="title title--main-page">
-        <img src="<?php echo get_field("icon", $id); ?>" alt="<?php echo get_the_title($id); ?>">
-        <?php echo get_the_title($id); ?>
-      </div>
-      <div class="main-page__content">
+    <article class="main-page">
+      <div id="<?php echo get_post_field("post_name", $id); ?>" class="main-page__content">
         <header>
           <h1>
             <?php echo get_field("title", $id); ?>
@@ -18,12 +14,33 @@
         <p>
           <?php echo get_post_field("post_content", $id); ?>
         </p>
-        <a class="main-page__button" target="_blank" href="https://docs.google.com/a/webdebs.org/forms/d/11gvSPQ4h1dHzILhnmtp1iNhI62iNCKI-FM2OR3ttZ_k/viewform">
-          Send now!
-        </a>
       </div>
+      <?php $id = 39; ?>
+      <div id="<?php echo get_post_field("post_name", $id); ?>" class="side-page__content">
+        <header>
+          <h1>
+            <?php echo get_the_title($id); ?>
+          </h1>
+        </header>
+        <p>
+          <?php echo get_post_field("post_content", $id); ?>
+        </p>
+      </div>
+      
     </article>
   </div>
+	<div class="content">
+    <?php $id = 40; ?>
+		<div id="<?php echo get_post_field("post_name", $id); ?>" class="tickets_container">
+				<div class="page title tickets__title">
+            <img src="<?php echo get_field("icon", $id); ?>" alt="<?php echo get_the_title($id); ?>">
+            <?php echo get_the_title($id); ?>
+        </div>
+				<div class="page tickets__eventbrite-container">
+					<?php echo get_post_field("post_content", $id); ?>
+				</div>
+		</div>
+	</div>	
   <div class="hr"></div>
   <div class="content">
     <div class="pages">

@@ -6,9 +6,9 @@ Template Name: Pagina Singola
 
 <?php get_header(); ?>
   <div class="content">
-    <?php $id = 4; ?>
+    <?php $id = 48; ?>
     <article id="<?php echo get_post_field("post_name", $id); ?>" class="main-page">
-      <div class="title title--main-page">
+      <div class="title title--main-page col-sm-6">
         <img src="<?php echo get_field("icon", $id); ?>" alt="<?php echo get_the_title($id); ?>">
         <?php echo get_the_title($id); ?>
       </div>
