@@ -1,149 +1,131 @@
-
 .main-page,
-.side-page
-{
-  @extend .row;
-  margin-top: 50px;
-  margin-bottom: 40px;
+.side-page {
+	@extend .row;
+	margin-top: 50px;
+	margin-bottom: 40px;
 }
 
-.title
-{
-  @extend .text-center;
-  font-family: $font-title;
-  color: $color-grey;
-  font-size: 64px;
-
-  img
-  {
-    display: block;
-    margin: 0 auto;
-  }
+.title {
+	@extend .text-center;
+	font-family: $font-title;
+	color: $color-grey;
+	font-size: 64px;
+	img {
+		display: block;
+		margin: 0 auto;
+	}
 }
 
-.side-page__content
-{
-  @extend .col-sm-6;
-  background: $color-red url(images/bg-venue.png) no-repeat 10px 60px; 
-  color: $color-white;
-  box-sizing: border-box;
-  padding-left: 90px;
-  padding-top: 1px;
-  position: relative;
-  min-height: 240px;
-  
-  h1
-  {
-    font-family: $font-title;
-  }
-  
-  img
-  {
-    position: absolute;
-    top: 15px;
-    right: 10px;
-    /*transform: rotate(5deg) translateY(10px);*/
-    @media (max-width: $screen-lg-min) {
-      display: none;
-    }
-  }
-}
-
-.main-page__content
-{
-  @extend .col-sm-6;
-
-  h1
-  {
-    color: $color-red;
-    text-transform: uppercase;
-    font-weight: 300;
-    font-size: 45px;
-  }
-  h2
-  {
-    font-weight: 700;
-  }
-  p
-  {
-    font-size: 22px;
-  }
-}
-
-.main-page__button
-{
-  font-size: 28px;
-  font-weight: 500;
-  display: inline-block;
-  background-color: $color-red;
-  color: $color-white;
-  text-transform: uppercase;
-  padding: 0 25px;
-  position: relative;
-  margin-top: 15px;
-
-  &:active
-  {
-    top: 2px;
-  }
-}
-
-.pages
-{
-  @extend .row;
-  margin-top: 30px;
-  margin-bottom: 80px;
-}
-
-.page
-{
-  @extend .col-sm-6;
-  @extend .text-center;
-
-  h1
-  {
-    color: $color-red;
-    text-transform: uppercase;
-    font-weight: 300;
-  }
-  h2
-  {
-    font-weight: 700;
-    a
-	{
-      color: $headings-color;
-      text-decoration: underline;
-    }
-  }
-  p
-  {
-    font-size: 18px;
-  }
-}
-
-.page__separator
-{
-  font-family: $font-title;
-  font-size: 120px;
-  height: 50px;
-  margin-top: -40px;
-}
-
-.tickets__container{
-		@extend .row;
-}
-
-.tickets__title{
-		width: 30%;
+.side-page__content {
+	@extend .col-sm-6;
+	background: $color-red url(images/bg-venue.png) no-repeat 10px 60px;
+	color: $color-white;
+	box-sizing: border-box;
+	padding-left: 90px;
+	padding-top: 1px;
+	position: relative;
+	min-height: 240px;
+	h1 {
+		font-family: $font-title;
+	}
+	img {
+		position: absolute;
+		top: 15px;
+		right: 10px;
+		
 		@media (max-width: $screen-lg-min) {
-      width: 100%;
-    }
+			display: none;
+		}
+	}
+	
+	a{
+		color: $color-white;
+		text-decoration: none;
+		
+		&:hover{
+			text-decoration: underline;
+		}
+	}
 }
 
-.tickets__eventbrite-container{
-		width: 70%;
-		height: 400px;
-		@media (max-width: $screen-lg-min) {
-      width: 100%;
-    }
+.main-page__content {
+	@extend .col-sm-6;
+	h1 {
+		color: $color-red;
+		text-transform: uppercase;
+		font-weight: 300;
+		font-size: 45px;
+	}
+	h2 {
+		font-weight: 700;
+	}
+	p {
+		font-size: 22px;
+	}
+}
+
+.main-page__button {
+	font-size: 28px;
+	font-weight: 500;
+	display: inline-block;
+	background-color: $color-red;
+	color: $color-white;
+	text-transform: uppercase;
+	padding: 0 25px;
+	position: relative;
+	margin-top: 15px;
+	&:active {
+		top: 2px;
+	}
+}
+
+.pages {
+	@extend .row;
+	margin-top: 30px;
+	margin-bottom: 80px;
+}
+
+.page {
+	@extend .col-sm-6;
+	@extend .text-center;
+	h1 {
+		color: $color-red;
+		text-transform: uppercase;
+		font-weight: 300;
+	}
+	h2 {
+		font-weight: 700;
+		a {
+			color: $headings-color;
+			text-decoration: underline;
+		}
+	}
+	p {
+		font-size: 18px;
+	}
+}
+
+.page__separator {
+	font-family: $font-title;
+	font-size: 120px;
+	height: 50px;
+	margin-top: -40px;
+}
+
+.tickets__container {
+	@extend .row;
+}
+
+.tickets__title {
+	width: 30%;
+	@media (max-width: $screen-lg-min) {
+		width: 100%;
+	}
+}
+
+.tickets__eventbrite-container {
+	width: 70%;
+	@media (max-width: $screen-lg-min) {
+		width: 100%;
+	}
 }

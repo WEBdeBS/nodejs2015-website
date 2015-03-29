@@ -1,155 +1,123 @@
-
-.topbar
-{
-  @extend .text-right;
-  height: 26px;
-  background-color: $color-red;
-  padding-right: 3px;
-
-  a
-  {
-    margin: 0 3px;
-  }
+.topbar {
+	@extend .text-right;
+	height: 26px;
+	background-color: $color-red;
+	padding-right: 3px;
+	a {
+		margin: 0 3px;
+	}
 }
 
-.header
-{
-  position: relative;
-  overflow: hidden;
-
-  h1,
-  h3
-  {
-    font-family: $font-title;
-  }
-  h1
-  {
-    font-size: 140px;
-    color: $color-blue;
-    margin: 40px 0 0 0;
-    height: 130px;
-  }
-  h2
-  {
-    display: inline;
-    background-color: $color-red;
-    color: $color-white;
-    text-transform: uppercase;
-    padding: 0 50px;
-    
-    &.phone-header{
-      display: none;
-    }
-  }
-  h3
-  {
-    font-size: 65px;
-    color: $color-grey;
-    background-image: url('images/header-filigrana-node.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    line-height: 100px;
-  }
+.header {
+	position: relative;
+	overflow: hidden;
+	h1, h3 {
+		font-family: $font-title;
+	}
+	h1 {
+		font-size: 140px;
+		color: $color-blue;
+		margin: 40px 0 0 0;
+		height: 130px;
+	}
+	h2 {
+		display: inline;
+		background-color: $color-red;
+		color: $color-white;
+		text-transform: uppercase;
+		padding: 0 50px;
+		&.phone-header {
+			display: none;
+		}
+	}
+	h3 {
+		font-size: 65px;
+		color: $color-grey;
+		background-image: url('images/header-filigrana-node.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		line-height: 100px;
+	}
 }
 
-.header__knot
-{
-  position: absolute;
-  top: -20px;
-  right: -20px;
+.header__knot {
+	position: absolute;
+	top: -20px;
+	right: -20px;
 }
 
-.header__title
-{
-  @extend .container;
-  @extend .text-center;
+.header__title {
+	@extend .container;
+	@extend .text-center;
 }
 
-.nav
-{
-  @extend .text-center;
-  background-color: $color-blue;
-
-  li
-  {
-    display: inline-block;
-    margin: 25px;
-  }
+.nav {
+	@extend .text-center;
+	background-color: $color-blue;
+	li {
+		display: inline-block;
+		margin: 25px;
+	}
 }
 
-.page_item
-{
-  transition: top .1s;
 
-  &:hover
-  {
-    opacity: .7;
-  }
+.main-menu{
+	.menu-item {
+		transition: top .1s;
+		&:hover {
+			opacity: .7;
+		}
 
-  a
-  {
-    display: inline-block;
-    font-family: $font-title;
-    color: $color-white;
-    font-size: 32px;
+		a {
+			display: inline-block;
+			font-family: $font-title;
+			color: $color-white;
+			font-size: 32px;
+			&::before {
+				content: '';
+				display: block;
+				margin: 0 auto;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 97px;
+				height: 85px;
+			}
+		}
 
-    &::before
-    {
-      content: '';
-      display: block;
-      margin: 0 auto;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 97px;
-      height: 85px;
-    }
-  }
-}
+		&.call-for-paper{
+			a::before{
+				background-image: url('images/menu-c4p-icon.png');
+			}
+		}
 
-.page-item-4
-{
-  a::before
-  {
-    background-image: url('images/menu-c4p-icon.png');
-  }
-}
+		&.the-venue{
+			a::before{
+				background-image: url('images/menu-venue-icon.png');
+			}
+		}
 
-.page-item-6
-{
-  a::before
-  {
-    background-image: url('images/menu-past-edition-icon.png');
-  }
-}
+		&.who-we-are{
+			a::before{
+				background-image: url('images/menu-whoweare-icon.png');
+			}
+		}
 
-.page-item-8
-{
-  a::before
-  {
-    background-image: url('images/menu-whoweare-icon.png');
-  }
-}
+		&.past-editions{
+			a::before{
+				background-image: url('images/menu-past-edition-icon.png');
+			}
+		}
 
-.page-item-10
-{
-  a::before
-  {
-    background-image: url('images/menu-supporter-icon.png');
-  }
-}
+		&.tickets{
+			a::before{
+				background-image: url('images/menu-tickets-icon.png');
+			}
+		}
 
-.page-item-39
-{
-  a::before
-  {
-    background-image: url('images/menu-venue-icon.png');
-  }
-}
-
-.page-item-40
-{
-  a::before
-  {
-    background-image: url('images/menu-tickets-icon.png');
-  }
+		&.supporters{
+			a::before{
+				background-image: url('images/menu-supporter-icon.png');
+			}
+		}
+	}
 }

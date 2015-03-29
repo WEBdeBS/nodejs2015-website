@@ -5460,8 +5460,7 @@ ul {
 .header {
   position: relative;
   overflow: hidden; }
-  .header h1,
-  .header h3 {
+  .header h1, .header h3 {
     font-family: "marina"; }
   .header h1 {
     font-size: 140px;
@@ -5495,16 +5494,16 @@ ul {
     display: inline-block;
     margin: 25px; }
 
-.page_item {
+.main-menu .menu-item {
   transition: top .1s; }
-  .page_item:hover {
+  .main-menu .menu-item:hover {
     opacity: .7; }
-  .page_item a {
+  .main-menu .menu-item a {
     display: inline-block;
     font-family: "marina";
     color: #fff;
     font-size: 32px; }
-    .page_item a::before {
+    .main-menu .menu-item a::before {
       content: '';
       display: block;
       margin: 0 auto;
@@ -5512,27 +5511,18 @@ ul {
       background-repeat: no-repeat;
       width: 97px;
       height: 85px; }
-
-.page-item-48 a::before {
-  background-image: url("images/menu-c4p-icon.png"); }
-
-.page-item-4 {
-  display:none !important; }
-
-.page-item-6 a::before {
-  background-image: url("images/menu-past-edition-icon.png"); }
-
-.page-item-8 a::before {
-  background-image: url("images/menu-whoweare-icon.png"); }
-
-.page-item-10 a::before {
-  background-image: url("images/menu-supporter-icon.png"); }
-
-.page-item-39 a::before {
-  background-image: url("images/menu-venue-icon.png"); }
-
-.page-item-40 a::before {
-  background-image: url("images/menu-tickets-icon.png"); }
+  .main-menu .menu-item.call-for-paper a::before {
+    background-image: url("images/menu-c4p-icon.png"); }
+  .main-menu .menu-item.the-venue a::before {
+    background-image: url("images/menu-venue-icon.png"); }
+  .main-menu .menu-item.who-we-are a::before {
+    background-image: url("images/menu-whoweare-icon.png"); }
+  .main-menu .menu-item.past-editions a::before {
+    background-image: url("images/menu-past-edition-icon.png"); }
+  .main-menu .menu-item.tickets a::before {
+    background-image: url("images/menu-tickets-icon.png"); }
+  .main-menu .menu-item.supporters a::before {
+    background-image: url("images/menu-supporter-icon.png"); }
 
 .main-page,
 .side-page {
@@ -5560,11 +5550,15 @@ ul {
   .side-page__content img {
     position: absolute;
     top: 15px;
-    right: 10px;
-    /*transform: rotate(5deg) translateY(10px);*/ }
+    right: 10px; }
     @media (max-width: 1200px) {
       .side-page__content img {
         display: none; } }
+  .side-page__content a {
+    color: #fff;
+    text-decoration: none; }
+    .side-page__content a:hover {
+      text-decoration: underline; }
 
 .main-page__content h1 {
   color: #cc0001;
@@ -5618,8 +5612,7 @@ ul {
       width: 100%; } }
 
 .tickets__eventbrite-container {
-  width: 70%;
-  height: 400px; }
+  width: 70%; }
   @media (max-width: 1200px) {
     .tickets__eventbrite-container {
       width: 100%; } }
@@ -5666,6 +5659,86 @@ ul {
   background-image: -ms-linear-gradient(top, #fff 0%, #fff 10%, #cc0001 10%, #cc0001 20%, #fff 20%, #fff 30%, #cc0001 30%, #cc0001 40%, #fff 40%, #fff 50%, #cc0001 50%, #cc0001 60%, #fff 60%, #fff 70%, #cc0001 70%, #cc0001 80%, #fff 80%, #fff 90%, #cc0001 90%, #cc0001 100%);
   background-image: linear-gradient(top, #fff 0%, #fff 10%, #cc0001 10%, #cc0001 20%, #fff 20%, #fff 30%, #cc0001 30%, #cc0001 40%, #fff 40%, #fff 50%, #cc0001 50%, #cc0001 60%, #fff 60%, #fff 70%, #cc0001 70%, #cc0001 80%, #fff 80%, #fff 90%, #cc0001 90%, #cc0001 100%);
   height: 180px; }
+
+.footer__nav-menu {
+  display: inline-block; }
+  .footer__nav-menu li {
+    display: inline-block; }
+    .footer__nav-menu li:after {
+      content: ' - '; }
+
+.footer__social {
+  display: inline-block; }
+
+.footer__main-sponsor-text {
+  display: inline-block;
+  padding: 0px 20px 0px 100px;
+  font-family: "marina";
+  font-size: 24px;
+  background: url("images/bg-sponsor.png") no-repeat top left; }
+
+.venue-website {
+  text-align: center; }
+  .venue-website img {
+    display: block;
+    max-width: 100%;
+    height: auto; }
+  .venue-website span {
+    display: inline-block;
+    margin-top: 20px;
+    color: #cc0001;
+    font-size: 18px; }
+
+.venue__direction {
+  text-align: center;
+  font-size: 18px; }
+  .venue__direction h3 {
+    color: #cc0001;
+    text-transform: uppercase;
+    font-size: 26px;
+    margin: 20px 0px 10px 0px; }
+
+.venue__center-content iframe {
+  width: 100%;
+  height: 300px; }
+
+.venue__accomodation {
+  text-align: center;
+  font-size: 18px; }
+  .venue__accomodation h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0px 5px 0px; }
+  .venue__accomodation h4 {
+    color: #cc0001;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 5px 0px; }
+  .venue__accomodation a {
+    color: #031930; }
+    .venue__accomodation a:hover {
+      text-decoration: underline; }
+
+.venue__links-content {
+  margin-top: 20px;
+  padding: 20px 20px 20px 130px;
+  background: #cc0001 url("images/bg-info.png") no-repeat 30px 50%;
+  color: #fff; }
+  .venue__links-content h3 {
+    font-family: "marina";
+    font-size: 32px;
+    color: #fff;
+    margin: 0px 0px 10px 0px; }
+  .venue__links-content h4 {
+    text-transform: uppercase;
+    font-size: 16px;
+    margin: 5px 0px;
+    color: #fff; }
+  .venue__links-content a {
+    display: block;
+    color: #fff; }
+    .venue__links-content a:hover {
+      text-decoration: underline; }
 
 @media (max-width: 767px) {
   .header__knot {

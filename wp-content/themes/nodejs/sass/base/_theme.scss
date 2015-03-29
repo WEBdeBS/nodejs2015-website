@@ -1,55 +1,41 @@
-
 $color-white: #fff;
 $color-grey: #878787;
 $color-red: #cc0001;
 $color-blue: #031930;
-
 $font-text: 'dosis';
-$font-title: 'marina'; 
-
+$font-title: 'marina';
 @mixin linear-gradient($gradient) {
-  background-image: -webkit-linear-gradient($gradient);
-  background-image: -moz-linear-gradient($gradient);
-  background-image: -ms-linear-gradient($gradient);
-  background-image: linear-gradient($gradient);
+	background-image: -webkit-linear-gradient($gradient);
+	background-image: -moz-linear-gradient($gradient);
+	background-image: -ms-linear-gradient($gradient);
+	background-image: linear-gradient($gradient);
 }
 
-body
-{
-  -webkit-font-smoothing: antialiased;
-  font-family: $font-text;
-  background-color: $color-white;
-  color: $color-blue;
+body {
+	-webkit-font-smoothing: antialiased;
+	font-family: $font-text;
+	background-color: $color-white;
+	color: $color-blue;
 }
 
-a
-{
-  &:hover, 
-  &:focus
-  {
-    text-decoration: none;
-  }
+a {
+	&:hover, &:focus {
+		text-decoration: none;
+	}
 }
 
-ul
-{
-  padding-left: 0px;
-  margin-bottom: 0px;
-  list-style: none;
+ul {
+	padding-left: 0px;
+	margin-bottom: 0px;
+	list-style: none;
 }
 
-.content
-{
-  @extend .container;
+.content {
+	@extend .container;
 }
 
-.hr
-{
-  $gradient: top, 
-    $color-white 0%, $color-white 25%, 
-    $color-blue 25%, $color-blue 50%, 
-    $color-white 50%, $color-white 75%, 
-    $color-blue 75%, $color-blue 100%;
-  @include linear-gradient($gradient);
-  height: 20px;
+.hr {
+	$gradient: top, $color-white 0%, $color-white 25%, $color-blue 25%, $color-blue 50%, $color-white 50%, $color-white 75%, $color-blue 75%, $color-blue 100%;
+	@include linear-gradient($gradient);
+	height: 20px;
 }
