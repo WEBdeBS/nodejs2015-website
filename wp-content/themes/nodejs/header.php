@@ -42,12 +42,13 @@
 		<div class="header">
 			<img class="header__knot" src="<?php echo get_template_directory_uri(); ?>/images/header-node-corner.png" alt="">
 			<header class="header__title">
-				<h1>- <?php echo get_bloginfo('name'); ?> -</h1>
+				<h1>- <a href="<?php echo get_bloginfo('url'); ?>"><?php echo get_bloginfo('name'); ?></a> -</h1>
 				<h2 class="desktop-header"><?php echo get_bloginfo('description'); ?></h2>
 				<h3><?php echo $options['nodejs_data']; ?> - <?php echo $options['nodejs_luogo']; ?></h3>
 			</header>
 		</div>
 		<nav class="nav">
+		<div class="mobile-menu__container"><a href="#" class="mobile-menu"></a></div>	
 		<?php
 			$args = array(
 				'theme_location' => 'main-menu',

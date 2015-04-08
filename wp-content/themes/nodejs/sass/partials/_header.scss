@@ -19,6 +19,10 @@
 		color: $color-blue;
 		margin: 40px 0 0 0;
 		height: 130px;
+		
+		a{
+			color: $color-blue;
+		}
 	}
 	h2 {
 		display: inline;
@@ -56,7 +60,21 @@
 	background-color: $color-blue;
 	li {
 		display: inline-block;
-		margin: 25px;
+		margin: 25px 20px;
+	}
+	
+	.mobile-menu__container{
+		display: none;
+		text-align: right;
+	}
+	
+	.mobile-menu{
+		display: inline-block;
+		background: url('images/menu-icon.png') no-repeat center center;
+		width: 32px;
+		height: 17px;
+		margin: 20px;
+		text-align: right;
 	}
 }
 

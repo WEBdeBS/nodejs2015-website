@@ -35,7 +35,9 @@
 				?>
 			</div>
 		</article>
-		<div class="hr"></div>
+	</div>
+	<div class="hr"></div>
+	<div class="content">
 		<article class="main-page">
 			<div class="col-sm-4 venue__direction">
 				<div class="title">

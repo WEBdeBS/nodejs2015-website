@@ -32,10 +32,6 @@
 		position: absolute;
 		top: 15px;
 		right: 10px;
-		
-		@media (max-width: $screen-lg-min) {
-			display: none;
-		}
 	}
 	
 	a{
@@ -58,6 +54,11 @@
 	}
 	h2 {
 		font-weight: 700;
+		
+		a{
+			color: $headings-color;
+			text-decoration: underline;
+		}
 	}
 	p {
 		font-size: 22px;

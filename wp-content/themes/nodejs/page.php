@@ -6,7 +6,7 @@
 				the_post(); 
 	?>
 		<article class="main-page">
-			<div class="title title--main-page col-sm-6">
+			<div class="title title--main-page col-sm-4">
 				<?php 
 					$img = types_render_field('page-icon', array('post_id' => $post->ID, 'output' => 'raw'));
 					if($img){
@@ -15,7 +15,7 @@
 					the_title();
 				?>
 			</div>
-			<div class="main-page__content">
+			<div class="main-page__content col-sm-8">
 				<?php the_content(); ?>
 			</div>
 		</article>
