@@ -5866,7 +5866,8 @@ ul {
   .venue-website img {
     display: block;
     max-width: 100%;
-    height: auto; }
+    height: auto;
+    margin: 30px auto 0px; }
   .venue-website span {
     display: inline-block;
     margin-top: 20px;
