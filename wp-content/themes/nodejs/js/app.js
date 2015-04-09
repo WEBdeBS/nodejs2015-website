@@ -5,5 +5,5 @@ $(document).ready(function() {
 		$('.main-menu').toggleClass('open');
 	});
 	
-	$('.venue-gallery__item').colorbox({rel:'gal'});
+	$('.venue-gallery__item').colorbox({rel:'gal', maxWidth: '95%', maxHeight: '95%'});
 });
