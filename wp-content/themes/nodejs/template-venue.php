@@ -35,6 +35,16 @@
 				?>
 			</div>
 		</article>
+		<div class="venue-gallery">
+			<?php 
+				$gallery = types_render_field('venue-gallery', array('post_id' => $post->ID, 'output' => 'raw', 'separator' => ','));
+				$gallery_array = explode(',', $gallery);
+				foreach($gallery_array as $g_img){
+					$img_id = url_to_postid($g_img); 
+					echo '<a class="venue-gallery__item" href="' . $g_img . '"><span style="background-image: url(\'' . $g_img . '\')"></span></a>';
+				}
+			?>
+		</div>
 	</div>
 	<div class="hr"></div>
 	<div class="content">

@@ -4,4 +4,6 @@ $(document).ready(function() {
 		evt.preventDefault();
 		$('.main-menu').toggleClass('open');
 	});
+	
+	$('.venue-gallery__item').colorbox({rel:'gal'});
 });

@@ -45,7 +45,13 @@
 		
 		.menu-item{
 			display: block;
-			margin: 15px 20px;
+			margin: 0px;
+			padding: 0px 20px;
+			text-align: center;
+			
+			&.current-menu-item, &:hover{
+				background-color: $color-red;
+			}
 			
 			a::before{
 				display: none;

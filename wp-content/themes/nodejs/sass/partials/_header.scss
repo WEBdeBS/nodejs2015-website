@@ -17,7 +17,7 @@
 	h1 {
 		font-size: 140px;
 		color: $color-blue;
-		margin: 40px 0 0 0;
+		margin: 40px 0 15px 0;
 		height: 130px;
 		
 		a{
@@ -82,8 +82,10 @@
 .main-menu{
 	.menu-item {
 		transition: top .1s;
-		&:hover {
-			opacity: .7;
+		&.current-menu-item, &:hover {
+			span{
+				background-color: $color-red;
+			}
 		}
 
 		a {
@@ -99,7 +101,15 @@
 				background-repeat: no-repeat;
 				width: 97px;
 				height: 85px;
+				background-color: $color-blue;
 			}
+		}
+		
+		span{
+			display: inline-block;
+			margin-top: 5px;
+			padding: 5px 10px 0px;
+			line-height: 35px;
 		}
 
 		&.call-for-paper{

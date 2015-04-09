@@ -52,6 +52,8 @@
 		<?php
 			$args = array(
 				'theme_location' => 'main-menu',
+				'link_before' => '<span>',
+				'link_after' => '</span>',
 				'container' => 'div',
 				'container_class' => 'main-menu'
 			);
