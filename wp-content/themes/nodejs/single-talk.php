@@ -15,7 +15,7 @@
 						$img = types_render_field('speaker-photo', array('post_id' => $speaker->ID));
 						echo '<div class="col-lg-5">';
 						echo '<div class="title speaker__name">';
-						echo '<img src="' . get_template_directory_uri() . '/images/title-speakers.png" alt="">';
+						echo '<img src="' . get_template_directory_uri() . '/images/title-speakers-white.png" alt="">';
 						echo $speaker->post_title . '</div>';
 						echo '<div class="speaker__image">' . $img . '</div>';
 						echo '</div>';
@@ -57,4 +57,8 @@
 		}
 	?>	
 	</div>
+	<div class="hr"></div>
+	<?php 
+		get_template_part('speaker', 'carousel');
+	?>
 <?php get_footer(); ?>

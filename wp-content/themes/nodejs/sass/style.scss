@@ -17,6 +17,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import "base/typography";
 @import "base/theme";
 @import 'base/colorbox';
+@import 'base/owl-carousel';
 
 @import "partials/header";
 @import "partials/front-page";
@@ -24,6 +25,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import "partials/venue";
 @import "partials/talk";
 @import "partials/supporters";
+@import "partials/speaker-carousel";
 
 @import "base/media";
-

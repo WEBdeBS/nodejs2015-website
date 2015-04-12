@@ -1,3 +1,9 @@
+@media (min-width: $screen-lg-min) {
+	.speaker-carousel__item{
+		min-height: 300px;
+	}
+}
+
 @media (max-width: $screen-lg-min) {
 	.side-page__content {
 		text-align: center;
@@ -12,13 +18,21 @@
 		padding: 20px;
 		background-image: none;
 	}
+
+	
+	
 }
+
 
 @media (max-width: $screen-sm-max) {
 	.supporters-type__content{
 		&:nth-child(2n + 1){
 			clear: left;
 		}
+	}
+	
+	.speaker-carousel__icon{
+		float: none;
 	}
 }
 

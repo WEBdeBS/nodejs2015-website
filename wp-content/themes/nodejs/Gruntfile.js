@@ -9,8 +9,7 @@ module.exports = function(grunt) {
         sass: {
             dev: {
                 options: {
-                    loadPath: ['bower_components/bootstrap-sass-official/assets/stylesheets',
-															 'bower_components/jquery-colorbox/example3']
+                    loadPath: ['bower_components/bootstrap-sass-official/assets/stylesheets']
                 },
                 files: {
                     'style.css': 'sass/style.scss'
@@ -23,7 +22,8 @@ module.exports = function(grunt) {
                 files: {
                     'app.js': [
                         'bower_components/jquery/dist/jquery.js',
-												'bower_components/jquery-colorbox/jquery.colorbox.js',
+						'bower_components/jquery-colorbox/jquery.colorbox.js',
+						'bower_components/OwlCarousel/owl-carousel/owl.carousel.js',
                         'js/*.js'
                     ]
                 }
