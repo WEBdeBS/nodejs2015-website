@@ -6174,7 +6174,7 @@ ul {
 
 @media (min-width: 1200px) {
   .speaker-carousel__item {
-    min-height: 300px; } }
+    min-height: 320px; } }
 @media (max-width: 1200px) {
   .side-page__content {
     text-align: center;
