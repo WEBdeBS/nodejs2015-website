@@ -65,6 +65,10 @@
 }
 ?>
 <div class="hr"></div>
+<?php 
+	get_template_part('speaker', 'carousel');
+?>
+<div class="hr"></div>
 <div class="content">
 	<div class="pages">
 		<article class="page">
