@@ -6499,67 +6499,6 @@ msgid_plural "%s topics"
 msgstr[0] "%s argomento"
 msgstr[1] "%s argomenti"
 
-#: wp-includes/class-pop3.php:82
-msgid "No server specified"
-msgstr "Non è stato specificato alcun server"
-
-#: wp-includes/class-pop3.php:90 wp-includes/class-pop3.php:102
-#: wp-includes/class-pop3.php:123 wp-includes/class-pop3.php:246
-#: wp-includes/class-pop3.php:300 wp-includes/class-pop3.php:311
-#: wp-includes/class-pop3.php:359 wp-includes/class-pop3.php:393
-#: wp-includes/class-pop3.php:426 wp-includes/class-pop3.php:525
-#: wp-includes/class-pop3.php:548
-msgid "Error "
-msgstr "Errore "
-
-#: wp-includes/class-pop3.php:115
-msgid "no login ID submitted"
-msgstr "non è stato fornito alcun ID di login"
-
-#: wp-includes/class-pop3.php:118 wp-includes/class-pop3.php:138
-msgid "connection not established"
-msgstr "connessione non stabilita"
-
-#: wp-includes/class-pop3.php:135 wp-includes/class-pop3.php:171
-msgid "No password submitted"
-msgstr "Non è stata fornita alcuna password"
-
-#: wp-includes/class-pop3.php:162 wp-includes/class-pop3.php:205
-#: wp-includes/class-pop3.php:230 wp-includes/class-pop3.php:272
-#: wp-includes/class-pop3.php:346 wp-includes/class-pop3.php:386
-#: wp-includes/class-pop3.php:416 wp-includes/class-pop3.php:450
-#: wp-includes/class-pop3.php:513 wp-includes/class-pop3.php:578
-msgid "No connection to server"
-msgstr "Nessuna connessione al server"
-
-#: wp-includes/class-pop3.php:168
-msgid "No login ID submitted"
-msgstr "Non è stato fornito alcun ID di login"
-
-#: wp-includes/class-pop3.php:176
-msgid "No server banner"
-msgstr "No server banner"
-
-#: wp-includes/class-pop3.php:176 wp-includes/class-pop3.php:186
-msgid "abort"
-msgstr "interrompi"
-
-#: wp-includes/class-pop3.php:323
-msgid "Premature end of list"
-msgstr "Termine lista anticipato"
-
-#: wp-includes/class-pop3.php:456
-msgid "Empty command string"
-msgstr "Stringa di comando vuota"
-
-#: wp-includes/class-pop3.php:476
-msgid "connection does not exist"
-msgstr "la connessione non esiste"
-
-#: wp-includes/class-pop3.php:583
-msgid "No msg number submitted"
-msgstr "Non è stato fornito un numero di messaggio"
-
 #: wp-includes/category-template.php:998
 msgid "Feed for all posts filed under %s"
 msgstr "Feed per tutti gli articoli archiviati in %s"
@@ -6635,18 +6574,6 @@ msgstr "Rispondi a %s"
 #: wp-includes/comment-template.php:1542
 msgid "Click here to cancel reply."
 msgstr "Fare clic qui per annullare la risposta."
-
-#: wp-includes/class-pop3.php:143
-msgid "Authentication failed"
-msgstr "Autenticazione non riuscita"
-
-#: wp-includes/class-pop3.php:186
-msgid "apop authentication failed"
-msgstr "autenticazione apop non riuscita"
-
-#: wp-includes/class-pop3.php:589
-msgid "Command failed "
-msgstr "Comando non riuscito "
 
 #: wp-includes/capabilities.php:967
 msgid "Usage of user levels by plugins and themes is deprecated. Use roles and capabilities instead."

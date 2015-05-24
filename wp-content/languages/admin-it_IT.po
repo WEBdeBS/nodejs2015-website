@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2014-12-17 07:06:12+0000\n"
+"PO-Revision-Date: 2015-02-12 09:29:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -815,10 +815,6 @@ msgstr "Gestione menu"
 msgid "Edit status"
 msgstr "Modifica stato"
 
-#: wp-admin/includes/meta-boxes.php:138
-msgid "Edit visibility"
-msgstr "Modifica visibiltà"
-
 #: wp-admin/includes/meta-boxes.php:198
 msgid "Browse revisions"
 msgstr "Naviga nelle revisioni"
@@ -830,6 +826,10 @@ msgstr "Modifica data e ora"
 #: wp-admin/admin-footer.php:29
 msgid "Thank you for creating with <a href=\"%s\">WordPress</a>."
 msgstr "Grazie per aver creato con  <a href=\"%s\">WordPress</a>."
+
+#: wp-admin/includes/meta-boxes.php:138
+msgid "Edit visibility"
+msgstr "Modifica visibilità"
 
 #: wp-admin/themes.php:112
 msgid "Search installed themes..."
@@ -967,21 +967,21 @@ msgstr "Fai clic sul tema per vedere il nome del tema, la versione, l'autore, la
 msgid "Click Customize for the current theme or Live Preview for any other theme to see a live preview"
 msgstr "Fai clic su personalizza per il tema corrente o anteprima per tutti gli altri temi per vedere l'anteprima"
 
-#: wp-admin/themes.php:45
-msgid "This screen is used for managing your installed themes. Aside from the default theme(s) included with your WordPress installation, themes are designed and developed by third parties."
-msgstr "Questa schermata è utilizata peer la gestione dei temi installati. A parte il tema(i) standard inclusio(i) nell'installazione di WordPress, i temi sono disegnati e sviluppati da terze parti."
-
 #: wp-admin/themes.php:77
 msgid "Tap or hover on any theme then click the Live Preview button to see a live preview of that theme and change theme options in a separate, full-screen view. You can also find a Live Preview button at the bottom of the theme details screen. Any installed theme can be previewed and customized in this way."
 msgstr "Dare un tocco o passare sopra col mouse su qualsiasi tema e fare quindi click sul pulsante Anteprima per visualizzare una anteprima del proprio sito con quel tema e modificare le impostazioni del tema in una seconda schermata a pieno schermo. Potete trovare il pulsante Anteprima anche in fondo alla schermata di dettaglio del tema. Tramite questo metodo ogni tema installato può essere visualizzato in anteprima e personalizzato."
 
-#: wp-admin/themes.php:78
-msgid "The theme being previewed is fully interactive &mdash; navigate to different pages to see how the theme handles posts, archives, and other page templates. The settings may differ depending on what theme features the theme being previewed supports. To accept the new settings and activate the theme all in one step, click the Save &amp; Activate button above the menu."
-msgstr "Il tema in anteprima e totalmente interattivo &mdash; puoi navigare fra le varie pagine per vedere come il tema gestisce gli articoli, gli archivi e le altre pagine di template. Le impostazioni possono differire a seconda di quali funzionalità del tema, sono messe a disposizione dell'anteprima dal tema stesso. Per accettare le nove impostazioni ed attivare il tema in un singolo passaggio fare clic sul pulsante Salva e attiva in alto nel menu."
-
 #: wp-admin/themes.php:79
 msgid "When previewing on smaller monitors, you can use the collapse icon at the bottom of the left-hand pane. This will hide the pane, giving you more room to preview your site in the new theme. To bring the pane back, click on the collapse icon again."
 msgstr "Quando si visualizza l'anteprima su un monitor piccolo, è possibile utilizzare l'icona di riduzione in basso nel pannello di sinistra. Questa permette di nasondere il pannello dando così maggior spazio alla visualizzazione del sito con il nuovo tema. Per riattivare il pannello fare nuovamente clic sull'icona di riduzione."
+
+#: wp-admin/themes.php:78
+msgid "The theme being previewed is fully interactive &mdash; navigate to different pages to see how the theme handles posts, archives, and other page templates. The settings may differ depending on what theme features the theme being previewed supports. To accept the new settings and activate the theme all in one step, click the Save &amp; Activate button above the menu."
+msgstr "Il tema in anteprima è totalmente interattivo &mdash; puoi navigare fra le varie pagine per vedere come il tema gestisce gli articoli, gli archivi e le altre pagine di template. Le impostazioni possono differire a seconda di quali funzionalità del tema sono messe a disposizione dell'anteprima dal tema stesso. Per accettare le nuove impostazioni ed attivare il tema in un singolo passaggio fare clic sul pulsante Salva e attiva in alto nel menu."
+
+#: wp-admin/themes.php:45
+msgid "This screen is used for managing your installed themes. Aside from the default theme(s) included with your WordPress installation, themes are designed and developed by third parties."
+msgstr "Questa schermata è utilizzata per la gestione dei temi installati. A parte il tema(i) standard incluso(i) nell'installazione di WordPress, i temi sono disegnati e sviluppati da terze parti."
 
 #: wp-admin/widgets.php:350
 msgid "To activate a widget drag it to a sidebar or click on it. To deactivate a widget and delete its settings, drag it back."
@@ -1878,10 +1878,6 @@ msgstr "Tramite questa schermata puoi:"
 msgid "Add, organize, and modify individual menu items"
 msgstr "Aggiungere, organizzare e modificare singoli elementi di menu"
 
-#: wp-admin/nav-menus.php:506
-msgid "The menu management box at the top of the screen is used to control which menu is opened in the editor below."
-msgstr "Il box gestione menù in alto è utilizzato per controllare quale menù è aperto nell editor sotto."
-
 #: wp-admin/nav-menus.php:507
 msgid "To edit an existing menu, <strong>choose a menu from the drop down and click Select</strong>"
 msgstr "Per modificare un menù,<strong> seleziona un menù dalla casella di selezione a discesa e fai clic su seleziona</strong>"
@@ -1925,6 +1921,10 @@ msgstr "Per assegnare i menu ad una o più posizioni all'interno del tema, <stro
 #: wp-admin/nav-menus.php:521
 msgid "To reorganize menu items, <strong>drag and drop items with your mouse or use your keyboard</strong>. Drag or move a menu item a little to the right to make it a submenu"
 msgstr "Per riorganizzare gli elementi dei menu, <strong>trascina e rilascia gli elementi con il mouse o utilizza la tastiera</strong>. Trascinare o spostare leggermente verso destra un elemento di menu per renderlo un sottomenu"
+
+#: wp-admin/nav-menus.php:506
+msgid "The menu management box at the top of the screen is used to control which menu is opened in the editor below."
+msgstr "Il box gestione menù in alto è utilizzato per controllare quale menù è aperto nell'editor sotto."
 
 #: wp-admin/includes/revision.php:358
 msgid "Restore This Revision"
@@ -2018,7 +2018,7 @@ msgstr "Annulla"
 
 #: wp-admin/includes/template.php:2113
 msgid "The backup of this post in your browser is different from the version below."
-msgstr "IL backup di questo articolo nel tuo browser è diverso dalla revisione sottostante,"
+msgstr "Il backup di questo articolo nel tuo browser è diverso dalla revisione sottostante."
 
 #: wp-admin/includes/ajax-actions.php:1161
 msgid "Draft created on %1$s at %2$s"
@@ -2300,10 +2300,6 @@ msgstr "oppure <a href=\"%s\">cambia completamente il tuo tema</a>"
 msgid "Next Steps"
 msgstr "Passi successivi"
 
-#: wp-admin/includes/dashboard.php:1296 wp-admin/includes/dashboard.php:1299
-msgid "Edit your front page"
-msgstr "Modificare la pagina inziale"
-
 #: wp-admin/includes/dashboard.php:1297 wp-admin/includes/dashboard.php:1300
 msgid "Add additional pages"
 msgstr "Aggiungere altre pagine"
@@ -2357,10 +2353,6 @@ msgstr "Una volta che hai teminato fai clic su &#8220;Esegui installazione.&#822
 #: wp-admin/options-reading.php:150 wp-admin/options-reading.php:170
 msgid "Discourage search engines from indexing this site"
 msgstr "Scoraggia i motori di ricerca ad effettuare l'indicizzazione di questo sito"
-
-#: wp-admin/includes/template.php:1229
-msgid "The privacy options group has been removed. Use another settings group."
-msgstr "IL gruppo di opzioni sulal privacy è stato rimosso. Utilizza un altro gruppo di impostazioni."
 
 #: wp-admin/options-reading.php:64 wp-admin/options-reading.php:144
 #: wp-admin/options-reading.php:145
@@ -2418,6 +2410,14 @@ msgstr "Benvenuto in WordPress %1$s. Verrai reindirizzato alla schermata Informa
 #: wp-admin/includes/dashboard.php:299
 msgid "Search Engines Discouraged"
 msgstr "Motori di ricerca bloccati"
+
+#: wp-admin/includes/dashboard.php:1296 wp-admin/includes/dashboard.php:1299
+msgid "Edit your front page"
+msgstr "Modificare la pagina iniziale"
+
+#: wp-admin/includes/template.php:1229
+msgid "The privacy options group has been removed. Use another settings group."
+msgstr "Il gruppo di opzioni sulla privacy è stato rimosso. Utilizza un altro gruppo di impostazioni."
 
 #: wp-admin/options-reading.php:58
 msgid "You can also control the display of your content in RSS feeds, including the maximum numbers of posts to display and whether to show full text or a summary."
@@ -2905,7 +2905,7 @@ msgstr "Questo tema richiede un tema genitore. Verifica che sia installato&#8230
 #. translators: 1: theme name, 2: version
 #: wp-admin/includes/class-wp-upgrader.php:1145
 msgid "Successfully installed the parent theme, <strong>%1$s %2$s</strong>."
-msgstr "il tema genitore è stato installato, <strong>%1$s %2$s</strong>."
+msgstr "Il tema genitore è stato installato, <strong>%1$s %2$s</strong>."
 
 #: wp-admin/custom-header.php:187 wp-admin/custom-header.php:687
 #: wp-admin/custom-header.php:692
@@ -2985,6 +2985,16 @@ msgstr "%1$s (%2$s)"
 msgctxt "start of week"
 msgid "1"
 msgstr "1"
+
+#. translators: default GMT offset or timezone string. Must be either a valid
+#. offset (-12 to 14)
+#. or a valid timezone string (America/New_York). See
+#. http:us3.php.net/manual/en/timezones.php
+#. for all timezone strings supported by PHP.
+#: wp-admin/includes/schema.php:361
+msgctxt "default GMT offset or timezone string"
+msgid "0"
+msgstr "Europe/Rome"
 
 #. translators: 1: month number (01, 02, etc.), 2: month abbreviation
 #: wp-admin/includes/template.php:750
@@ -3070,19 +3080,19 @@ msgid ""
 "###SITE_NAME###"
 msgstr ""
 "Gentile utente,\n"
-"Hai recentemente fatto clic sul link 'Elimina sito' dal tuo sito e hai compilato un \n"
+"Hai recentemente fatto click sul link 'Elimina sito' dal tuo sito e hai compilato un \n"
 "modulo nella relativa pagina.\n"
 "Se desideri davvero eliminare il tuo sito, fai clic sul link sottostante. Non verrà chiesta\n"
-"alcuna ulteriore conferma, quindi fare clci sul link seguente solo se sei assolutamente certo\n"
+"alcuna ulteriore conferma, quindi fai click sul link seguente solo se sei assolutamente certo\n"
 "di quello che vuoi fare:\n"
 "###URL_DELETE###\n"
 "\n"
-"Se elimini il tuo, considera la possibilità di aprire un nuovo sito \n"
+"Se elimini il tuo sito, considera la possibilità di aprire un nuovo sito \n"
 "nel prossimo futuro! (Ma ricordati l'attuale sito e il nome utente\n"
 "sono persi per sempre.)\n"
 "\n"
 "Grazie per aver utilizzato il sito,\n"
-"Webmaster\n"
+"Il webmaster\n"
 "###SITE_NAME###"
 
 #: wp-admin/includes/ms.php:32
@@ -5499,10 +5509,6 @@ msgstr "Questa schermata contiene le impostazioni che riguardano la visualizzazi
 msgid "UTC means Coordinated Universal Time."
 msgstr "UTC significa Coordinate universali del tempo."
 
-#: wp-admin/options-general.php:90
-msgid "The WordPress URL and the Site URL can be the same (example.com) or different; for example, having the WordPress core files (example.com/wordpress) in a subdirectory instead of the root directory."
-msgstr "La URL di Wordpress e la URL del sito possono essere uguali (esempio.com) o diverse; per esempio nel caso Wordpress sia instalalto in una sotto directory (esempio.com/wordpress) invece che nella directory principale."
-
 #: wp-admin/options-general.php:86
 msgid "The fields on this screen determine some of the basics of your site setup."
 msgstr "I campi in questa schermata determinano alcune impostazioni di base del sito."
@@ -5513,6 +5519,10 @@ msgstr "I campi in questa schermata determinano alcune impostazioni di base del 
 #: wp-admin/options-reading.php:59 wp-admin/options-writing.php:22
 msgid "You must click the Save Changes button at the bottom of the screen for new settings to take effect."
 msgstr "&Egrave; necessario cliccare sul pulsante salva le modifiche in fondo alla schermata per rendere effettive le modifiche apportate."
+
+#: wp-admin/options-general.php:90
+msgid "The WordPress URL and the Site URL can be the same (example.com) or different; for example, having the WordPress core files (example.com/wordpress) in a subdirectory instead of the root directory."
+msgstr "La URL di WordPress e la URL del sito possono essere uguali (esempio.com) o diverse; per esempio nel caso WordPress sia installato in una sotto directory (esempio.com/wordpress) invece che nella directory principale."
 
 #: wp-admin/edit-link-form.php:59
 msgid "The boxes for link name, web address, and description have fixed positions, while the others may be repositioned using drag and drop. You can also hide boxes you don&#8217;t use in the Screen Options tab, or minimize boxes by clicking on the title bar of the box."
@@ -6137,10 +6147,6 @@ msgstr "Non è possibile rimuovere eliminare l&#8217;utente corrente."
 msgid "Confirm Removal"
 msgstr "Conferma rimozione"
 
-#: wp-admin/users.php:352
-msgid "There are no valid users selected for removal."
-msgstr "Nessun utente valido selezionato per la cancellazione"
-
 #: wp-admin/users.php:330
 msgid "You have specified these users for removal:"
 msgstr "Si sono selezionati questi utenti per la cancellazione:"
@@ -6152,6 +6158,10 @@ msgstr "Non è permesso eliminare un utente da questa schermata."
 #: wp-admin/users.php:168
 msgid "You can&#8217;t delete that user."
 msgstr "Non puoi eliminare questo utente."
+
+#: wp-admin/users.php:352
+msgid "There are no valid users selected for removal."
+msgstr "Nessun utente valido selezionato per la rimozione."
 
 #: wp-admin/includes/class-wp-upgrader-skins.php:218
 msgid "Hide Details"
@@ -6800,10 +6810,6 @@ msgstr "Impossibile trovare la directory dei temi di WordPress."
 #: wp-admin/includes/update-core.php:839
 msgid "The update cannot be installed because WordPress %1$s requires PHP version %2$s or higher and MySQL version %3$s or higher. You are running PHP version %4$s and MySQL version %5$s."
 msgstr "L'aggiornamento non può essere installato perchè WordPress %1$s richiede una versione di PHP %2$s o superiore e MySQL versione %3$s o superiore. Si sta utilizzando PHP versione %4$s e MySQL versione %5$s."
-
-#: wp-admin/includes/update-core.php:810
-msgid "The update could not be unpacked"
-msgstr "L'aggiornamento non può venir scompattato"
 
 #: wp-admin/includes/update.php:230
 msgid "Update to %s"
@@ -7937,10 +7943,6 @@ msgctxt "link"
 msgid "Add New"
 msgstr "Aggiungi nuovo"
 
-#: wp-admin/maint/repair.php:103
-msgid "Some database problems could not be repaired. Please copy-and-paste the following list of errors to the <a href=\"%s\">WordPress support forums</a> to get additional assistance."
-msgstr "Alcuni problemi al database non sono potuti venir riparati. Fare copia e incolla della seguente lista di errori sul <a href=\"%s\">Forum di supporto di WordPress (in inglese)</a> per avere ulteriore assistenza.</p>"
-
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:162
 msgid "Domain"
 msgstr "Dominio"
@@ -8261,6 +8263,14 @@ msgstr "Aggiorna temi"
 #: wp-admin/includes/upgrade.php:165
 msgid "Hello world!"
 msgstr "Ciao mondo!"
+
+#: wp-admin/maint/repair.php:103
+msgid "Some database problems could not be repaired. Please copy-and-paste the following list of errors to the <a href=\"%s\">WordPress support forums</a> to get additional assistance."
+msgstr "Alcuni problemi al database non sono potuti essere riparati. Fare copia e incolla della seguente lista di errori sul <a href=\"%s\">Forum di supporto di WordPress (in inglese)</a> per avere ulteriore assistenza."
+
+#: wp-admin/includes/update-core.php:810
+msgid "The update could not be unpacked"
+msgstr "L'aggiornamento non può essere scompattato"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:274
 msgid "Recently Active <span class=\"count\">(%s)</span>"
@@ -8722,10 +8732,6 @@ msgstr "Username/Password non corrette per %s"
 msgid "The ssh2 PHP extension is not available"
 msgstr "L'estensione PHP ssh2 non è disponibile"
 
-#: wp-admin/includes/class-wp-filesystem-ssh2.php:54
-msgid "The ssh2 PHP extension is available, however, we require the PHP5 function <code>stream_get_contents()</code>"
-msgstr "L'estensione PHP ssh2 è disponibile, tuttavia, occorre la funzione PHP5 <code>stream_get_contents()</code>"
-
 #: wp-admin/includes/class-wp-filesystem-ssh2.php:65
 msgid "SSH2 hostname is required"
 msgstr "&Egrave; richiesto il nome host SSH2"
@@ -8959,10 +8965,6 @@ msgstr "Template 404"
 #: wp-admin/includes/file.php:32
 msgid "Links Template"
 msgstr "Template link"
-
-#: wp-admin/includes/file.php:33
-msgid "Theme Functions"
-msgstr "Funzioni tema"
 
 #: wp-admin/includes/file.php:34
 msgid "Attachment Template"
@@ -10093,12 +10095,6 @@ msgstr "Permetti di commentare"
 msgid "Allow Pings"
 msgstr "Permetti i Ping"
 
-#: wp-admin/includes/class-wp-posts-list-table.php:1235
-#: wp-admin/includes/class-wp-posts-list-table.php:1238
-#: wp-admin/includes/template.php:1650
-msgid "Sticky"
-msgstr "In risalto"
-
 #: wp-admin/includes/class-wp-posts-list-table.php:1239
 msgid "Not Sticky"
 msgstr "Togli risalto"
@@ -10324,6 +10320,20 @@ msgstr "<strong>Attenzione:</strong> questo plugin <strong>non &egrave; stato te
 msgid "Allow <a href=\"%s\" target=\"_blank\">trackbacks and pingbacks</a> on this page."
 msgstr "Permetti <a href=\"%s\" target=\"_blank\">trackback e pingback</a> su questa pagina."
 
+#: wp-admin/includes/class-wp-posts-list-table.php:1235
+#: wp-admin/includes/class-wp-posts-list-table.php:1238
+#: wp-admin/includes/template.php:1650
+msgid "Sticky"
+msgstr "In evidenza"
+
+#: wp-admin/includes/class-wp-filesystem-ssh2.php:54
+msgid "The ssh2 PHP extension is available, however, we require the PHP5 function <code>stream_get_contents()</code>"
+msgstr "L'estensione PHP ssh2 è disponibile, tuttavia occorre la funzione PHP5 <code>stream_get_contents()</code>"
+
+#: wp-admin/includes/file.php:33
+msgid "Theme Functions"
+msgstr "Funzioni del tema"
+
 #: wp-admin/edit-form-comment.php:116
 #: wp-admin/includes/class-wp-comments-list-table.php:233
 #: wp-admin/includes/class-wp-posts-list-table.php:213
@@ -10492,7 +10502,7 @@ msgstr "Programmato"
 msgid "Saving is disabled: %s is currently editing this post."
 msgstr "Salvataggio non attivo: al momento %s sta modificando questo articolo."
 
-#: wp-admin/includes/taxonomy.php:113
+#: wp-admin/includes/taxonomy.php:116
 msgid "You did not enter a category name."
 msgstr "Non hai specificato il nome della categoria."
 
