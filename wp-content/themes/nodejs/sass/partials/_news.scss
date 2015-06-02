@@ -1,0 +1,32 @@
+.news-content{
+	width: 100%;
+	
+	.news-date{
+		font-size: 22px;
+		font-weight: bold;
+		text-transform: capitalize;
+	}
+
+}
+
+.latest-news{
+	h4{
+		font-size: 25px;
+		text-transform: uppercase;
+		border-bottom: 1px solid $color-blue;
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+		text-align: center;
+	}
+	
+	li{
+		list-style-type: disc;
+		margin-left: 20px;
+		
+		a{
+			color: $color-blue;
+			text-decoration: underline;
+		}
+	}
+}
+

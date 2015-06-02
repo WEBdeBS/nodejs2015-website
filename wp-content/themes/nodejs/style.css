@@ -5867,6 +5867,12 @@ ul {
     .tickets__eventbrite-container {
       width: 100%; } }
 
+.page-404-container img {
+  display: block;
+  max-width: 90%;
+  height: auto;
+  margin: 30px auto; }
+
 .footer-block {
   background-color: #cc0001;
   color: #fff;
@@ -5916,6 +5922,15 @@ ul {
     display: inline-block; }
     .footer__nav-menu li:after {
       content: ' - '; }
+
+.policy__nav-menu {
+  display: inline-block; }
+  .policy__nav-menu li {
+    display: inline-block; }
+    .policy__nav-menu li:before {
+      content: ' - '; }
+    .policy__nav-menu li:first-child:before {
+      content: ''; }
 
 .footer__social {
   display: inline-block; }
@@ -6171,6 +6186,27 @@ ul {
 
 .speaker-carousel__icon {
   float: right; }
+
+.news-content {
+  width: 100%; }
+  .news-content .news-date {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: capitalize; }
+
+.latest-news h4 {
+  font-size: 25px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #031930;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  text-align: center; }
+.latest-news li {
+  list-style-type: disc;
+  margin-left: 20px; }
+  .latest-news li a {
+    color: #031930;
+    text-decoration: underline; }
 
 @media (min-width: 1200px) {
   .speaker-carousel__item {

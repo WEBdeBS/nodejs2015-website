@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-  <div class="content">
-			Index da modificare
-	</div>  
+	<div class="content">
+	</div>
 <?php get_footer(); ?>

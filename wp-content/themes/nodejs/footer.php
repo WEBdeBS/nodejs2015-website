@@ -47,7 +47,17 @@
 								}
 							}
 						?>
-						</p>
+						</div>
+						<div class="policy_menu">
+							<?php 
+								$args = array(
+									'theme_location' => 'policy-menu',
+									'container' => 'nav',
+									'container_class' => 'policy__nav-menu'
+								);
+								wp_nav_menu($args);
+							?>
+						</div>
 					</div>
 				</footer>
 			</div>

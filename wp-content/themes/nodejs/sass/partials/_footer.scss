@@ -69,6 +69,22 @@
 	}
 }
 
+.policy__nav-menu {
+	display: inline-block;
+	li {
+		display: inline-block;
+		&:before {
+			content: ' - ';
+		}
+
+		&:first-child{
+			&:before{
+				content: '';
+			}
+		}
+	}
+}
+
 .footer__social {
 	display: inline-block;
 }
