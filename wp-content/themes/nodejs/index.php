@@ -1,4 +1,6 @@
-<?php get_header(); ?>
-	<div class="content">
-	</div>
-<?php get_footer(); ?>
+<?php
+	status_header( 404 );
+    nocache_headers();
+    include( get_query_template( '404' ) );
+    die();
+?>    	
