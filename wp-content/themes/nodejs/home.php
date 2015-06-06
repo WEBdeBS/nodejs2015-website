@@ -14,13 +14,17 @@
 			<div class="main-page__content news-content">
 				<p class="news-date"><?php echo get_the_date('F, jS Y');  ?></p>
 				<?php 
-					the_title('<h1>', '</h1>');
+					echo '<h1><a href="' . get_permalink($post->ID) . '" >';
+					echo get_the_title();
+					echo '</a></h1>';
 					the_excerpt();
 				?>
 			</div>	
 			
 	<?php 
 			}
+			echo '<div class="nav-previous alignleft">' . get_next_posts_link( '<< Older posts' ) . '</div>';
+			echo '<div class="nav-next alignright">' . get_previous_posts_link( 'Newer posts >>' ) . '</div>';
 		}
 	?>	
 			</div>

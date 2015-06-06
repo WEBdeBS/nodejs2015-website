@@ -6188,11 +6188,18 @@ ul {
   float: right; }
 
 .news-content {
-  width: 100%; }
+  width: 100%;
+  border-top: 1px solid #031930;
+  padding: 20px 0px 10px 0px; }
+  .news-content:first-child {
+    border-top: none;
+    padding-top: 0px; }
   .news-content .news-date {
     font-size: 22px;
     font-weight: bold;
     text-transform: capitalize; }
+  .news-content h1 a {
+    color: #cc0001; }
 
 .latest-news h4 {
   font-size: 25px;
@@ -6201,12 +6208,17 @@ ul {
   margin-bottom: 10px;
   padding-bottom: 10px;
   text-align: center; }
+  .latest-news h4 a {
+    color: #031930; }
 .latest-news li {
   list-style-type: disc;
   margin-left: 20px; }
   .latest-news li a {
     color: #031930;
     text-decoration: underline; }
+
+.nav-previous a, .nav-next a {
+  color: #cc0001; }
 
 .new-home__page-content h1 {
   color: #cc0001;

@@ -1,5 +1,5 @@
 <div class="latest-news col-sm-3">
-	<h4>All bullettin news</h4>
+	<h4><a href="<?php echo get_permalink(get_option('page_for_posts')); ?>">All bullettin news</a></h4>
 	<ul class="latest-news__list">
 	<?php 
 		$args = array(
