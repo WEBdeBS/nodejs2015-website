@@ -1,0 +1,63 @@
+.new-home__page-content{
+	@extend .col-sm-4;
+	h1 {
+		color: $color-red;
+		text-transform: uppercase;
+		font-weight: 300;
+		font-size: 45px;
+	}
+	h2 {
+		font-weight: 700;
+		
+		a{
+			color: $headings-color;
+			text-decoration: underline;
+		}
+	}
+	p {
+		font-size: 22px;
+	}
+}
+
+.new-home__side-page-content{
+	@extend .col-sm-5;
+	background: $color-red url(images/bg-venue.png) no-repeat 10px 60px;
+	color: $color-white;
+	box-sizing: border-box;
+	padding-left: 90px;
+	padding-top: 1px;
+	position: relative;
+	min-height: 240px;
+
+	h1 {
+		font-family: $font-title;
+	}
+	img {
+		position: absolute;
+		top: 15px;
+		right: 10px;
+	}
+	
+	a{
+		color: $color-white;
+		text-decoration: none;
+		
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+
+	.venue-gallery{
+		margin: 15px 0px 0px 0px;
+
+		.venue-gallery__item{
+			@extend .col-xs-3;
+			padding-left: 5px;
+  			padding-right: 5px;
+			
+			span{
+				border: 2px solid #FFF;
+			}
+		}
+	}
+}

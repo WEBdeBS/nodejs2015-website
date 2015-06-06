@@ -15,7 +15,7 @@
 ?>
 <div class="content">
 	<article class="main-page">
-		<div class="main-page__content">
+		<div class="new-home__page-content">
 			<?php the_content(); ?>
 		</div>
 		<?php
@@ -24,17 +24,27 @@
 			if($icon){
 				$background = 'style="background-image: url(\'' . $icon .'\')"';	
 			}
-			echo '<div class="side-page__content"' . $background . '>';
+			echo '<div class="new-home__side-page-content"' . $background . '>';
 			$title = types_render_field('homepage-titolo-box', array('post_id' => $post->ID));
 			echo '<h1>' . $title . '</h1>';
 			echo types_render_field('homepage-immagine-box', array('post_id' => $post->ID));
 			echo '<p>' . types_render_field('homepage-testo-box', array('post_id' => $post->ID)) . '</p>';
 			$link = types_render_field('homepage-link-venue', array('post_id' => $post->ID, 'output' => 'raw'));
 			if($link){
-				echo '<a href="' . $link . '">INFO</a>';
+				echo '<a href="' . $link . '#venue-accomodation">ACCOMODATION</a> - ';
+				echo '<a href="' . $link . '#venue-direction">DIRECTION</a>';
 			}
+			$gallery = types_render_field('homepage-gallery-box', array('post_id' => $post->ID, 'output' => 'raw', 'separator' => ','));
+			$gallery_array = explode(',', $gallery);
+			echo '<div class="venue-gallery">';
+			foreach($gallery_array as $g_img){
+				$img_id = url_to_postid($g_img); 
+				echo '<a class="venue-gallery__item" href="' . $g_img . '"><span style="background-image: url(\'' . $g_img . '\')"></span></a>';
+			}
+			echo '</div>';
 		?>
 		</div>
+		<?php  get_template_part('shared', 'latest-news'); ?>
 	</article>
 </div>
 <?php 
@@ -67,32 +77,5 @@
 <div class="hr"></div>
 <?php 
 	get_template_part('speaker', 'carousel');
-?>
-<div class="hr"></div>
-<div class="content">
-	<div class="pages">
-		<article class="page">
-			<?php 
-				$left_icon = types_render_field('homepage-left-icon', array('post_id' => $post->ID));
-				$left_title = types_render_field('homepage-left-title', array('post_id' => $post->ID));
-				$left_content = types_render_field('homepage-left-content', array('post_id' => $post->ID));
-				$right_icon = types_render_field('homepage-right-icon', array('post_id' => $post->ID));
-				$right_title = types_render_field('homepage-right-title', array('post_id' => $post->ID));
-				$right_content = types_render_field('homepage-right-content', array('post_id' => $post->ID));
-			?>
-			<div class="title">
-				<?php echo $left_icon . $left_title; ?>
-			</div>
-			<div class="page__separator">˜</div>
-				<?php echo $left_content; ?>
-		</article>
-		<article class="page">
-			<div class="title">
-				<?php echo $right_icon . $right_title; ?>         
-			</div>
-			<div class="page__separator">˜</div>
-			<?php echo $right_content; ?>
-		</article>
-	</div>
-</div>	
+?>	
 <?php get_footer(); ?>

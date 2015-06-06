@@ -49,7 +49,7 @@
 	<div class="hr"></div>
 	<div class="content">
 		<article class="main-page">
-			<div class="col-sm-4 venue__direction">
+			<div class="col-sm-4 venue__direction" id="venue-direction">
 				<div class="title">
 					<img src="<?php echo get_template_directory_uri(); ?>/images/title-direction.png" alt="">
 					Direction
@@ -69,7 +69,7 @@
 					echo $link_content . '</div>';
 				?>
 			</div>
-			<div class="col-sm-4 venue__accomodation">
+			<div class="col-sm-4 venue__accomodation" id="venue-accomodation">
 				<div class="title">
 					<img src="<?php echo get_template_directory_uri(); ?>/images/title-accomodation.png" alt="">
 					Accomodation
