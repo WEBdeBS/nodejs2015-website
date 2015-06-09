@@ -15,6 +15,10 @@ $(document).ready(function () {
 	if ($('#' + carosuelId).get(0)) {
 		speakerCarousel(carosuelId);
 	}
+
+	if($('.talks__talk-list').get(0)){
+		speakersTalks();
+	}
 });
 
 
@@ -37,4 +41,31 @@ function speakerCarousel(id) {
 	$(".prev").click(function () {
 		carousel.trigger('owl.prev');
 	})
+}
+
+function speakersTalks(){
+	$('.talks__talk-list').isotope({
+		itemSelector: '.talk-item',
+  		layoutMode: 'fitRows',
+  		getSortData: {
+      		name: '.sort-name',
+      		level: '.sort-level',
+      		date: '.sort-date'
+      	},
+      	sortAscending: {
+	    	name: true,
+	    	level: true,
+	    	date: true,
+	  	}
+	});
+
+	$('.speaker-order-links a').on( 'click', function(evt) {
+		console.log("Qui");
+	 	evt.stopPropagation();
+	 	evt.preventDefault();
+	 	$('.speaker-order-links a').removeClass('active');
+	 	$(this).addClass('active');
+    	var sortByValue = $(this).attr('data-sort-by');
+    	$('.talks__talk-list').isotope({ sortBy: sortByValue });
+  	});
 }

@@ -24,6 +24,7 @@ module.exports = function(grunt) {
                         'bower_components/jquery/dist/jquery.js',
 						'bower_components/jquery-colorbox/jquery.colorbox.js',
 						'bower_components/OwlCarousel/owl-carousel/owl.carousel.js',
+                        'bower_components/isotope/dist/isotope.pkgd.js',
                         'js/*.js'
                     ]
                 }

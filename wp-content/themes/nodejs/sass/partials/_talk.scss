@@ -48,3 +48,80 @@
 		display: inline-block;
 	}
 }
+
+.talk-item{
+	border: 1px dotted #878787;
+  	margin: 0px 10px;
+  	padding: 20px;
+
+  	.speaker-image{
+  		float: left;
+  		margin-right: 10px;
+  		margin-bottom: 10px;
+
+  		img{
+  			display: block;
+			width: 80px;
+			height: 80px;
+			border-radius: 100%;
+			background-color: #878787;
+  		}
+  	}
+
+  	h2{
+  		text-transform: uppercase;
+  	}
+
+  	h3{
+  		a{
+  			color: $color-blue;
+  		}
+  	}
+
+  	.twitter-link{
+  		color: $color-red;
+  		text-transform: uppercase;
+  	}
+
+  	.schedule{
+  		background-color: $color-red;
+  		color: $color-white;
+  		font-weight: bold;
+  		padding: 10px 15px;
+  		margin-bottom: 10px;
+  		font-size: 20px;
+  	}
+
+  	.level{
+  		text-transform: uppercase;
+  	}
+
+  	.sort-hidden{
+  		display: none;
+  	}
+}
+
+.talks__title-column{
+	.speaker-order{
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	.speaker-order-links{
+		text-align: center;
+
+		a{
+			color: $color-blue;
+			text-transform: uppercase;
+			padding: 5px;
+			display: inline-block;
+
+			&.active{
+				background-color: $color-red;
+				color: $color-white;
+			}
+		}
+	}
+}

@@ -40,6 +40,9 @@ function theme_options_do_page() {
 	echo create_text_input('Twitter', 'nodejs_twitter', $value, "Inserisci l'indirizzo dell'account Twitter");
 	$value = isset($options['nodejs_vimeo']) ? $options['nodejs_vimeo'] : '';
 	echo create_text_input('Vimeo', 'nodejs_vimeo', $value, "Inserisci l'indirizzo del canale Vimeo");
+	echo '<h3>TALK LIST</h3>';
+	$value = isset($options['nodejs_schedule']) ? true : false;
+	echo create_checkbox_input('Schedule', 'nodejs_schedule', $value, "Attiva lo schedule dei talk");
 	echo '<p class="submit">';
 	echo '<input type="submit" class="button-primary" value="' . __( 'Save Options', 'nodejs' ) . '" />';
 	echo '</p>';

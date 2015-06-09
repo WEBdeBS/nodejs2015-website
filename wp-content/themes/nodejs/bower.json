@@ -9,7 +9,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bootstrap-sass-official": "~3.3.1"
+    "bootstrap-sass-official": "~3.3.1",
+    "isotope": "~2.2.0"
   },
   "devDependencies": {
     "jquery-colorbox": "~1.6.0",

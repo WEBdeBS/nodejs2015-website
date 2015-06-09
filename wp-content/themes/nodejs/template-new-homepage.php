@@ -59,7 +59,7 @@
 		<div class="page tickets__eventbrite-container">
 			<iframe 
 				src="http://www.eventbrite.com/tickets-external?eid=<?php echo $options['nodejs_eventbrite_code']; ?>&amp;ref=etckt&amp;v=2" 					frameborder="0" 
-				height="300" 
+				height="350" 
 				width="100%" 
 				vspace="0" hspace="0" 
 				marginheight="5" marginwidth="5" 
