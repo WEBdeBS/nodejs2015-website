@@ -50,9 +50,11 @@
 }
 
 .talk-item{
-	border: 1px dotted #878787;
-  	margin: 0px 10px;
-  	padding: 20px;
+
+  	.talk-item-content{
+  		border: 1px dotted #878787;
+  		padding: 15px;
+  	}
 
   	.speaker-image{
   		float: left;
@@ -124,4 +126,8 @@
 			}
 		}
 	}
+}
+
+.talks__talk-list{
+	padding: 0px;
 }

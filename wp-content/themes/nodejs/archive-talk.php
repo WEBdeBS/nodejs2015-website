@@ -27,6 +27,7 @@
 					the_post(); 
 			?>
 				<div class="talk-item col-sm-4">
+					<div class="talk-item-content">
 				<?php
 					$speaker = types_child_posts("speaker");
 					foreach($speaker as $sp){
@@ -62,6 +63,7 @@
 						echo '<div class="level"><strong>Level</strong>: ' . $levels[0]->description . '</div>'; 
 					}
 					?>
+				</div>
 				</div>
 			<?php 
 					}
