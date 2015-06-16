@@ -43,6 +43,8 @@ function theme_options_do_page() {
 	echo '<h3>TALK LIST</h3>';
 	$value = isset($options['nodejs_schedule']) ? true : false;
 	echo create_checkbox_input('Schedule', 'nodejs_schedule', $value, "Attiva lo schedule dei talk");
+	$value = isset($options['nodejs_scedule_cooming']) ? true : false;
+	echo create_checkbox_input('Cooming soon', 'nodejs_scedule_cooming', $value, "Inserisci un blocco cooming soon nel carosello speaker");
 	echo '<p class="submit">';
 	echo '<input type="submit" class="button-primary" value="' . __( 'Save Options', 'nodejs' ) . '" />';
 	echo '</p>';

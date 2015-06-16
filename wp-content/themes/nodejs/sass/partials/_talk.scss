@@ -3,9 +3,17 @@
 	color: $color-white;
 	text-align: left;
 	padding: 25px;
+
+	.col-lg-5{
+		padding: 0px;
+	}
 	
 	.speaker__name{
 		color: $color-white;
+		word-break: break-all;
+		span{
+			display: inline-block;
+		}
 		
 		img{
 			margin-bottom: 25px;

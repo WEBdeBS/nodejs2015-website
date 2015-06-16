@@ -147,5 +147,11 @@
 				background-image: url('images/menu-supporter-icon.png');
 			}
 		}
+
+		&.speakers{
+			a::before{
+				background-image: url('images/menu-speaker-icon.png');
+			}
+		}
 	}
 }

@@ -16,7 +16,11 @@
 						echo '<div class="col-lg-5">';
 						echo '<div class="title speaker__name">';
 						echo '<img src="' . get_template_directory_uri() . '/images/title-speakers-white.png" alt="">';
-						echo $speaker->post_title . '</div>';
+						$speaker_name_array = explode(" ", $speaker->post_title);
+						foreach($speaker_name_array as $sp){
+							echo '<span>' . $sp . '</span> ';
+						}
+						echo '</div>';
 						echo '<div class="speaker__image">' . $img . '</div>';
 						echo '</div>';
 						echo '<div class="col-lg-7">';

@@ -5773,6 +5773,8 @@ ul {
     background-image: url("images/menu-tickets-icon.png"); }
   .main-menu .menu-item.supporters a::before {
     background-image: url("images/menu-supporter-icon.png"); }
+  .main-menu .menu-item.speakers a::before {
+    background-image: url("images/menu-speaker-icon.png"); }
 
 .main-page,
 .side-page {
@@ -6026,8 +6028,13 @@ ul {
   color: #fff;
   text-align: left;
   padding: 25px; }
+  .speaker-box .col-lg-5 {
+    padding: 0px; }
   .speaker-box .speaker__name {
-    color: #fff; }
+    color: #fff;
+    word-break: break-all; }
+    .speaker-box .speaker__name span {
+      display: inline-block; }
     .speaker-box .speaker__name img {
       margin-bottom: 25px; }
   .speaker-box .speaker__image img {
@@ -6223,7 +6230,7 @@ ul {
     .speaker-carousel__item .speaker-carousel__item-info h3 {
       font-size: 25px;
       text-transform: uppercase;
-      margin: 10px 5px;
+      margin: 10px 0px;
       word-wrap: break-word; }
     .speaker-carousel__item .speaker-carousel__item-info .speaker-carousel__item-company {
       font-size: 20px;
