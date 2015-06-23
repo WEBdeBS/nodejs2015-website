@@ -4,7 +4,7 @@
 ?>
 	<div class="content">
 		<article class="main-page row">
-			<div class="talks__title-column col-sm-3">
+			<div class="talks__title-column col-md-3 col-sm-4">
 				<div class="title title--main-page">
 					<img src="<?php echo get_template_directory_uri(); ?>/images/title-speakers.png" alt="">
 					Speakers
@@ -20,20 +20,20 @@
 					?>
 				</div>	
 			</div>
-			<div class="talks__talk-list col-sm-9">
+			<div class="talks__talk-list col-md-9 col-sm-8">
 			<?php 
 				if (have_posts()) {
 					while(have_posts()){
 					the_post(); 
 			?>
-				<div class="talk-item col-sm-4">
+				<div class="talk-item col-xs-12 col-md-6 col-lg-4">
 					<div class="talk-item-content">
 				<?php
 					$speaker = types_child_posts("speaker");
 					foreach($speaker as $sp){
 						$img = types_render_field('speaker-photo', array('post_id' => $sp->ID));
 						$twitter = types_render_field('speaker-twitter', array('post_id' => $sp->ID, 'output' => 'raw'));
-						echo '<div class="spaeker-line">';
+						echo '<div class="speaker-line">';
 						echo '<div class="speaker-image">' . $img . '</div>';
 						echo '<div class="speaker-info">';
 						echo '<h2 class="sort-name">' . $sp->post_title . '</h2>';

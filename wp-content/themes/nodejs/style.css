@@ -6063,37 +6063,44 @@ ul {
   .talk-box .talk__schedule {
     display: inline-block; }
 
-.talk-item .talk-item-content {
-  border: 1px dotted #878787;
-  padding: 15px; }
-.talk-item .speaker-image {
-  float: left;
-  margin-right: 10px;
-  margin-bottom: 10px; }
-  .talk-item .speaker-image img {
-    display: block;
-    width: 80px;
-    height: 80px;
-    border-radius: 100%;
-    background-color: #878787; }
-.talk-item h2 {
-  text-transform: uppercase; }
-.talk-item h3 a {
-  color: #031930; }
-.talk-item .twitter-link {
-  color: #cc0001;
-  text-transform: uppercase; }
-.talk-item .schedule {
-  background-color: #cc0001;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  font-size: 20px; }
-.talk-item .level {
-  text-transform: uppercase; }
-.talk-item .sort-hidden {
-  display: none; }
+.talk-item {
+  margin: 0px 0px 20px 0px; }
+  .talk-item .talk-item-content {
+    border: 1px dotted #878787;
+    padding: 15px; }
+  .talk-item .speaker-line:before, .talk-item .speaker-line:after {
+    content: " ";
+    display: table; }
+  .talk-item .speaker-line:after {
+    clear: both; }
+  .talk-item .speaker-image {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px; }
+    .talk-item .speaker-image img {
+      display: block;
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      background-color: #878787; }
+  .talk-item h2 {
+    text-transform: uppercase; }
+  .talk-item h3 a {
+    color: #031930; }
+  .talk-item .twitter-link {
+    color: #cc0001;
+    text-transform: uppercase; }
+  .talk-item .schedule {
+    background-color: #cc0001;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 20px; }
+  .talk-item .level {
+    text-transform: uppercase; }
+  .talk-item .sort-hidden {
+    display: none; }
 
 .talks__title-column .speaker-order {
   text-align: center;
@@ -6113,6 +6120,9 @@ ul {
 
 .talks__talk-list {
   padding: 0px; }
+  @media (max-width: 768px) {
+    .talks__talk-list {
+      margin-top: 20px; } }
 
 .supporters__container {
   text-align: center; }

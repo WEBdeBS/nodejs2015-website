@@ -58,10 +58,15 @@
 }
 
 .talk-item{
+	margin: 0px 0px 20px 0px;
 
   	.talk-item-content{
   		border: 1px dotted #878787;
   		padding: 15px;
+  	}
+
+  	.speaker-line{
+  		@include clearfix;
   	}
 
   	.speaker-image{
@@ -138,4 +143,8 @@
 
 .talks__talk-list{
 	padding: 0px;
+
+	@media (max-width: $screen-sm-min) {
+		margin-top: 20px;
+	}
 }
