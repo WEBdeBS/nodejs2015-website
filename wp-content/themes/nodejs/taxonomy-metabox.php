@@ -21,7 +21,15 @@ if (is_admin()) {
     
     $my_meta->addImage($prefix . 'supporter_type_icon', array('name' => __('Icona', 'nodejsconf')));
 	
-	$my_meta->addCheckbox($prefix.'supporter_service',array('name'=> __('Supporter di servizio','nodejsconf')));
+	$my_meta->addText($prefix.'supporter_max_number',array('name'=> __('Quantità massima','nodejsconf'), 'desc' => 'Serve per stampare i box vuoti'));
+
+    $my_meta->addRadio($prefix.'thumbnail_dim',array('small'=>'Small','middle'=>'Middle', 'big' => 'Big'),array('name'=> __('Thumbnail dimension','nodejsconf'), 'std'=> array('small')));
+
+    $my_meta->addCheckbox($prefix.'supporter_service',array('name'=> __('Supporter di servizio','nodejsconf')));
+
+    $my_meta->addCheckbox($prefix.'media_partner',array('name'=> __('Media partner','nodejsconf')));
+
+    $my_meta->addCheckbox($prefix.'no_logo',array('name'=> __('No logo','nodejsconf')));
    
     $my_meta->Finish();
 }

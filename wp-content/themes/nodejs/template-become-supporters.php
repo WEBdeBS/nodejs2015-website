@@ -7,34 +7,86 @@
 ?>
 
 <?php get_header(); ?>
-	<div class="content supporters__container">
 	<?php 
 		if (have_posts()) {
 			while(have_posts()){
+				$args = array(
+					'hide_empty'        => false
+				);
+				$terms = get_terms('supporter-type', $args);
+				echo '<div class="content supporter-list__supercontainer">';
+				foreach($terms as $term){
+					$no_logo = get_tax_meta($term->term_id,'nodejsconf_no_logo');
+					if(!$no_logo){
+						echo '<div class="supporter-list__container">';
+						echo '<div class="supporter-title">';
+						$icon = get_tax_meta($term->term_id,'nodejsconf_supporter_type_icon');
+						if($icon){
+							echo '<div class="supporter-title__img" style="background-image: url(\'' . $icon['url'] . '\')"></div>';
+						}
+						echo '<h2>' . $term->name . '</h2>';
+						echo '</div>';
+						echo '<div class="supporter-list">';
+						$max_supporter = get_tax_meta($term->term_id,'nodejsconf_supporter_max_number');
+						$box_type = get_tax_meta($term->term_id,'nodejsconf_thumbnail_dim');
+						$max_supporter = intval($max_supporter);
+						$box_type = $box_type == '' ? 'small' : $box_type;
+						$supporters = get_posts(array(
+							'post_type' => 'supporter',
+						  	'numberposts' => -1,
+						  	'tax_query' => array(
+						    	array(
+						      		'taxonomy' => 'supporter-type',
+						      		'field' => 'id',
+						      		'terms' => $term->term_id,
+						      		'include_children' => false
+						    	)
+						  	)
+						));
+
+						for ($i = 0; $i < $max_supporter; $i++){
+							echo '<div class="supporter-item supporter-item--' . $box_type . '">';
+							echo '<div class="supporter-item__content">';
+							if(isset($supporters[$i])){
+								$src = get_the_post_thumbnail($supporters[$i]->ID);
+								$href = $supporters[$i]->post_content;
+								echo '<a href="' . $href . '" target="_blank">'. $src . '</a>';
+							}
+							echo '</div>';
+							echo '</div>';
+						}				
+						echo '</div>';
+						echo '</div>';
+					}
+				}
+				echo '</div>';
+				echo '<div class="supporter-separator" id="become-supporter">';
+				echo '<img src="' .  get_template_directory_uri() . '/images/flags.png" alt="">';
+				echo '</div>';
+				echo '<div class="content supporters__container">';
 				the_post(); 
 				the_title('<h1>','</h1>');
 				echo '<div class="supporters__content">';
 				the_content();
 				echo '</div>';
-				$args = array(
-					'hide_empty'        => false
-				); 
-				$terms = get_terms('supporter-type', $args);
 				$service_terms = array();
 				echo '<div class="supporters-type__container">';
 				foreach($terms as $term){
-					$is_service = get_tax_meta($term->term_id,'nodejsconf_supporter_service');
-					if($is_service){
-						array_push($service_terms, $term);
-					} else {
-						echo '<div class="supporters-type__content">';
-						$price = get_tax_meta($term->term_id,'nodejsconf_supporter_price');
-						$icon = get_tax_meta($term->term_id,'nodejsconf_supporter_type_icon');
-						echo '<div class="supporters-type__img" style="background-image: url(\'' . $icon['url'] . '\')"></div>';
-						echo '<h2>' . $term->name . '</h2>';
-						echo '<p class="supporters-type__price">&euro; ' . $price . '</p>';
-						echo '<div class="supporters-type__description">' . apply_filters('the_content', $term->description) . '</div>';
-						echo '</div>';
+					$is_media_partner = get_tax_meta($term->term_id,'nodejsconf_media_partner');
+					if(!$is_media_partner){
+						$is_service = get_tax_meta($term->term_id,'nodejsconf_supporter_service');
+						if($is_service){
+							array_push($service_terms, $term);
+						} else {
+							echo '<div class="supporters-type__content">';
+							$price = get_tax_meta($term->term_id,'nodejsconf_supporter_price');
+							$icon = get_tax_meta($term->term_id,'nodejsconf_supporter_type_icon');
+							echo '<div class="supporters-type__img" style="background-image: url(\'' . $icon['url'] . '\')"></div>';
+							echo '<h2>' . $term->name . '</h2>';
+							echo '<p class="supporters-type__price">&euro; ' . $price . '</p>';
+							echo '<div class="supporters-type__description">' . apply_filters('the_content', $term->description) . '</div>';
+							echo '</div>';
+						}
 					}
 				}
 				echo '</div>';
@@ -57,8 +109,8 @@
 					}
 					echo '</div>';
 				}
+				echo '</div>';
 			}
 		}
 	?>	
-	</div>
 <?php get_footer(); ?>
