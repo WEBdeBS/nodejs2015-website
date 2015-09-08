@@ -40,14 +40,14 @@
 		if($speaker_count < 3){
 			for($i = $speaker_count; $i < 3; $i++){
 				echo '<div class="speaker-carousel__item speaker-carousel__item-cooming">';
-				echo '<h3>Cooming soon</h3>';
+				echo '<h3>Coming soon</h3>';
 				echo '</div>';
 			}
 		}
 		$options = get_option('nodejs_theme_options');
 		if(isset($options['nodejs_scedule_cooming'])){
 			echo '<div class="speaker-carousel__item speaker-carousel__item-cooming">';
-			echo '<h3>Cooming soon</h3>';
+			echo '<h3>Coming soon</h3>';
 			echo '</div>';
 		}
 		echo '</div>';
