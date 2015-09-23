@@ -89,10 +89,23 @@
 	display: inline-block;
 }
 
+.footer__main-sponsor{
+	margin-bottom: 10px;
+}
+
 .footer__main-sponsor-text {
 	display: inline-block;
 	padding: 0px 20px 0px 100px;
 	font-family: $font-title;
 	font-size: 24px;
 	background: url('images/bg-sponsor.png') no-repeat top left;
+}
+
+a.footer__main-sponsor-link {
+	display: inline-block;
+	padding: 0px 20px;
+	font-family: $font-title;
+	font-size: 24px;
+	vertical-align: top;
+
 }
