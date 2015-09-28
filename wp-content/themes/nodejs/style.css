@@ -6134,6 +6134,17 @@ a.footer__main-sponsor-link {
     .talks__talk-list {
       margin-top: 20px; } }
 
+.talk-item-interval h2 {
+  color: #fff; }
+.talk-item-interval h3 {
+  color: #fff; }
+.talk-item-interval .talk-item-content {
+  background-color: #cc0001;
+  color: #fff; }
+.talk-item-interval .schedule {
+  background-color: #fff;
+  color: #cc0001; }
+
 .supporter-list__supercontainer {
   margin: 65px auto 0px auto; }
 

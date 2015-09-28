@@ -56,16 +56,23 @@ function speakersTalks(){
 	    	name: true,
 	    	level: true,
 	    	date: true,
-	  	}
+	  	},
+	  	filter: '.filter-talk',
+	  	sortBy: 'name'
 	});
 
 	$('.speaker-order-links a').on( 'click', function(evt) {
-		console.log("Qui");
 	 	evt.stopPropagation();
 	 	evt.preventDefault();
 	 	$('.speaker-order-links a').removeClass('active');
 	 	$(this).addClass('active');
     	var sortByValue = $(this).attr('data-sort-by');
+    	var filterByValue = $(this).attr('filter-talk');
     	$('.talks__talk-list').isotope({ sortBy: sortByValue });
+    	if(filterByValue){
+    		$('.talks__talk-list').isotope({ filter: '.filter-talk' });
+    	} else {
+    		$('.talks__talk-list').isotope({ filter: '*' });
+    	}
   	});
 }

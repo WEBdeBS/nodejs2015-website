@@ -11,11 +11,11 @@
 				</div>
 				<p class="speaker-order">Order by</p>
 				<div class="speaker-order-links">
-					<a href="#" data-sort-by="name">Speaker</a>
-					<a href="#" data-sort-by="level">Level</a>
+					<a href="#" data-sort-by="name" filter-talk="true" class="active">Speaker</a>
+					<a href="#" data-sort-by="level" filter-talk="true">Level</a>
 					<?php 
 						if(isset($options['nodejs_schedule'])){
-							echo '<a href="#" data-sort-by="date">Schedule</a>';
+							echo '<a href="#" data-sort-by="date" >Schedule</a>';
 						}
 					?>
 				</div>	
@@ -26,7 +26,7 @@
 					while(have_posts()){
 					the_post(); 
 			?>
-				<div class="talk-item col-xs-12 col-md-6 col-lg-4">
+				<div class="talk-item col-xs-12 col-md-6 col-lg-4 filter-talk">
 					<div class="talk-item-content">
 				<?php
 					$speaker = types_child_posts("speaker");
@@ -66,6 +66,33 @@
 				</div>
 				</div>
 			<?php 
+					}
+				}
+			?>
+			<?php 
+				if(isset($options['nodejs_schedule'])){
+					$args = array(
+						'posts_per_page'   => -1,
+						'post_type'        => 'interval',
+						'post_status'      => 'publish'
+					);
+					$intervals = get_posts($args);
+					foreach ($intervals as $interval){
+						echo '<div class="talk-item talk-item-interval col-xs-12 col-md-6 col-lg-4">';
+						echo '<div class="talk-item-content">';
+						echo '<h2 class="sort-name">' . $interval->post_title . '</h2>';
+						echo '<h3>' . $interval->post_content . '</h3>';
+						$time = types_render_field('interval-start', array('post_id' => $interval->ID, 'format' => 'H:i'));
+						$sorttime = types_render_field('interval-start', array('post_id' => $interval->ID, 'output' => 'raw'));
+						echo '<div class="sort-date sort-hidden">'. $sorttime . '</div>';
+						$time_end = types_render_field('interval-end', array('post_id' => $interval->ID, 'format' => 'H:i'));
+						echo '<div class="schedule">' . $time;
+						if($time_end){
+							echo ' - ' . $time_end;
+						}
+						echo '</div>';		
+						echo '</div>';
+						echo '</div>';
 					}
 				}
 			?>

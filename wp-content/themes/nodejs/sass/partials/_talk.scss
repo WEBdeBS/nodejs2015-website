@@ -148,3 +148,24 @@
 		margin-top: 20px;
 	}
 }
+
+.talk-item-interval{
+
+	h2{
+		color: $color-white;
+	}
+
+	h3{
+		color: $color-white;
+	}
+
+	.talk-item-content{
+		background-color: $color-red;
+		color: $color-white;
+	}
+
+	.schedule{
+		background-color: $color-white;
+		color: $color-red;
+	}
+}
