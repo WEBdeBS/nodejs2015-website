@@ -30,6 +30,10 @@
 			echo '</div>';
 			$talk = wpcf_pr_post_get_belongs($speaker->ID, 'talk');
 			if($talk){
+				$workshop = types_render_field('talk-workshop', array('post_id' => $talk));
+				if($workshop){
+					echo '<span class="workshop-ribbon"></span>';
+				}
 				echo '<div class="speaker-carousel__item-talk">';
 				echo get_the_title($talk);
 				echo '</div>';

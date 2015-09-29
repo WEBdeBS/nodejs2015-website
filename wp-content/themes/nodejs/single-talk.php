@@ -38,14 +38,23 @@
 			<article class="page talk-box">
 				<?php 
 					$levels = wp_get_post_terms($post->ID, 'talk-level');
-					$schedule = types_render_field('talk-schedule', array());
-					echo '<p class="talk__level-schedule">';
+					$schedule = types_render_field('talk-schedule', array('format' => 'H:i'));
+					$schedule_end = types_render_field('talk-schedule-end', array('format' => 'H:i'));
+					$workshop = types_render_field('talk-workshop', array());
+					$workshop_class = '';
+					if($workshop){
+						$workshop_class = 'talk__level-schedule--workshop';
+					}
+					echo '<p class="talk__level-schedule ' . $workshop_class .'">';
 					if(isset($levels[0])){
 						echo '<strong>Level</strong>: ' . $levels[0]->description . ' - '; 
 					}
 					echo '<span class="talk__schedule"> <strong>Schedule</strong>: ';
 					if($schedule){
 						echo $schedule;
+						if($schedule_end){
+							echo ' - ' . $schedule_end;
+						}
 					} else {
 						echo 'Coming soon';
 					}

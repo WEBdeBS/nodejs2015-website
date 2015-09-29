@@ -11,13 +11,17 @@
 				</div>
 				<p class="speaker-order">Order by</p>
 				<div class="speaker-order-links">
-					<a href="#" data-sort-by="name" filter-talk="true" class="active">Speaker</a>
-					<a href="#" data-sort-by="level" filter-talk="true">Level</a>
 					<?php 
 						if(isset($options['nodejs_schedule'])){
-							echo '<a href="#" data-sort-by="date" >Schedule</a>';
-						}
+							echo '<a href="#" data-sort-by="date" class="active">Schedule</a>';
 					?>
+					<a href="#" data-sort-by="name" filter-talk="true">Speaker</a>
+					<?php 
+						} else {
+					?>
+					<a href="#" data-sort-by="name" filter-talk="true" >Speaker</a>
+					<?php } ?>
+					<a href="#" data-sort-by="level" filter-talk="true">Level</a>
 				</div>	
 			</div>
 			<div class="talks__talk-list col-md-9 col-sm-8">
@@ -25,10 +29,18 @@
 				if (have_posts()) {
 					while(have_posts()){
 					the_post(); 
+					$workshop_class = '';
+					$workshop = types_render_field('talk-workshop', array('post_id' => $post->ID));
+					if ($workshop){
+						$workshop_class = 'talk-item-content-workshop';
+					}
 			?>
 				<div class="talk-item col-xs-12 col-md-6 col-lg-4 filter-talk">
-					<div class="talk-item-content">
+					<div class="talk-item-content <?php echo $workshop_class; ?>">
 				<?php
+					if ($workshop){
+						echo '<span class="workshop-ribbon"></span>';
+					}
 					$speaker = types_child_posts("speaker");
 					foreach($speaker as $sp){
 						$img = types_render_field('speaker-photo', array('post_id' => $sp->ID));
@@ -48,6 +60,9 @@
 						$time = types_render_field('talk-schedule', array('post_id' => $post->ID, 'format' => 'H:i'));
 						if($time){
 							$sorttime = types_render_field('talk-schedule', array('post_id' => $post->ID, 'output' => 'raw'));
+							if($workshop){
+								$sorttime = intval($sorttime) - 1;
+							}
 							echo '<div class="sort-date sort-hidden">'. $sorttime . '</div>';
 							$time_end = types_render_field('talk-schedule-end', array('post_id' => $post->ID, 'format' => 'H:i'));
 							echo '<div class="schedule">' . $time;

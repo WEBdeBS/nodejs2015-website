@@ -6070,6 +6070,9 @@ a.footer__main-sponsor-link {
   .talk-box .talk__level-schedule {
     font-size: 16px;
     text-transform: uppercase; }
+    .talk-box .talk__level-schedule.talk__level-schedule--workshop {
+      padding-left: 160px;
+      background: url("images/scheda-talk.png") no-repeat top left; }
   .talk-box .talk__schedule {
     display: inline-block; }
 
@@ -6144,6 +6147,20 @@ a.footer__main-sponsor-link {
 .talk-item-interval .schedule {
   background-color: #fff;
   color: #cc0001; }
+
+.talk-item-content-workshop {
+  position: relative; }
+  .talk-item-content-workshop .schedule {
+    background-color: #031930; }
+
+.workshop-ribbon {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  display: block;
+  width: 36px;
+  height: 51px;
+  background: url("images/box-talk.png") no-repeat center center; }
 
 .supporter-list__supercontainer {
   margin: 65px auto 0px auto; }

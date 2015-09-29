@@ -57,8 +57,8 @@ function speakersTalks(){
 	    	level: true,
 	    	date: true,
 	  	},
-	  	filter: '.filter-talk',
-	  	sortBy: 'name'
+	  	//filter: '.filter-talk',
+	  	sortBy: 'date'
 	});
 
 	$('.speaker-order-links a').on( 'click', function(evt) {
