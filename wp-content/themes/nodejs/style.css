@@ -6204,7 +6204,7 @@ a.footer__main-sponsor-link {
         height: 100%; }
       .supporter-item .supporter-item__content a img {
         display: inline-block;
-        max-width: 95%;
+        max-width: 100%;
         vertical-align: middle; }
 
 .supporter-separator {
