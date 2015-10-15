@@ -40,6 +40,13 @@
 		color: $color-white;
 		text-decoration: underline;
 		font-size: 18px;
+		word-wrap: break-word;
+	}
+
+	.link-title{
+		font-weight: bold;
+		font-size: 18px;
+		margin-top: 10px;
 	}
 }
 

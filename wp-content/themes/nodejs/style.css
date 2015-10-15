@@ -6062,7 +6062,12 @@ a.footer__main-sponsor-link {
     display: block;
     color: #fff;
     text-decoration: underline;
-    font-size: 18px; }
+    font-size: 18px;
+    word-wrap: break-word; }
+  .speaker-box .link-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px; }
 
 .talk-box {
   text-align: left;

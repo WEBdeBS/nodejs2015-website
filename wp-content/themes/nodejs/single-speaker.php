@@ -24,7 +24,9 @@
 					if($twitter){
 						echo '<a href="https://twitter.com/' . $twitter . '" target="_blank">@' . $twitter .'</a>';
 					}
-					echo $links;
+					if($links){
+							echo '<div class="link-title">Slides&Videos</div>' . $links;
+					}
 					echo '</div>';
 				?>
 			</article>
