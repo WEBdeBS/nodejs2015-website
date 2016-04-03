@@ -8,9 +8,9 @@
 		// refuse option
 		$( '#cn_refuse_opt' ).change( function () {
 			if ( $( this ).is(':checked') ) {
-				$( '#cn_refuse_text' ).slideDown( 'fast' );
+				$( '#cn_refuse_opt_container' ).slideDown( 'fast' );
 			} else {
-				$( '#cn_refuse_text' ).slideUp( 'fast' );
+				$( '#cn_refuse_opt_container' ).slideUp( 'fast' );
 			}
 		} );
 
@@ -20,6 +20,15 @@
 				$( '#cn_see_more_opt' ).slideDown( 'fast' );
 			} else {
 				$( '#cn_see_more_opt' ).slideUp( 'fast' );
+			}
+		} );
+		
+		// read more option
+		$( '#cn_on_scroll' ).change( function () {
+			if ( $( this ).is(':checked') ) {
+				$( '#cn_on_scroll_offset' ).slideDown( 'fast' );
+			} else {
+				$( '#cn_on_scroll_offset' ).slideUp( 'fast' );
 			}
 		} );
 

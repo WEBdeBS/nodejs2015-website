@@ -7,7 +7,6 @@
  * 
  * Append pagination and sort GET vars if present
  */
-
 ?>
 
 <!--WRAPPER-->
@@ -20,22 +19,6 @@ if ( isset($this->child_post_type_object->description) && $this->child_post_type
     echo wpautop($this->child_post_type_object->description);
 }
 ?>
-    <!--BUTTONS-->
-
-    <!--SAVE ALL-->
-    <a class="button-primary wpcf-pr-save-all-link" href="<?php
-echo admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_save_all'
-        . $this->getParamsQuery()
-        . '&amp;post_id=' . $this->parent->ID . '&amp;post_type='
-        . $this->child_post_type . '&amp;_wpnonce='
-        . wp_create_nonce( 'pr_save_all' )
-);
-
-?>"><?php
-       printf( __( 'Save All %s', 'wpcf' ), $this->child_post_type_object->label );
-
-?></a>&nbsp;
-
     <!--ADD NEW-->
     <a href="<?php
         echo admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;'
@@ -46,7 +29,7 @@ echo admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_save_all'
                 . $this->child_post_type . '&_wpnonce=' . wp_create_nonce( 'pr_add_child_post' )
         );
 
-?>" style="line-height:40px;" class="wpcf-pr-ajax-link js-types-add-child button-secondary"><?php echo $this->child_post_type_object->labels->add_new_item; ?></a>
+?>" class="wpcf-pr-ajax-link js-types-add-child button-secondary"><?php echo $this->child_post_type_object->labels->add_new_item; ?></a>
 
     <!--REPETITIVE WARNING-->
     <?php
@@ -54,9 +37,7 @@ echo admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_save_all'
 
         ?>
         <div class="wpcf-message wpcf-error"><p><?php
-    echo __( 'Repeating fields should not be used in child posts. Types will update all field values.',
-            'wpcf' );
-
+        _e( 'Repeating fields should not be used in child posts. Types will update all field values.', 'wpcf' );
         ?></p></div>
         <?php
     endif;
@@ -83,7 +64,7 @@ echo admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_save_all'
                         ?>
                         <th>
                             <?php
-                            echo __( 'Action', 'wpcf' );
+                            _e( 'Action', 'wpcf' );
 
                             ?>
                         </th>

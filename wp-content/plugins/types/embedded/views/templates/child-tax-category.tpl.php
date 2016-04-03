@@ -1,6 +1,6 @@
 <?php
 /*
- * Child table taxonomy non-hierarchical form.
+ * Child table Taxonomy non-hierarchical form.
  */
 $defaults = array('taxonomy' => 'category');
 extract( wp_parse_args( $data, $defaults ), EXTR_SKIP );
@@ -11,7 +11,7 @@ $html_id = "wpcf-reltax-{$taxonomy}-" . wpcf_unique_id( $taxonomy );
 	<div id="<?php echo $html_id; ?>" class="js-types-child-categorydiv types-child-categorydiv" data-types-reltax="<?php echo $taxonomy; ?>">
 		<!--<ul id="<?php echo $html_id; ?>-tabs" class="category-tabs">
 			<li class="tabs"><a href="#<?php echo $taxonomy; ?>-all"><?php echo $tax->labels->all_items; ?></a></li>
-			<li class="hide-if-no-js"><a href="#<?php echo $taxonomy; ?>-pop"><?php _e( 'Most Used' ); ?></a></li>
+			<li class="hide-if-no-js"><a href="#<?php echo $taxonomy; ?>-pop"><?php _e( 'Most Used', 'wpcf' ); ?></a></li>
 		</ul>
 
 		<div id="<?php echo $taxonomy; ?>-pop" class="tabs-panel" style="display: none;">
@@ -34,8 +34,8 @@ $html_id = "wpcf-reltax-{$taxonomy}-" . wpcf_unique_id( $taxonomy );
 				<h4>
 					<a id="<?php echo $html_id; ?>-add-toggle" href="#<?php echo $html_id; ?>-add" class="hide-if-no-js">
 						<?php
-							/* translators: %s: add new taxonomy label */
-							printf( __( '+ %s' ), $tax->labels->add_new_item );
+							/* translators: %s: add new Taxonomy label */
+							printf( __( '+ %s', 'wpcf' ), $tax->labels->add_new_item );
 						?>
 					</a>
 				</h4>

@@ -10,12 +10,17 @@ function wpcf_fields_colorpicker() {
         'id' => 'wpcf-colorpicker',
         'title' => __( 'Colorpicker', 'wpcf' ),
         'description' => __( 'Colorpicker', 'wpcf' ),
-        'validate' => array('required'),
+        'validate' => array(
+            'required' => array(
+                'form-settings' => include( dirname( __FILE__ ) . '/patterns/validate/form-settings/required.php' )
+            )
+        ),
         'meta_box_js' => array(
             'wpcf-jquery-fields-colorpicker' => array(
                 'inline' => 'wpcf_fields_colorpicker_render_js',
             ),
         ),
+        'font-awesome' => 'eyedropper',
     );
 }
 
@@ -36,8 +41,7 @@ function wpcf_fields_colorpicker_meta_box_form( $field ) {
     wpcf_fields_colorpicker_enqueue_scripts();
 	//By Gen: changed minimal version from 3.4 to 3.5, because colorbox not works in 3.4.2
     if ( wpcf_compare_wp_version( '3.5', '<' ) ) {
-        $form['name']['#after'] .= '<a href="#" class="button-secondary js-types-pickcolor">' . __( 'Pick color',
-                        'wpcf' ) . '</a><div class="js-types-cp-preview types-cp-preview" style="background-color:' . $field['value'] . '"></div>';
+        $form['name']['#after'] .= '<a href="#" class="button-secondary js-types-pickcolor">' . __( 'Pick color', 'wpcf' ) . '</a><div class="js-types-cp-preview types-cp-preview" style="background-color:' . $field['value'] . '"></div>';
         wp_enqueue_script( 'farbtastic' );
         wp_enqueue_style( 'farbtastic' );
     } else {

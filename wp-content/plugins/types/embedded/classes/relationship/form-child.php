@@ -97,6 +97,12 @@ class WPCF_Relationship_Child_Form
             $this->_dummy_post = true;
         }
         $this->child_post_type_object = get_post_type_object( $this->child_post_type );
+        if (
+            !isset($this->child_post_type_object->slug)
+            && isset($this->child_post_type_object->name)
+        ) {
+            $this->child_post_type_object->slug = $this->child_post_type_object->name;
+        }
 
         // Collect params from request
         foreach ( $this->__params as $__param ) {
@@ -114,7 +120,7 @@ class WPCF_Relationship_Child_Form
             return;
         }
         /**
-         * custom post types
+         * post types
          */
         $post_types = get_option( WPCF_OPTION_NAME_CUSTOM_TYPES, array() );
         if (
@@ -126,6 +132,16 @@ class WPCF_Relationship_Child_Form
             }
         }
         unset($post_types);
+        /**
+         * wp_enqueue_media allways
+         */
+        add_action('admin_enqueue_scripts', array($this, 'wp_enqueue_media'), PHP_INT_MAX);
+    }
+
+    public function wp_enqueue_media()
+    {
+        global $post;
+        wp_enqueue_media(array('post' => $post->ID));
     }
 
     function getParamsQuery() {
@@ -182,20 +198,16 @@ class WPCF_Relationship_Child_Form
 
         // Pagination
         $total_items = count( $this->children );
-        $per_page = $wpcf->relationship->get_items_per_page( $this->parent_post_type,
-                $this->child_post_type );
+        $per_page = $wpcf->relationship->get_items_per_page( $this->parent_post_type, $this->child_post_type );
         $page = isset( $_GET['page'] ) ? intval( $_GET['page'] ) : 1;
-        $numberposts = $page == 1 ? 1 : ($page - 1) * $per_page;
-        $slice = $page == 1 ? 0 : ($page - 1) * $per_page;
-        $next = count( $this->children ) > $numberposts + $per_page;
-        $prev = $page == 1 ? false : true;
+        $offset = ( $page == 1 ) ? 0 : ( ( $page - 1 ) * $per_page );
+        $next = ( $total_items > ( $offset + $per_page ) );
+        $prev = ( $page == 1 ) ? false : true;
         if ( $total_items > $per_page ) {
-            $this->children = array_splice( $this->children, $slice, $per_page );
+            $this->children = array_splice( $this->children, $offset, $per_page );
         }
 
-        $this->pagination_top = wpcf_pr_admin_has_pagination( $this->parent,
-                $this->child_post_type, $page, $prev, $next, $per_page,
-                $total_items );
+        $this->pagination_top = wpcf_pr_admin_has_pagination( $this->parent, $this->child_post_type, $page, $prev, $next, $per_page, $total_items );
         /*
          *
          *
@@ -285,6 +297,14 @@ class WPCF_Relationship_Child_Form
             ) {
                 $this->headers[] = '_wp_excerpt';
                 $row[] = $this->excerpt();
+            }
+            // Set thumbnail
+            if (
+                isset( $this->data['fields']['_wp_featured_image'] )
+                && post_type_supports( $this->child_post_type_object->slug, 'thumbnail' )
+            ) {
+                $this->headers[] = '_wp_featured_image';
+                $row[] = $this->thumbnail();
             }
 
             /**
@@ -511,7 +531,27 @@ class WPCF_Relationship_Child_Form
     }
 
     /**
-     * Returns HTML formatted taxonomy form.
+     * Returns HTML formatted post thumbnail field.
+     *
+     * @return type
+     */
+    function thumbnail()
+    {
+        return wpcf_form_simple(
+            array('field' => array(
+                '#type' => 'thumbnail',
+                '#id' => 'wpcf_post_relationship_'
+                . $this->child->ID . '_wp_featured_image',
+                '#name' => 'wpcf_post_relationship['
+                . $this->parent->ID . ']['
+                . $this->child->ID . '][_wp_featured_image]',
+                '#value' => get_post_thumbnail_id($this->child->ID),
+            )
+        )
+    );
+    }
+    /**
+     * Returns HTML formatted Taxonomy form.
      *
      * @param type $taxonomy
      * @return type
@@ -694,8 +734,7 @@ class WPCF_Relationship_Child_Form
                         $parent, $belongs_data );
 
                 if ( empty( $temp_form ) ) {
-                    return '<span class="types-small-italic">' . __( 'No parents available',
-                                    'wpcf' ) . '</span>';
+                    return '<span class="types-small-italic">' . __( 'No parents available', 'wpcf' ) . '</span>';
                 }
                 unset(
                         $temp_form[$parent]['#suffix'],
@@ -709,8 +748,7 @@ class WPCF_Relationship_Child_Form
                 return wpcf_form_simple( $temp_form );
             }
         }
-        return '<span class="types-small-italic">' . __( 'No parents available',
-                        'wpcf' ) . '</span>';
+        return '<span class="types-small-italic">' . __( 'No parents available', 'wpcf' ) . '</span>';
     }
 
     /**
@@ -765,7 +803,7 @@ class WPCF_Relationship_Child_Form
                     $headers[$header] .= '<a href="' . admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_sort&amp;field='
                         . '_wp_title&amp;sort=' . $title_dir . '&amp;post_id=' . $post->ID . '&amp;post_type='
                         . $post_type . '&amp;_wpnonce='
-                        . wp_create_nonce( 'pr_sort' ) ) . '">' . __( 'Post Title' ) . '</a>';
+                        . wp_create_nonce( 'pr_sort' ) ) . '">' . __( 'Post Title', 'wpcf' ) . '</a>';
                 } else {
                     $headers[$header] = 'ID';
                 }
@@ -776,31 +814,25 @@ class WPCF_Relationship_Child_Form
                 $headers[$header] .= '<a href="' . admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_sort&amp;field='
                                 . '_wp_body&amp;sort=' . $body_dir . '&amp;post_id=' . $post->ID . '&amp;post_type='
                                 . $post_type . '&amp;_wpnonce='
-                                . wp_create_nonce( 'pr_sort' ) ) . '">' . __( 'Post Body' ) . '</a>';
-            } else if ( $header == '_wp_excerpt' ) {
-                $headers[$header] = __( 'Post excerpt' );
-            } else if ( strpos( $header, WPCF_META_PREFIX ) === 0
-                    && isset( $wpcf_fields[str_replace( WPCF_META_PREFIX, '',
-                                    $header )] ) ) {
-                wpcf_field_enqueue_scripts( $wpcf_fields[str_replace( WPCF_META_PREFIX,
-                                '', $header )]['type'] );
-                $field_dir = $sort_field == $header ? $dir : $dir_default;
-                $headers[$header] = '';
-                $headers[$header] .= $sort_field == $header ? '<div class="wpcf-pr-sort-' . $dir . '"></div>' : '';
-                $headers[$header] .= '<a href="' . admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_sort&amp;field='
-                                . $header . '&amp;sort=' . $field_dir . '&amp;post_id=' . $post->ID . '&amp;post_type='
-                                . $post_type . '&amp;_wpnonce='
-                                . wp_create_nonce( 'pr_sort' ) ) . '">' . stripslashes( $wpcf_fields[str_replace( WPCF_META_PREFIX,
-                                        '', $header )]['name'] ) . '</a>';
+                                . wp_create_nonce( 'pr_sort' ) ) . '">' . __( 'Post Body', 'wpcf' ) . '</a>';
+            } else if (
+                $header == '_wp_excerpt'
+                || $header == '_wp_featured_image'
+            ) {
+                $headers[$header] = $this->get_header($header);
             } else {
+                $link_text = $this->get_header($header);
+                if (
+                    strpos( $header, WPCF_META_PREFIX ) === 0
+                    && isset( $wpcf_fields[str_replace( WPCF_META_PREFIX, '', $header )] )
+                ) {
+                    wpcf_field_enqueue_scripts( $wpcf_fields[str_replace( WPCF_META_PREFIX, '', $header )]['type'] );
+                    $link_text = stripslashes( $wpcf_fields[str_replace( WPCF_META_PREFIX, '', $header )]['name'] );
+                }
                 $field_dir = $sort_field == $header ? $dir : $dir_default;
                 $headers[$header] = '';
                 $headers[$header] .= $sort_field == $header ? '<div class="wpcf-pr-sort-' . $dir . '"></div>' : '';
-                $headers[$header] .= '<a href="' . admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_sort&amp;field='
-                                . $header . '&amp;sort=' . $field_dir . '&amp;post_id=' . $post->ID . '&amp;post_type='
-                                . $post_type . '&amp;_wpnonce='
-                                . wp_create_nonce( 'pr_sort' ) ) . '">'
-                        . stripslashes( $header ) . '</a>';
+                $headers[$header] .= '<a href="' . admin_url( 'admin-ajax.php?action=wpcf_ajax&amp;wpcf_action=pr_sort&amp;field=' . $header . '&amp;sort=' . $field_dir . '&amp;post_id=' . $post->ID . '&amp;post_type=' . $post_type . '&amp;_wpnonce=' . wp_create_nonce( 'pr_sort' ) ) . '">' . $link_text . '</a>';
             }
         }
         if ( !empty( $this->headers['__parents'] ) ) {
@@ -828,6 +860,19 @@ class WPCF_Relationship_Child_Form
             }
         }
         return $headers;
+    }
+
+    public function get_header($header)
+    {
+        switch( $header) {
+        case '_wp_featured_image':
+            $header = __('Feature Image', 'wpcf');
+            break;
+        case '_wp_excerpt':
+            $header = __('Post excerpt', 'wpcf');
+            break;
+        }
+        return stripslashes($header);
     }
 
 }

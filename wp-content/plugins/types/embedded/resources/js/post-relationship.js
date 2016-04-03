@@ -60,26 +60,6 @@ var tChildTable = (function($) {
                 var this_id = $(this).attr('id'), catAddBefore, catAddAfter, taxonomy, settingName, typesID;
                 taxonomy = $(this).data('types-reltax');
                 typesID = $(this).attr('id');
-//                settingName = taxonomy + '_tab';
-//                if (taxonomy == 'category')
-//                    settingName = 'cats';
-
-                // Types: TABS (disabled)
-                // TODO: move to jQuery 1.3+, support for multiple hierarchical taxonomies, see wp-lists.js
-//                $('a', '#' + taxonomy + '-tabs').click(function() {
-//                    var t = $(this).attr('href');
-//                    $(this).parent().addClass('tabs').siblings('li').removeClass('tabs');
-//                    $('#' + taxonomy + '-tabs').siblings('.tabs-panel').hide();
-//                    $(t).show();
-//                    if ('#' + taxonomy + '-all' == t)
-//                        deleteUserSetting(settingName);
-//                    else
-//                        setUserSetting(settingName, 'pop');
-//                    return false;
-//                });
-
-//                if (getUserSetting(settingName))
-//                    $('a[href="#' + taxonomy + '-pop"]', '#' + taxonomy + '-tabs').click();
 
                 // Ajax Cat
                 $('#new' + typesID).one('focus', function() {
@@ -140,8 +120,6 @@ var tChildTable = (function($) {
     }
 }(jQuery));
 
-
-
 /*
  * Non-hierarchical taxonomies form handling on post edit screen.
  */
@@ -180,10 +158,11 @@ var tChildTable = (function($) {
                     tagchecklist = $('.tagchecklist', el),
                     id = $(el).attr('id'),
                     current_tags, disabled,
-					comma = postL10n.comma || window.tagsBoxL10n.tagDelimiter;
+                    comma = postL10n.comma || window.tagsBoxL10n.tagDelimiter;
 
-            if (!thetags.length)
+            if (!thetags.length) {
                 return;
+            }
 
             disabled = thetags.prop('disabled');
 
@@ -195,8 +174,9 @@ var tChildTable = (function($) {
 
                 val = $.trim(val);
 
-                if (!val)
+                if (!val) {
                     return;
+                }
 
                 // Create a new span, and ensure the text is properly escaped.
                 span = $('<span />').text(val);
@@ -230,20 +210,23 @@ var tChildTable = (function($) {
             tags.val(newtags);
             this.quickClicks(el);
 
-            if (!a)
+            if (!a) {
                 newtag.val('');
-            if ('undefined' == typeof(f))
+            }
+
+            if ('undefined' == typeof(f)) {
                 newtag.focus();
+            }
 
             return false;
         },
         get: function(id) {
-//		var tax = id.substr(id.indexOf('-')+1);
             var tax = $('#' + id).data('types-tax');
 
             $.post(ajaxurl, {'action': 'get-tagcloud', 'tax': tax}, function(r, stat) {
-                if (0 == r || 'success' != stat)
+                if (0 == r || 'success' != stat) {
                     r = wpAjax.broken;
+                }
 
                 r = $('<p id="tagcloud-' + id + '" class="the-tagcloud">' + r + '</p>');
                 $('a', r).click(function() {
@@ -286,9 +269,8 @@ var tChildTable = (function($) {
                     return false;
                 }
             }).each(function() {
-//			var tax = $(this).closest('div.tagsdiv').attr('id');
                 var tax = $(this).data('types-tax'),
-				comma = postL10n.comma || window.tagsBoxL10n.tagDelimiter;
+                comma = postL10n.comma || window.tagsBoxL10n.tagDelimiter;
                 $(this).suggest(ajaxurl + '?action=ajax-tag-search&tax=' + tax, {delay: 500, minchars: 2, multiple: true, multipleSep: comma + ' '});
             });
 
@@ -316,12 +298,8 @@ jQuery(document).ready(function($) {
     tChildTable.init();
 });
 
-
-
-
-
 jQuery(document).ready(function($) {
-
+    var frame_relationship = [];
     window.wpcf_pr_edited = false;
     // Mark as edited field
     $('#wpcf-post-relationship table').on('click', ':input', function() {
@@ -333,32 +311,35 @@ jQuery(document).ready(function($) {
      * Parent form
      */
     jQuery('.wpcf-pr-has-apply').click(function() {
+        var $thiz = jQuery(this);
         jQuery(this).parent().slideUp().parent().parent().find('.wpcf-pr-edit').fadeIn();
         var txt = new Array();
         jQuery(this).parent().find('input:checked').each(function() {
             txt.push(jQuery(this).next().html());
         });
         if (txt.length < 1) {
-            var wpcf_pr_has_update = wpcf_pr_has_empty_txt;
+            var wpcf_pr_has_update = $thiz.data('text-empty');
         } else {
             var txt_update = txt.join(', ');
-            var wpcf_pr_has_update = wpcf_pr_has_txt.replace("%s", txt_update);
+            var wpcf_pr_has_update = $thiz.data('text-has').replace("%s", txt_update);
         }
         jQuery(this).parent().parent().parent().find('.wpcf-pr-has-summary').html(wpcf_pr_has_update);
     });
     jQuery('.wpcf-pr-belongs-apply').click(function() {
+        var $thiz = jQuery(this);
         jQuery(this).parent().slideUp().parent().parent().find('.wpcf-pr-edit').fadeIn();
         var txt = new Array();
         jQuery(this).parent().find('input:checked').each(function() {
             txt.push(jQuery(this).next().html());
         });
         if (txt.length < 1) {
-            var wpcf_pr_belongs_update = wpcf_pr_belongs_empty_txt;
+            var wpcf_pr_belongs_update = $thiz.data('text-empty');
         } else {
             var txt_update = txt.join(', ');
-            var wpcf_pr_belongs_update = wpcf_pr_belongs_txt.replace("%s", txt_update);
+            var wpcf_pr_belongs_update = $thiz.data('text-has').replace("%s", txt_update);
         }
         jQuery(this).parent().parent().parent().find('.wpcf-pr-belongs-summary').html(wpcf_pr_belongs_update);
+        return false;
     });
     jQuery('.wpcf-pr-has-cancel').click(function() {
         jQuery(this).parent().find('.checkbox').removeAttr('checked');
@@ -389,13 +370,19 @@ jQuery(document).ready(function($) {
         }
         jQuery(this).fadeOut().next().slideDown();
     });
-    /*
-     * 
-     * 
+
+    /**
      * POST EDIT SCREEN
      */
     $('#wpcf-post-relationship').on('click', '.js-types-add-child', function() {
+        if( $( this ).hasClass( 'disabled' ) )
+            return false;
+
+        wpcfInitValueOfSelect2DoneClear();
         var $button = $(this), $table = $button.parents('.js-types-relationship-child-posts').find('table');
+
+        typesRelationControlsAjaxStart();
+
         $.ajax({
             url: $button.attr('href'),
             type: 'get',
@@ -429,17 +416,37 @@ jQuery(document).ready(function($) {
                 if ( 'undefined' != typeof wptFile ) {
                     wptFile.init();
                 }
+                /**
+                 * select2
+                 */
+                wpcfBindSelect2($);
+				
+				var data_for_events = {
+					table: $table
+				};
+				
+				$( document ).trigger( 'js_event_wpcf_types_relationship_child_added', [ data_for_events ] );
+            },
+            complete: function() {
+                typesRelationControlsAjaxComplete();
             }
         });
         return false;
     });
     jQuery('.wpcf-pr-delete-ajax').live('click', function() {
+        if( $( this ).hasClass( 'disabled' ) )
+            return false;
+
+        wpcfInitValueOfSelect2DoneClear();
         var $button = $(this), $table = $button.parents('.js-types-relationship-child-posts').find('table');
         var answer = confirm(wpcf_pr_del_warning);
         if (answer == false) {
             return false;
         }
         var object = jQuery(this);
+
+        typesRelationControlsAjaxStart();
+
         jQuery.ajax({
             url: jQuery(this).attr('href'),
             type: 'get',
@@ -472,6 +479,13 @@ jQuery(document).ready(function($) {
                     }
                 }
                 $('#wpcf-post-relationship .wpcf-pr-pagination-select').trigger('change');
+                /**
+                 * select2
+                 */
+                wpcfBindSelect2($);
+            },
+            complete: function() {
+                typesRelationControlsAjaxComplete();
             }
         });
         return false;
@@ -532,6 +546,10 @@ jQuery(document).ready(function($) {
                 $button.next().fadeOut(function() {
                     $(this).remove();
                 });
+                /**
+                 * select2
+                 */
+                wpcfBindSelect2($);
             }
         });
         return false;
@@ -570,6 +588,10 @@ jQuery(document).ready(function($) {
                 $button.next().fadeOut(function() {
                     $(this).remove();
                 });
+                /**
+                 * select2
+                 */
+                wpcfBindSelect2($);
             }
         });
         return false;
@@ -609,12 +631,21 @@ jQuery(document).ready(function($) {
                 $button.next().fadeOut(function() {
                     $(this).remove();
                 });
+                /**
+                 * select2
+                 */
+                wpcfBindSelect2($);
             }
         });
         return false;
     });
     $('#wpcf-post-relationship').on('click', '.wpcf-pr-save-ajax', function() {
-        var $button = $(this), $row = $button.parents('tr'), rowId = $row.attr('id'), valid = true;
+        if( $( this ).hasClass( 'disabled' ) )
+            return false;
+
+        wpcfInitValueOfSelect2DoneClear();
+
+        var $button = $(this), $row = $button.parents('tr'), rowId = $row.attr('id'), valid = true, $table = $row.closest( '.js-types-child-table' );
         if (typeof wptValidation == 'undefined') {
             $('.js-types-validate', $row).each(function() {
                 if ($('#post').validate().element($(this)) == false) {
@@ -641,6 +672,9 @@ jQuery(document).ready(function($) {
                 .find('.wpcf-pr-edited').removeClass('wpcf-pr-edited');
         var height = $row.height(), rand = Math.round(Math.random() * 10000);
         window.wpcf_pr_edited = false;
+
+        typesRelationControlsAjaxStart();
+
         $.ajax({
             url: $button.attr('href'),
             type: 'post',
@@ -651,29 +685,51 @@ jQuery(document).ready(function($) {
                 $row.after('<tr id="wpcf-pr-update-' + rand + '"><td style="height: ' + height + 'px;"><div style="margin-top:20px;" class="wpcf-ajax-loading-small"></div></td></tr>').hide();
             },
             success: function(data) {
-                if (data != null) {
-                    if (typeof data.output != 'undefined') {
-                        $row.replaceWith(data.output).show();
-                        $('#wpcf-pr-update-' + rand + '').remove();
-                        wpcfRelationshipInit('', 'save');
+                if( data != null ) {
+                    if( typeof data.output != 'undefined' ) {
+                        $row.replaceWith( data.output ).show();
+                        wpcfDisableControls();
+                        $( '#wpcf-pr-update-' + rand + '' ).remove();
+                        wpcfRelationshipInit( '', 'save' );
                         tChildTable.reset();
-                        if (typeof wptCallbacks != 'undefined') {
-                            wptCallbacks.reset.fire('#'+rowId);
+                        if( typeof wptCallbacks != 'undefined' ) {
+                            wptCallbacks.reset.fire( '#' + rowId );
                         }
-                        if ( 'undefined' != typeof wptFile ) {
+                        if( 'undefined' != typeof wptFile ) {
                             wptFile.init();
                         }
                     }
-                    if (typeof data.conditionals != 'undefined' && typeof wptCond != 'undefined') {
-                        wptCond.addConditionals(data.conditionals);
+                    if( typeof data.conditionals != 'undefined' && typeof wptCond != 'undefined' ) {
+                        wptCond.addConditionals( data.conditionals );
                     }
                     /**
                      * rebind images
                      */
-                    if ( 'function' == typeof bind_colorbox_to_thumbnail_preview ) {
+                    if( 'function' == typeof bind_colorbox_to_thumbnail_preview ) {
                         bind_colorbox_to_thumbnail_preview();
                     }
+                    /**
+                     * show errors
+                     */
+                    $( '#wpcf-post-relationship div.message' ).detach();
+                    if( 'undefined' != typeof data.errors && 0 < data.errors.length ) {
+                        $( '#wpcf-post-relationship h3.hndle' ).after( data.errors );
+                    }
+                    /**
+                     * select2
+                     */
+                    wpcfInitValueOfSelect2DoneClear();
+                    wpcfBindSelect2( $ );
+
+                    var data_for_events = {
+                        table: $table
+                    };
+
+                    $( document ).trigger( 'js_event_wpcf_types_relationship_child_saved', [ data_for_events ] );
                 }
+            },
+            complete: function() {
+                typesRelationControlsAjaxComplete();
             }
         });
         return false;
@@ -743,12 +799,75 @@ jQuery(document).ready(function($) {
                     if ( 'function' == typeof bind_colorbox_to_thumbnail_preview ) {
                         bind_colorbox_to_thumbnail_preview();
                     }
+                    /**
+                     * show errors
+                     */
+                    $('#wpcf-post-relationship div.message').detach();
+                    if ('undefined' != typeof data.errors && 0 < data.errors.length ) {
+                        $('#wpcf-post-relationship h3.hndle').after(data.errors);
+                    }
                 }
+                /**
+                 * select2
+                 */
+                wpcfBindSelect2($);
             }
         });
         return false;
     });
 
+    /**
+     * feature image
+     */
+    $('#wpcf-post-relationship').on('click', '.feature-image', function(event) {
+        var $el = $(this);
+        var $data = $el.data();
+        var $id = $el.attr('id');
+        if ( 0 == $data.value ) {
+            if ( event ) {
+                event.preventDefault();
+            }
+            // If the media frame already exists, reopen it.
+            if ( frame_relationship[$id] ) {
+                frame_relationship[$id].open();
+                return;
+            }
+            // Create the media frame.
+            frame_relationship[$id] = wp.media.frames.customHeader = wp.media({
+                // Set the title of the modal.
+                title: $el.html(),
+                // Tell the modal to show only images.
+                library: {
+                    type: "image"
+                },
+            });
+            // When an image is selected, run a callback.
+            frame_relationship[$id].on( 'select', function() {
+                // Grab the selected attachment.
+                var attachment = frame_relationship[$id].state().get('selection').first();
+
+                var $parent = $el.parent();
+                if ( 0 == $('.wpt-file-preview img', $parent).length) {
+                    $('.wpt-file-preview', $parent).append('<img src="">');
+                }
+                if ( 'undefined' != typeof attachment.id ) {
+                    $('.feature-image-id', $el.parent()).val(attachment.id);
+                    $el.html($data.remove);
+                }
+                if ( 'undefined' != typeof attachment.attributes.sizes.thumbnail ) {
+                    $('.wpt-file-preview img', $parent).attr('src', attachment.attributes.sizes.thumbnail.url);
+                }
+                frame_relationship[$id].close();
+            });
+            frame_relationship[$id].open();
+        } else {
+            $('.feature-image-id', $el.parent()).val(0);
+            $('.wpt-file-preview', $el.parent()).html('');
+
+            $(this).html($data.set);
+        }
+        return false;
+    });
     // We need to hide the _wpcf_belongs_xxxx_id field for WPML.
 
     jQuery('#icl_mcs_details table tbody tr').each(function() {
@@ -786,6 +905,10 @@ jQuery(document).ready(function($) {
                         wptCond.addConditionals(data.conditionals);
                     }
                 }
+                /**
+                 * select2
+                 */
+                wpcfBindSelect2($);
             }
         });
     });
@@ -837,4 +960,171 @@ function wpcfRelationshipInit(selector, context) {
             }
         });
     });
+}
+
+/**
+ * select2
+ */
+function wpcfBindSelect2($) {
+    $('.wpcf-pr-belongs').select2({
+        id: function(item){
+            return item.ID;
+        },
+        allowClear: true,
+        placeholder: $(this).data('placeholder'),
+        minimumInputLength: 0,
+        formatInputTooShort: $(this).data('input-too-short'),
+        ajax: {
+            url: ajaxurl,
+            dataType: 'json',
+            quietMillis: 250,
+            data: function (term, page) {
+                return {
+                    nounce: $(this).data('nounce'),
+                    post_id: $(this).data('post-id'),
+                    post_type: $(this).data('post-type'),
+                    action: 'wpcf_relationship_search',
+                    page: page || 1,
+                    s: term, // search term
+                };
+            },
+            results: function (data, page) {
+                var more = (page * data.posts_per_page) < data.total_count;
+                return { results: data.items, more: more };
+            },
+            cache: true
+        },
+        initSelection: function(element, callback) {
+            var id = $(element).val();
+            if (0 < parseInt(id)) {
+                $(element).select2("data", { ID: 0, post_title: $(element).data('loading') });
+                $(element).select2("enable", false);
+                $.ajax({
+                    url: ajaxurl,
+                    dataType: "json",
+                    data: {
+                        nounce: element.data('nounce'),
+                        p: id,
+                        post_id: element.data('post-id'),
+                        post_type: element.data('post-type'),
+                        action: 'wpcf_relationship_entry'
+                    }
+                }).done(function(data) {
+                    wpcfInitValueOfSelect2( $(element ).attr( 'id' ), data.ID );
+                    $(element).select2("enable", true);
+                    callback(data);
+                });
+            }
+        },
+        formatResult: function(item) {
+            return '<div data-id="'+item.ID+'" class="item">' + item.post_title + '</div>';
+        },
+        formatSelection: function(item) {
+            var target = $('#wpcf_pr_belongs_'+item.parent_id+'_'+item.post_type);
+            var parent;
+            var message;
+            $('a.button', target.closest('.form-item')).attr('href', item.edit_link).removeClass('disabled');
+            if ( 'undefined' != typeof item.save && 'no-save' == item.save ) {
+                return item.post_title;
+            }
+            parent = target.closest('.belongs');
+            if ( $('.js-message', parent).length == 0 ) {
+                $('a.button', parent).after('<div class="notice notice-success below-h2"><p class="wpcf-relationship-message js-message"></p></div>');
+            }
+            var message = $('.js-message', parent);
+            $.ajax({
+                url: ajaxurl,
+                dataType: "json",
+                data: {
+                    action: 'wpcf_relationship_save',
+                    nounce: target.data('nounce'),
+                    post_id: item.parent_id,
+                    post_type: item.post_type,
+                    p: item.ID
+                },
+                beforeSend: function() {
+                    message.parent().slideDown();
+                    message.html(wpcf_post_relationship_messages.parent_saving);
+                },
+                success: function() {
+                    message.html(wpcf_post_relationship_messages.parent_saving_success);
+                    setTimeout(function(){ message.parent().slideUp(); }, 3000);
+                }
+            });
+            target.val(item.ID);
+            return item.post_title;
+        },
+    }).on('select2-clearing', function() {
+        $.ajax({
+            url: ajaxurl,
+            dataType: "json",
+            data: {
+                nounce: $(this).data('nounce'),
+                post_id: $(this).data('post-id'),
+                post_type: $(this).data('post-type'),
+                action: 'wpcf_relationship_delete'
+            }
+        }).done(function(data) {
+            target = $(data.target);
+            $('a.button', target).addClass('disabled').attr('href', '#');
+            parent = target.closest('.belongs');
+            if ( $('.js-message', parent).length == 0 ) {
+                $('a.button', parent).after('<div class="notice notice-success below-h2"><p class="wpcf-relationship-message js-message"></p></div>');
+            }
+            var message = $('.js-message', parent);
+            message.parent().slideDown();
+            message.html(wpcf_post_relationship_messages.parent_saving_success);
+            setTimeout(function(){ message.parent().slideUp(); }, 3000);
+        });
+    } );
+}
+jQuery(document).ready(function($) {
+    wpcfBindSelect2($);
+});
+
+/**
+ * Fix for Select2
+ *
+ * A stored value in Select2 is shown in the select on init (page/ajax reload), but not the hidden input value
+ * which is needed for save. To get the hidden input also updated we need to call select2( 'val', currentValue)
+ * to prevent a endless loop in initSelection callback we store if we already set the val (wpcfInitValueOfSelect2Done).
+ *
+ * This storage has to be cleared (wpcfInitValueOfSelect2DoneClear) after an select2 is added / updated / deleted
+ */
+var wpcfInitValueOfSelect2Done = {};
+
+function wpcfInitValueOfSelect2( elementID, value ) {
+    if( wpcfInitValueOfSelect2Done[elementID] != 1 ) {
+        jQuery( '#'+elementID ).select2( 'val', value );
+    }
+
+    wpcfInitValueOfSelect2Done[elementID] = 1;
+}
+
+function wpcfInitValueOfSelect2DoneClear() {
+    if( Object.keys(wpcfInitValueOfSelect2Done).length ) {
+        jQuery.each( wpcfInitValueOfSelect2Done, function( key, val ) {
+            wpcfInitValueOfSelect2Done[key] = 0;
+        } );
+    }
+}
+
+function wpcfDisableControls() {
+    jQuery( '.js-types-add-child, .wpcf-pr-save-ajax, .wpcf-pr-save-ajax ~ a.button-secondary, .wpcf-pr-delete-ajax' ).addClass( 'disabled' );
+    jQuery( 'input[name^="save"]' ).attr( 'disabled', 'disabled' );
+}
+
+function wpcfEnableControls() {
+    jQuery( '.js-types-add-child, .wpcf-pr-save-ajax, .wpcf-pr-save-ajax ~ a.button-secondary, .wpcf-pr-delete-ajax' ).removeClass( 'disabled' );
+    jQuery( 'input[name^="save"]' ).removeAttr( 'disabled' );
+}
+
+function typesRelationControlsAjaxStart() {
+    wpcfDisableControls();
+}
+
+function typesRelationControlsAjaxComplete() {
+    if( jQuery.active == 1 ) {
+        wpcfEnableControls();
+    }
 }

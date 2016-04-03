@@ -3,8 +3,8 @@ Contributors: dfactory
 Donate link: http://www.dfactory.eu/
 Tags: cookie, cookies, notice, notification, notify, cookie, cookie compliance, cookie law, eu cookie, privacy, privacy directive, consent, Bootstrap
 Requires at least: 3.3
-Tested up to: 4.2.2
-Stable tag: 1.2.27
+Tested up to: 4.4
+Stable tag: 1.2.34
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
@@ -23,6 +23,7 @@ For more information, check out plugin page at [dFactory](http://www.dfactory.eu
 * Set cookie expiry
 * Link to more info page
 * Option to accept cookies on scroll
+* Option to set on scroll offset
 * Option to refuse functional cookies
 * Select the position of the cookie message box
 * Animate the message box after cookie is accepted
@@ -52,6 +53,7 @@ Feel free to contribute to the source code on the [dFactory GitHub Repository](h
 * Finnish - by [Daniel Storgards](www.danielstorgards.com)
 * French - by [Laura Orsal](http://www.traductrice-independante.fr)
 * German - by Alex Ernst
+* Greek - by Elias Stefanidis
 * Hebrew - by [Ahrale Shrem](http://atar4u.com/)
 * Hungarian - by [Surbma](http://surbma.hu)
 * Italian - by [Luca](http://www.lucacicca.it)
@@ -76,6 +78,29 @@ No questions yet.
 1. screenshot-1.png
 
 == Changelog ==
+
+= 1.2.34 =
+* Fix: Empty href in links HTML validation issue
+
+= 1.2.33 =
+* New: Greek translation thanks to Elias Stefanidis
+
+= 1.2.32 =
+* Fix: Accept cookie button hidden on acceptance instead of the cookie message container
+
+= 1.2.31 =
+* New: Non functional Javascript code field
+* Fix: Minified Javascript caching issue
+
+= 1.2.30 =
+* Fix: jQuery error after accepting cookies
+
+= 1.2.29 =
+* Tweak: Add class to body element when displayed
+* Tweak: Italian translation update
+
+= 1.2.28 =
+* New: Option to set on scroll offset
 
 = 1.2.27 =
 * Tweak: Correctly remove scroll event, limit possible conflicts
@@ -191,6 +216,5 @@ Initial release
 
 == Upgrade Notice ==
 
-= 1.2.27 =
-* Tweak: Correctly remove scroll event, limit possible conflicts
-* Tweak: Italian translation update
+= 1.2.34 =
+* Fix: Empty href in links HTML validation issue

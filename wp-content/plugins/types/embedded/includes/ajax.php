@@ -7,9 +7,10 @@
  */
 function wpcf_ajax_embedded() {
 
+
     if ( isset( $_REQUEST['_typesnonce'] ) ) {
         if ( !wp_verify_nonce( $_REQUEST['_typesnonce'], '_typesnonce' ) ) {
-            die( 'Verification failed' );
+            die( 'Verification failed (1)' );
         }
     } else {
 
@@ -17,7 +18,7 @@ function wpcf_ajax_embedded() {
             !isset( $_REQUEST['_wpnonce'] )
             || !wp_verify_nonce( $_REQUEST['_wpnonce'], $_REQUEST['wpcf_action'] ) 
         ) {
-            die( 'Verification failed' );
+            die( 'Verification failed (2)' );
         }
     }
 
@@ -40,7 +41,7 @@ function wpcf_ajax_embedded() {
             }
 
             // Determine Field type and context
-            $views_usermeta = false;
+            $views_meta = false;
             $field_id = sanitize_text_field( $_GET['field_id'] );
 
             // todo this could be written in like four lines
@@ -53,7 +54,18 @@ function wpcf_ajax_embedded() {
             elseif ( isset( $_GET['field_type'] ) && $_GET['field_type'] == 'views-usermeta' ){
                 $field = types_get_field( $field_id, 'usermeta' );
                 $meta_type = 'usermeta';
-                $views_usermeta = true;
+                $views_meta = true;
+			}
+			elseif ( isset( $_GET['field_type'] ) && $_GET['field_type'] == 'termmeta' ) {
+                // Group filter
+                wp_enqueue_script( 'suggest' );
+                $field = types_get_field( $field_id, 'termmeta' );
+                $meta_type = 'termmeta';
+            } 
+            elseif ( isset( $_GET['field_type'] ) && $_GET['field_type'] == 'views-termmeta' ){
+                $field = types_get_field( $field_id, 'termmeta' );
+                $meta_type = 'termmeta';
+                $views_meta = true;
             }else {
                 $field = types_get_field( $field_id );
                 $meta_type = 'postmeta';
@@ -67,7 +79,7 @@ function wpcf_ajax_embedded() {
                 WPCF_Loader::loadClass( 'editor' );
                 $editor = new WPCF_Editor();
                 $editor->frame( $field, $meta_type, $parent_post_id, $shortcode,
-                        $callback, $views_usermeta );
+                        $callback, $views_meta );
             }
             break;
 
@@ -84,10 +96,46 @@ function wpcf_ajax_embedded() {
             break;
 
         case 'pr_add_child_post':
-            $output = 'Passed wrong parameters';
-
-            if ( current_user_can( 'edit_posts' )
-                && isset( $_GET['post_id'] )
+            global $current_user;
+            $output = '<tr>' . __( 'Passed wrong parameters', 'wpcf' ) . '</tr>';
+			$id = 0;
+			
+			$target_post_type = isset( $_GET['post_type_child'] ) ? sanitize_text_field( $_GET['post_type_child'] ) : '';
+			
+			$has_permissions = true;
+			if ( 
+				class_exists( 'Access_Helper' ) 
+				&& class_exists( 'TAccess_Loader' )
+				&& $target_post_type != ''
+			) {
+				$model = TAccess_Loader::get('MODEL/Access');
+				$settings_access = $model->getAccessTypes();
+				if ( isset( $settings_access[$target_post_type] ) ) {
+					$role = Access_Helper::wpcf_get_current_logged_user_role();
+					if ( $role == '' ) {
+						$role = 'guest';
+						$user_level = 0;	
+					} 
+					if ( $role != 'administrator' ) {
+						if ( $role != 'guest') {
+							$user_level = Access_Helper::wpcf_get_current_logged_user_level( $current_user );
+						}
+						$has_permissions = Access_Helper::wpcf_access_check_if_user_can( $settings_access[$target_post_type]['permissions']['publish']['role'], $user_level );
+					}
+				} else if ( ! current_user_can( 'publish_posts' ) ) {
+					$has_permissions = false;
+				}
+			} else {
+				if ( ! current_user_can( 'publish_posts' ) ) {
+					$has_permissions = false;
+				}
+			}
+			
+			if ( ! $has_permissions ) {
+				$output = '<tr><td>' . __( 'You do not have rights to create new items', 'wpcf' ) . '</td></tr>';
+			} else if ( 
+				//current_user_can( 'edit_posts' )
+                /*&&*/ isset( $_GET['post_id'] )
                 && isset( $_GET['post_type_child'] )
                 && isset( $_GET['post_type_parent'] ) )
             {
@@ -109,7 +157,7 @@ function wpcf_ajax_embedded() {
                     $id = $wpcf->relationship->add_new_child( $parent_post->ID, $post_type );
 
                     if ( is_wp_error( $id ) ) {
-                        $output = $id->get_error_message();
+                        $output = '<tr>' . $id->get_error_message() . '</tr>';
                     } else {
                         /*
                          * Here we set Relationship
@@ -128,11 +176,11 @@ function wpcf_ajax_embedded() {
                             // Render new row
                             $output = $wpcf->relationship->child_row( $parent_post->ID, $id, $data );
                         } else {
-                            $output = __( 'Error creating post relationship', 'wpcf' );
+                            $output = '<tr>' . __( 'Error creating post relationship', 'wpcf' ) . '</tr>';
                         }
                     }
                 } else {
-                    $output = __( 'Error getting parent post', 'wpcf' );
+                    $output = '<tr>' . __( 'Error getting parent post', 'wpcf' ) . '</tr>';
                 }
             }
             if ( !defined( 'WPTOOLSET_FORMS_VERSION' ) ) {
@@ -150,6 +198,7 @@ function wpcf_ajax_embedded() {
             break;
 
         case 'pr_save_all':
+            ob_start(); // Try to catch any errors
             $output = '';
             if ( current_user_can( 'edit_posts' ) && isset( $_POST['post_id'] ) ) {
 
@@ -169,14 +218,18 @@ function wpcf_ajax_embedded() {
                 // TODO Move to conditional
                 $output .= '<script type="text/javascript">wpcfConditionalInit();</script>';
             }
+            wpcf_show_admin_messages('echo');
+            $errors = ob_get_clean();
             if ( !defined( 'WPTOOLSET_FORMS_VERSION' ) ) {
                 echo json_encode( array(
                     'output' => $output,
+                    'errors' => $errors
                 ) );
             } else {
                 echo json_encode( array(
                     'output' => $output,
                     'conditionals' => array('#post' => wptoolset_form_get_conditional_data( 'post' )),
+                    'errors' => $errors
                 ) );
             }
             break;
@@ -210,6 +263,7 @@ function wpcf_ajax_embedded() {
                     }
                 }
             }
+            wpcf_show_admin_messages('echo');
             $errors = ob_get_clean();
             if ( !defined( 'WPTOOLSET_FORMS_VERSION' ) ) {
                 echo json_encode( array(
@@ -234,34 +288,6 @@ function wpcf_ajax_embedded() {
             echo json_encode( array(
                 'output' => $output,
             ) );
-            break;
-
-        case 'pr-update-belongs':
-            require_once WPCF_EMBEDDED_ABSPATH . '/includes/post-relationship.php';
-            $output = 'Passed wrong parameters';
-            if ( current_user_can( 'edit_posts' )
-                && isset( $_POST['post_id'] )
-                && isset( $_POST['wpcf_pr_belongs'][$_POST['post_id']] ) )
-            {
-                $parent_post_id = intval( $_POST['post_id'] );
-                $belongs_assignments = array();
-                foreach( $_POST['wpcf_pr_belongs'][$parent_post_id] as $post_type_raw => $post_id_raw ) {
-                    $belongs_assignments[ sanitize_text_field( $post_type_raw) ] = intval( $post_id_raw );
-                }
-
-                $updated = wpcf_pr_admin_update_belongs( $parent_post_id, $belongs_assignments );
-                $output = is_wp_error( $updated ) ? $updated->get_error_message() : $updated;
-            }
-            if ( !defined( 'WPTOOLSET_FORMS_VERSION' ) ) {
-                echo json_encode( array(
-                    'output' => $output,
-                ) );
-            } else {
-                echo json_encode( array(
-                    'output' => $output,
-                    'conditionals' => array('#post' => wptoolset_form_get_conditional_data( 'post' )),
-                ) );
-            }
             break;
 
         case 'pr_pagination':
@@ -487,85 +513,86 @@ function wpcf_ajax_embedded() {
             }
             break;
 
-        case 'cd_verify':
+        case 'wpcf_entry_search':
+            if( current_user_can( 'edit_posts' ) && isset($_REQUEST['post_type'])) {
+                $posts_per_page = apply_filters( 'wpcf_pr_belongs_post_numberposts', 10 );
 
-            if ( !current_user_can( 'edit_posts' ) || ( empty( $_POST['wpcf'] ) && empty( $_POST['wpcf_post_relationship'] ) )  ){
-                die();
-            }
-            WPCF_Loader::loadClass( 'helper.ajax' );
-            $js_execute = WPCF_Helper_Ajax::conditionalVerify( $_POST );
+                $args = array(
+                    'posts_per_page' => apply_filters( 'wpcf_pr_belongs_post_posts_per_page', $posts_per_page ),
+                    'post_status' => apply_filters( 'wpcf_pr_belongs_post_status', array( 'publish', 'private' ) ),
+                    'post_type' => $_REQUEST['post_type'],
+                    'suppress_filters' => 1,
+                );
 
-            // Render JSON
-            if ( !empty( $js_execute ) ) {
-                echo json_encode( array(
-                    'output' => '',
-                    'execute' => $js_execute,
-                    'wpcf_nonce_ajax_callback' => wp_create_nonce( 'execute' ),
-                ) );
-            }
-            die();
-            break;
+                if ( isset( $_REQUEST['s'] ) ) {
+                    $args['s'] = $_REQUEST['s'];
+                }
 
-        case 'cd_group_verify':
-            require_once WPCF_EMBEDDED_INC_ABSPATH . '/fields.php';
-            require_once WPCF_EMBEDDED_INC_ABSPATH . '/conditional-display.php';
-            $group = wpcf_admin_fields_get_group( sanitize_text_field( $_POST['group_id'] ) );
-            if ( !current_user_can( 'edit_posts' ) || empty( $group ) ) {
-                echo json_encode( array(
-                    'output' => ''
-                ) );
-                die();
-            }
-            $execute = '';
-            $group['conditional_display'] = get_post_meta( $group['id'],
-                    '_wpcf_conditional_display', true );
-            // Filter meta values (switch them with $_POST values)
-            add_filter( 'get_post_metadata',
-                    'wpcf_cd_meta_ajax_validation_filter', 10, 4 );
-            $parent_post = false;
-            if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
-                $split = explode( '?', $_SERVER['HTTP_REFERER'] );
-                if ( isset( $split[1] ) ) {
-                    parse_str( $split[1], $vars );
-                    if ( isset( $vars['post'] ) ) {
-                        $parent_post = get_post( $vars['post'] );
+                if ( isset( $_REQUEST['page'] ) && preg_match('/^\d+$/', $_REQUEST['page']) ) {
+                    $args['paged'] = intval($_REQUEST['page']);
+                }
+
+                $the_query = new WP_Query( $args );
+
+                $posts = array(
+                    'items' => array(),
+                    'total_count' => $the_query->found_posts,
+                    'incomplete_results' => $the_query->found_posts > $posts_per_page,
+                    'posts_per_page' => $posts_per_page,
+                );
+
+                if ( $the_query->have_posts() ) {
+                    while ( $the_query->have_posts() ) {
+                        $the_query->the_post();
+                        $post_title = get_the_title();
+                        if ( empty($post_title) ) {
+                            $post_title = sprintf(
+                                __('[empty title] ID: %d', 'wpcf'),
+                                get_the_ID()
+                            );
+                        }
+                        $posts['items'][] = array(
+                            'ID' => get_the_ID(),
+                            'post_title' => $post_title,
+                        );
                     }
                 }
+                /* Restore original Post Data */
+                wp_reset_postdata();
+
+                echo json_encode($posts);
+            } else {
+                echo json_encode( array(
+                    'output' => 'params missing',
+                ) );
             }
-            // Dummy post
-            if ( !$parent_post ) {
-                $parent_post = new stdClass();
-                $parent_post->ID = 1;
-            }
-            if ( !empty( $group['conditional_display']['conditions'] ) ) {
-                $result = wpcf_cd_post_groups_filter( array(0 => $group), $parent_post,
-                        'group' );
-                if ( !empty( $result ) ) {
-                    $result = array_shift( $result );
-                    $passed = $result['_conditional_display'] == 'passed' ? true : false;
+            break;
+
+        case 'wpcf_entry_entry':
+            if( current_user_can( 'edit_posts' ) && isset($_REQUEST['p'])) {
+                $wpcf_post = get_post($_REQUEST['p'], ARRAY_A);
+                if ( isset($wpcf_post['ID']) ) {
+                        $post_title = $wpcf_post['post_title'];
+                        if ( empty($post_title) ) {
+                            $post_title = sprintf(
+                                __('[empty title] ID: %d', 'wpcf'),
+                                $wpcf_post['ID']
+                            );
+                        }
+                    echo json_encode(
+                        array(
+                            'ID' => $wpcf_post['ID'],
+                            'post_title' => $wpcf_post['post_title'],
+                        )
+                    );
                 } else {
-                    $passed = false;
+                    echo json_encode( array( 'output' => 'params missing',));
                 }
-                if ( !$passed ) {
-                    $execute = 'jQuery("#wpcf-group-' . $group['slug']
-                            . '").slideUp().find(".wpcf-cd-group")'
-                            . '.addClass(\'wpcf-cd-group-failed\')'
-                            . '.removeClass(\'wpcf-cd-group-passed\').hide();';
-                } else {
-                    $execute = 'jQuery("#wpcf-group-' . $group['slug']
-                            . '").show().find(".wpcf-cd-group")'
-                            . '.addClass(\'wpcf-cd-group-passed\')'
-                            . '.removeClass(\'wpcf-cd-group-failed\').slideDown();';
-                }
+            } else {
+                echo json_encode( array(
+                    'output' => 'params missing',
+                ) );
             }
-            // Remove filter meta values (switch them with $_POST values)
-            remove_filter( 'get_post_metadata',
-                    'wpcf_cd_meta_ajax_validation_filter', 10, 4 );
-            echo json_encode( array(
-                'output' => '',
-                'execute' => $execute,
-                'wpcf_nonce_ajax_callback' => wp_create_nonce( 'execute' ),
-            ) );
             break;
 
         default:

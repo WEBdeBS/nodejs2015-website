@@ -10,8 +10,16 @@ function wpcf_fields_url() {
         'id' => 'wpcf-url',
         'title' => 'URL',
         'description' => 'URL',
-        'validate' => array('required', 'url'),
+        'validate' => array(
+            'required' => array(
+                'form-settings' => include( dirname( __FILE__ ) . '/patterns/validate/form-settings/required.php' )
+            ),
+            'url' => array(
+                'form-settings' => include( dirname( __FILE__ ) . '/patterns/validate/form-settings/url.php' )
+            ),
+        ),
         'inherited_field_type' => 'textfield',
+        'font-awesome' => 'globe',
     );
 }
 
@@ -59,8 +67,7 @@ function wpcf_fields_url_editor_callback( $field, $settings ) {
     }
     $settings['target_options'] = array(
         '_blank' => __( '_blank: Opens in a new window or tab', 'wpcf' ),
-        '_self' => __( '_self: Opens in the same frame as it was clicked',
-                'wpcf' ),
+        '_self' => __( '_self: Opens in the same frame as it was clicked', 'wpcf' ),
         '_parent' => __( '_parent: Opens in the parent frame', 'wpcf' ),
         '_top' => __( '_top: Opens in the full body of the window', 'wpcf' ),
         'framename' => __( 'framename: Opens in a named frame', 'wpcf' ),
@@ -105,6 +112,9 @@ function wpcf_fields_url_editor_submit( $data, $field, $context ) {
     if ( $context == 'usermeta' ) {
         $add .= wpcf_get_usermeta_form_addon_submit();
         $shortcode = wpcf_usermeta_get_shortcode( $field, $add );
+	} elseif ( $context == 'termmeta' ) {
+        $add .= wpcf_get_termmeta_form_addon_submit();
+        $shortcode = wpcf_termmeta_get_shortcode( $field, $add );
     } else {
         $shortcode = wpcf_fields_get_shortcode( $field, $add );
     }

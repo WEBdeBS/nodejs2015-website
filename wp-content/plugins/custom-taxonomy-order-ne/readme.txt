@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: mpol
-Tags: ordering, sorting, terms, custom taxonomies, term order, categories, category order
-Requires at least: 3.0
-Tested up to: 4.2
-Stable tag: 2.6.4
+Tags: order, ordering, sorting, terms, term order, term ordering, terms order, terms ordering, categories, category order, category ordering, categories order, categories ordering, custom taxonomies, taxonomy order, taxonomy ordering, taxonomies order, taxonomies ordering
+Requires at least: 3.7
+Tested up to: 4.5
+Stable tag: 2.7.6
 License: GPLv2 or later
 
 
@@ -11,30 +11,22 @@ Allows for the ordering of categories and custom taxonomy terms through a simple
 
 == Description ==
 
-Custom Taxonomy Order New Edition is a plugin for WordPress which allows for the ordering of taxonomies.
+Custom Taxonomy Order New Edition is a plugin for WordPress which allows for the ordering of taxonomy terms.
 
 It supports the following features:
 
-* Order (custom) taxonomies through a simple drag-and-drop interface.
+* Order (custom) terms through a simple drag-and-drop interface.
 * No custom coding needed. It uses standard WordPress filters.
 * It uses the available WordPress scripts and styles.
 * The plugin is lightweight, without any unnecessary scripts to load into the admin.
 * It falls in line gracefully with the look and feel of the WordPress interface.
 * It uses it's own menu in the backend.
 * Translated or translatable.
+* Custom functions to order the taxonomies themselves.
 * There is no Pro version, everything works in the Free version.
 
 It is a continuation (or fork) of Custom Taxonomy Order, which has been discontinued.
 
-= Languages =
-
-* de_DE [Patrick Skiebe](http://skiebe.eu)
-* es_ES [Andrew Kurtis](http://webhostinghub.com)
-* fr_FR [Jean-Christophe Brebion](http://jcbrebion.com)
-* it_IT Matteo Boria
-* nl_NL [Marcel Pol](http://zenoweb.nl)
-* pl_PL [Paweł Data](webidea.pl)
-* ru_RU Alex Rumyantsev
 
 == Installation ==
 
@@ -68,9 +60,19 @@ You can apply the sorting for the taxonomy by using:
 
 = I have a custom taxonomy that uses the Tag Cloud functionality, but it doesn't sort like it should. =
 
-Can you tell me what is the name for the taxonomy?
+If it is a much used plugin, can you tell me what is the name for the taxonomy?
 In the customtaxorder_wp_get_object_terms_order_filter it needs to be added, and the get_terms filter should not run
 on that taxonomy. The tag_cloud_sort filter should do that.
+
+If it is a custom taxonomy, you can also use a filter:
+
+	<?php
+	add_filter( 'customtaxorder_exclude_taxonomies', 'add_taxonomy_to_customtaxorder_exclude_taxonomies' );
+	function add_taxonomy_to_customtaxorder_exclude_taxonomies( $taxonomies ) {
+		$taxonomies[] = 'directory'; // name of your tag taxonomy.
+		return $taxonomies;
+	}
+	?>
 
 = I'm using the_tags function, but it doesn't sort as it should. =
 
@@ -80,6 +82,22 @@ And yes, that is strange :).
 = What capabilities are needed? =
 
 For sorting the terms you need the manage_categories capability.
+
+= Can I sort the taxonomies themselves? =
+
+There is an admin page to sort them, and save them in the database.
+
+You can use a function to sort taxonomies themselves like this:
+
+	<?php
+	$taxonomy_objects = get_object_taxonomies( 'post', 'objects' );
+	$taxonomy_objects = customtaxorder_sort_taxonomies($taxonomy_objects);
+	foreach (  $taxonomy_objects as $tax ) {
+		echo $tax->name . "<br />";
+	}
+	?>
+
+The function requires a parameter with an array of taxonomy objects.
 
 = Is there an API? =
 
@@ -93,15 +111,71 @@ You could add the following example to your functions.php and work from there.
 	add_action('customtaxorder_update_order', 'custom_action');
 	?>
 
-Email any other questions to marcel at zenoweb dot nl
+= How can I add my own translation? =
+
+Translations can be added very easily through [GlotPress](https://translate.wordpress.org/projects/wp-plugins/custom-taxonomy-order-ne).
+You can start translating strings there for your locale. They need to be validated though, so if there's no validator yet,
+and you want to apply for being validator, please post it on the support forum. I will make a request on make/polyglots to
+have you added as validator for this plugin/locale.
+
+Email any other questions to marcel at timelord dot nl.
 
 == Screenshots ==
 
 1. Screenshot of the menu page for Custom Taxonomy Order.
-The menu completely left lists the different taxonomies.
-Left are the main taxonomies. Right (or below) are the sub-taxonomies.
+The WordPress menu completely left lists the different taxonomies.
+The left metabox lists the toplevel terms. Right (or below) are the sub-terms.
 
 == Changelog ==
+
+= 2.7.6 =
+* 2016-03-01
+* Add filters for custom capabilities.
+
+= 2.7.5 =
+* 2016-01-11
+* Support Advanced Custom Fields with its Taxonomy Fields.
+
+= 2.7.4 =
+* 2016-01-06
+* Really fix Woo get_attribute() (thanks eddy_boy).
+
+= 2.7.3 =
+* 2015-11-26
+* Fix for Woo get_attribute() (thanks mantish).
+
+= 2.7.2 =
+* 2015-11-26
+* Properly enqueue admin scripts.
+* Rename and prefix js functions properly.
+
+= 2.7.1 =
+* 2015-11-07
+* Explode() expects parameter to be a string, not an array.
+* Better dashicon.
+* Drop pot, nl_NL, they are maintained at GlotPress.
+
+= 2.7.0 =
+* 2015-11-07
+* Offer page and functions to support the taxonomies themselves.
+* Support WooCommerce attributes.
+* Only support WordPress 3.7+, since they really are supported.
+* More specific CSS.
+* Add icon on admin pages.
+* Update pot, nl_NL.
+
+= 2.6.6 =
+* 2015-09-05
+* Add filter for (not) sorting a tagcloud (thanks sunriseweb).
+* For sub-term, start counting at term_order of parent-term, so sorting looks reasonable.
+* "Order Alphabetically" button is no button-primary.
+* Change textdomain to slug.
+* Make admin_notices dismissible.
+* Add version to admin CSS.
+
+= 2.6.5 =
+* 2015-08-05
+* Use correct headings on admin pages.
 
 = 2.6.4 =
 * 2015-05-31
