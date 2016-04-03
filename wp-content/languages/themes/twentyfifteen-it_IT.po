@@ -2,13 +2,18 @@
 # This file is distributed under the same license as the Twenty Fifteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-03-27 13:21:51+0000\n"
+"PO-Revision-Date: 2015-09-25 08:21:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1000\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
 "Project-Id-Version: Twenty Fifteen\n"
+
+#. translators: %s: post title
+#: inc/template-tags.php:123
+msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Lascia un commento<span class=\"screen-reader-text\"> su %s</span>"
 
 #. Theme URI of the plugin/theme
 msgid "https://wordpress.org/themes/twentyfifteen/"
@@ -24,7 +29,7 @@ msgstr "Articolo successivo:"
 
 #: inc/customizer.php:47 inc/customizer.php:63 inc/customizer.php:68
 msgid "Applied to the header on small screens and the sidebar on wide screens."
-msgstr "Applicato all'header su schermi piccoli ed alla sidebar su schermi ampi."
+msgstr "Applicato alla testata su schermi piccoli ed alla barra laterale su schermi grandi."
 
 #: single.php:36
 msgid "Previous"
@@ -49,18 +54,6 @@ msgstr "Immagine successiva"
 #: inc/template-tags.php:23
 msgid "Comment navigation"
 msgstr "Navigazione commenti"
-
-#: inc/template-tags.php:122
-msgid "Leave a comment"
-msgstr "Lascia un commento"
-
-#: inc/template-tags.php:122
-msgid "1 Comment"
-msgstr "1 commento"
-
-#: inc/template-tags.php:122
-msgid "% Comments"
-msgstr "% commenti"
 
 #: search.php:18
 msgid "Search Results for: %s"
@@ -107,19 +100,19 @@ msgstr "Commenti più vecchi"
 msgid "Newer Comments"
 msgstr "Nuovi commenti"
 
-#: inc/customizer.php:147
+#: inc/customizer.php:168
 msgid "Blue"
 msgstr "Blu"
 
-#: inc/customizer.php:125
+#: inc/customizer.php:146
 msgid "Pink"
 msgstr "Rosa"
 
-#: inc/customizer.php:103
+#: inc/customizer.php:124
 msgid "Dark"
 msgstr "Scuro"
 
-#: inc/customizer.php:114
+#: inc/customizer.php:135
 msgid "Yellow"
 msgstr "Giallo"
 
@@ -131,11 +124,11 @@ msgstr "Schema colore di base"
 msgid "Featured"
 msgstr "In evidenza"
 
-#: inc/customizer.php:136
+#: inc/customizer.php:157
 msgid "Purple"
 msgstr "Porpora"
 
-#: inc/customizer.php:92
+#: inc/customizer.php:113
 msgid "Default"
 msgstr "Default"
 
@@ -215,28 +208,16 @@ msgstr "Non riusciamo a trovare quello che cerchi. Forse eseguire una ricerca po
 msgid "Widget Area"
 msgstr "Area widget"
 
-#: functions.php:86
-msgid "Social Links Menu"
-msgstr "Menù social link"
-
-#. #-#-#-#-#  twentyfifteen.pot (Twenty Fifteen 1.2)  #-#-#-#-#
+#. #-#-#-#-#  twentyfifteen.pot (Twenty Fifteen 1.4)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: footer.php:25
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
 #. translators: %s: Name of current post
-#: content-link.php:31 content.php:33 inc/template-tags.php:237
+#: content-link.php:31 content.php:33 inc/template-tags.php:238
 msgid "Continue reading %s"
 msgstr "Continua a leggere %s"
-
-#: functions.php:255
-msgid "expand child menu"
-msgstr "apri i menù child"
-
-#: functions.php:256
-msgid "collapse child menu"
-msgstr "chiudi i menù child"
 
 #. Translators: If there are characters in your language that are not supported
 #. by Inconsolata, translate this to 'off'. Do not translate into your own
@@ -280,6 +261,18 @@ msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "Un pensiero riguardo &ldquo;%2$s&rdquo;"
 msgstr[1] "%1$s pensieri riguardo &ldquo;%2$s&rdquo;"
+
+#: functions.php:86
+msgid "Social Links Menu"
+msgstr "Menu social link"
+
+#: functions.php:255
+msgid "expand child menu"
+msgstr "apri il menu figlio"
+
+#: functions.php:256
+msgid "collapse child menu"
+msgstr "chiudi il menu figlio"
 
 #: 404.php:21
 msgid "It looks like nothing was found at this location. Maybe try a search?"
