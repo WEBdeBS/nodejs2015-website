@@ -1,67 +1,128 @@
+@media (min-width: $screen-lg-min) {
+	.speaker-carousel__item{
+		min-height: 320px;
+	}
+}
+
+@media (max-width: $screen-lg-min) {
+	.side-page__content {
+		text-align: center;
+		padding-left: 15px;
+		
+		img{
+			display: none;
+		}
+	}
+	
+	.venue__links-content{
+		padding: 20px;
+		background-image: none;
+	}
+
+	
+	
+}
+
+
+@media (max-width: $screen-sm-max) {
+	.supporters-type__content{
+		&:nth-child(2n + 1){
+			clear: left;
+		}
+	}
+	
+	.speaker-carousel__icon{
+		float: none;
+	}
+}
 
 @media (max-width: $screen-xs-max) {
-
-  .header__knot
-  {
-    display: none;
-  }
-
-  .main-page__content
-  {
-    text-align: center;
-  }
-
-  .page:first-of-type
-  {
-    margin-bottom: 80px;
-  }
-
-  .footer__box
-  {
-    text-align: center;
-  }
-
+	.header__knot {
+		display: none;
+	}
+	.main-page__content {
+		text-align: center;
+	}
+	.footer__box {
+		text-align: center;
+	}
+	
+	.nav{
+		.mobile-menu__container{
+			display: block;
+		}
+	}
+	
+	.main-menu{
+		display: none;
+		text-align: left;
+		
+		.menu-item{
+			display: block;
+			margin: 0px;
+			padding: 0px 20px;
+			text-align: center;
+			
+			&.current-menu-item, &:hover{
+				background-color: $color-red;
+			}
+			
+			a::before{
+				display: none;
+			}
+		}
+		
+		&.open{
+			display: block;
+		}
+	}
+	
+	.venue__direction{
+		margin-bottom: 30px;
+	}
+	
+	.venue__links-content{
+		margin-bottom: 30px;
+	}
+	
+	.talk-box{
+		padding: 25px;
+		margin-top: 25px;
+	}
+	
+	.service-type__content{
+		text-align: center;
+		&.content_with_icon{
+			padding-left: 0px;
+			background-image: none !important;
+		}
+	}
 }
 
 @media (max-width: $screen-xs) {
-  .header
-  {
-    h1
-    {
-      font-size: 85px;
-      height: 85px;
-    }
-    
-    h2
-    {
-      font-size: 22px;
-      padding: 0px 15px;
-      
-      &.phone-header
-      {
-        display: inline;
-        
-        span
-        {
-          display: inline-block;
-          width: 15px;
-        }
-      }
-      
-      &.desktop-header
-      {
-        display: none;
-      }
-    }
-    
-  }
-  
-  .nav
-  {
-    li
-    {
-      margin: 25px 10px;
-    }
-  }
-  
+	.header {
+		h1 {
+			font-size: 85px;
+			height: 85px;
+		}
+		h2 {
+			font-size: 22px;
+			padding: 0px 15px;
+			&.phone-header {
+				display: inline;
+				span {
+					display: inline-block;
+					width: 15px;
+				}
+			}
+			&.desktop-header {
+				display: none;
+			}
+		}
+	}
+
+	.new-home__side-page-content{
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
 }

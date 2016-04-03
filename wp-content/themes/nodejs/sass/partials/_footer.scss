@@ -1,88 +1,111 @@
-
-.footer-block
-{
-  background-color: $color-red;
-  color: $color-white;
-  padding-top: 20px;
-  padding-bottom: 30px;
+.footer-block {
+	background-color: $color-red;
+	color: $color-white;
+	padding-top: 20px;
+	padding-bottom: 30px;
 }
 
-.footer
-{
-  @extend .row;
+.footer {
+	@extend .row;
 }
 
-.footer__box
-{
-  @extend .col-sm-3;
-
-  p
-  {
-    font-size: 18px;
-  }
-
-  a
-  {
-    display: block;
-    color: $color-white;
-    text-decoration: underline;
-  }
+.footer__box {
+	@extend .col-sm-3;
+	p {
+		font-size: 18px;
+	}
+	a {
+		display: block;
+		color: $color-white;
+		text-decoration: underline;
+	}
 }
 
-.footer__box--main
-{
-  @extend .text-center;
-
-  img
-  {
-    display: block;
-    margin: 0 auto 30px auto;
-  }
+.footer__box--main {
+	@extend .text-center;
+	img {
+		display: block;
+		margin: 0 auto 30px auto;
+	}
 }
 
-.footer__box--sponsors
-{
-  @extend .col-sm-6;
-
-  font-variant: small-caps;
-
-  a
-  {
-    font-size: 18px;
-    display: inline;
-  }
+.footer__box--sponsors {
+	@extend .col-sm-6;
+	font-variant: small-caps;
+	a {
+		font-size: 18px;
+		display: inline;
+	}
 }
 
-.footer__title
-{
-  font-family: $font-title;
-  font-size: 50px;
-  height: 60px;
+.footer__title {
+	font-family: $font-title;
+	font-size: 50px;
+	height: 60px;
 }
 
-.footer__subtitle
-{
-  display: inline-block;
-  background-color: $color-white;
-  color: $color-red;
-  text-transform: uppercase;
-  padding: 0 10px;
-  margin-bottom: 10px;
+.footer__subtitle {
+	display: inline-block;
+	background-color: $color-white;
+	color: $color-red;
+	text-transform: uppercase;
+	padding: 0 10px;
+	margin-bottom: 10px;
 }
 
-.strips
-{
-  $gradient: top, 
-    $color-white 0%, $color-white 10%, 
-    $color-red 10%, $color-red 20%, 
-    $color-white 20%, $color-white 30%, 
-    $color-red 30%, $color-red 40%,
-    $color-white 40%, $color-white 50%, 
-    $color-red 50%, $color-red 60%,
-    $color-white 60%, $color-white 70%, 
-    $color-red 70%, $color-red 80%,
-    $color-white 80%, $color-white 90%, 
-    $color-red 90%, $color-red 100%;
-  @include linear-gradient($gradient);
-  height: 180px;
+.strips {
+	$gradient: top, $color-white 0%, $color-white 10%, $color-red 10%, $color-red 20%, $color-white 20%, $color-white 30%, $color-red 30%, $color-red 40%, $color-white 40%, $color-white 50%, $color-red 50%, $color-red 60%, $color-white 60%, $color-white 70%, $color-red 70%, $color-red 80%, $color-white 80%, $color-white 90%, $color-red 90%, $color-red 100%;
+	@include linear-gradient($gradient);
+	height: 180px;
+}
+
+.footer__nav-menu {
+	display: inline-block;
+	li {
+		display: inline-block;
+		&:after {
+			content: ' - ';
+		}
+	}
+}
+
+.policy__nav-menu {
+	display: inline-block;
+	li {
+		display: inline-block;
+		&:before {
+			content: ' - ';
+		}
+
+		&:first-child{
+			&:before{
+				content: '';
+			}
+		}
+	}
+}
+
+.footer__social {
+	display: inline-block;
+}
+
+.footer__main-sponsor{
+	margin-bottom: 10px;
+}
+
+.footer__main-sponsor-text {
+	display: inline-block;
+	padding: 0px 20px 0px 100px;
+	font-family: $font-title;
+	font-size: 24px;
+	background: url('images/bg-sponsor.png') no-repeat top left;
+}
+
+a.footer__main-sponsor-link {
+	display: inline-block;
+	padding: 0px 20px;
+	font-family: $font-title;
+	font-size: 24px;
+	vertical-align: top;
+
 }

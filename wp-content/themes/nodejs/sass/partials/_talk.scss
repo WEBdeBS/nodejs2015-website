@@ -1,0 +1,201 @@
+.speaker-box{
+	background-color: $color-red;
+	color: $color-white;
+	text-align: left;
+	padding: 25px;
+
+	.col-lg-5{
+		padding: 0px;
+	}
+	
+	.speaker__name{
+		color: $color-white;
+		word-break: break-all;
+		span{
+			display: inline-block;
+		}
+		
+		img{
+			margin-bottom: 25px;
+		}
+	}
+	
+	.speaker__image img{
+		display: block;
+		margin: 25px auto;
+		width: 90px;
+		height: 90px;
+		border-radius: 100%;
+		border: 3px solid $color-white;
+	}
+	
+	h4{
+		font-weight: bold;
+		font-size: 22px;
+		margin-top: 25px;
+	}
+	
+	a{
+		display: block;
+		color: $color-white;
+		text-decoration: underline;
+		font-size: 18px;
+		word-wrap: break-word;
+	}
+
+	.link-title{
+		font-weight: bold;
+		font-size: 18px;
+		margin-top: 10px;
+	}
+}
+
+.talk-box{
+	text-align: left;
+	padding-left: 30px;
+	
+	.talk__level-schedule{
+		font-size: 16px;
+		text-transform: uppercase;
+
+		&.talk__level-schedule--workshop{
+			padding-left: 160px;
+			background: url('images/scheda-talk.png') no-repeat top left;
+		}
+	}
+	
+	.talk__schedule{
+		display: inline-block;
+	}
+}
+
+.talk-item{
+	margin: 0px 0px 20px 0px;
+
+  	.talk-item-content{
+  		border: 1px dotted #878787;
+  		padding: 15px;
+  	}
+
+  	.speaker-line{
+  		@include clearfix;
+  	}
+
+  	.speaker-image{
+  		float: left;
+  		margin-right: 10px;
+  		margin-bottom: 10px;
+
+  		img{
+  			display: block;
+			width: 80px;
+			height: 80px;
+			border-radius: 100%;
+			background-color: #878787;
+  		}
+  	}
+
+  	h2{
+  		text-transform: uppercase;
+  	}
+
+  	h3{
+  		a{
+  			color: $color-blue;
+  		}
+  	}
+
+  	.twitter-link{
+  		color: $color-red;
+  		text-transform: uppercase;
+  	}
+
+  	.schedule{
+  		background-color: $color-red;
+  		color: $color-white;
+  		font-weight: bold;
+  		padding: 10px 15px;
+  		margin-bottom: 10px;
+  		font-size: 20px;
+  	}
+
+  	.level{
+  		text-transform: uppercase;
+  	}
+
+  	.sort-hidden{
+  		display: none;
+  	}
+}
+
+.talks__title-column{
+	.speaker-order{
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	.speaker-order-links{
+		text-align: center;
+
+		a{
+			color: $color-blue;
+			text-transform: uppercase;
+			padding: 5px;
+			display: inline-block;
+
+			&.active{
+				background-color: $color-red;
+				color: $color-white;
+			}
+		}
+	}
+}
+
+.talks__talk-list{
+	padding: 0px;
+
+	@media (max-width: $screen-sm-min) {
+		margin-top: 20px;
+	}
+}
+
+.talk-item-interval{
+
+	h2{
+		color: $color-white;
+	}
+
+	h3{
+		color: $color-white;
+	}
+
+	.talk-item-content{
+		background-color: $color-red;
+		color: $color-white;
+	}
+
+	.schedule{
+		background-color: $color-white;
+		color: $color-red;
+	}
+}
+
+.talk-item-content-workshop{
+	position: relative;
+
+	.schedule{
+		background-color: $color-blue;
+	}
+}
+
+.workshop-ribbon{
+	position: absolute;
+	top: 0;
+	right: 5px;
+	display: block;
+	width: 36px;
+	height: 51px;
+	background: url('images/box-talk.png') no-repeat center center;
+}
