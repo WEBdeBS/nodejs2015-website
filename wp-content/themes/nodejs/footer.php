@@ -61,6 +61,34 @@
 					</div>
 				</footer>
 			</div>
+			<div class="media-partner_menu-container">
+				<div class="content">
+					<div class="media-partner_menu">
+						<h3>Media Partner</h3>
+						<ul class="media-partner_logos">
+						<?php 
+							$supporters = get_posts(array(
+								'post_type' => 'supporter',
+							  	'numberposts' => -1,
+							  	'tax_query' => array(
+							    	array(
+							      		'taxonomy' => 'supporter-type',
+							      		'field' => 'slug',
+							      		'terms' => 'media-partner',
+							      		'include_children' => false
+							    	)
+							  	)
+							));
+							foreach($supporters as $supporter){
+								$src = get_the_post_thumbnail($supporter->ID);
+								$href = $supporter->post_content;
+								echo '<li><a href="' . $href . '" target="_blank">'. $src . '</a></li>';
+							}
+						?>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="strips"></div>
 		<script src="<?php echo get_template_directory_uri(); ?>/app.js"></script>
