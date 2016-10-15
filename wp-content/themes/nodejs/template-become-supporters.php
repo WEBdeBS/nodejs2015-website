@@ -14,7 +14,7 @@
 					'hide_empty'        => false
 				);
 				$terms = get_terms('supporter-type', $args);
-				/*echo '<div class="content supporter-list__supercontainer">';
+				echo '<div class="content supporter-list__supercontainer">';
 				foreach($terms as $term){
 					$no_logo = get_tax_meta($term->term_id,'nodejsconf_no_logo');
 					if(!$no_logo){
@@ -63,7 +63,6 @@
 				echo '<div class="supporter-separator" id="become-supporter">';
 				echo '<img src="' .  get_template_directory_uri() . '/images/flags.png" alt="">';
 				echo '</div>';
-				*/
 				echo '<div class="content supporters__container">';
 				the_post(); 
 				the_title('<h1>','</h1>');
