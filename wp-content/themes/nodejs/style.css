@@ -1566,13 +1566,13 @@ pre {
   .side-page:after, .pages:after, .tickets__container:after, .footer:after, .media-partner_menu:after, .venue-gallery:after, .supporter-list__container:after, .supporters-type__container:after, .service__container:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .new-home__side-page-content .venue-gallery .venue-gallery__item, .col-sm-3, .footer__box, .media-partner_menu h3, .venue-gallery__item, .supporter-item.supporter-item--small, .col-md-3, .supporter-title, .supporters-type__content, .speaker-carousel__icon, .col-lg-3, .col-xs-4, .supporter-item.supporter-item--small, .col-sm-4, .supporter-item.supporter-item--middle, .service-type__content.even, .new-home__page-content, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .new-home__side-page-content, .col-md-5, .col-lg-5, .col-xs-6, .venue-gallery__item, .supporter-item.supporter-item--middle, .col-sm-6, .side-page__content, .main-page__content, .page, .footer__box--sponsors, .supporter-item.supporter-item--big, .supporters-type__content, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .service-type__content, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .media-partner_menu ul, .col-md-9, .supporter-list, .speaker-carousel__container, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .supporter-item.supporter-item--big, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .new-home__side-page-content .venue-gallery .venue-gallery__item, .col-sm-3, .footer__box, .media-partner_menu h3, .venue-gallery__item, .supporter-item.supporter-item--small, .col-md-3, .supporter-title, .supporters-type__content, .speaker-carousel__icon, .col-lg-3, .col-xs-4, .col-sm-4, .supporter-item.supporter-item--middle, .service-type__content.even, .new-home__page-content, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .new-home__side-page-content, .col-md-5, .col-lg-5, .col-xs-6, .venue-gallery__item, .supporter-item.supporter-item--small, .supporter-item.supporter-item--middle, .col-sm-6, .side-page__content, .main-page__content, .page, .footer__box--sponsors, .supporter-item.supporter-item--big, .supporters-type__content, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .service-type__content, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .media-partner_menu ul, .col-md-9, .supporter-list, .speaker-carousel__container, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .supporter-item.supporter-item--big, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .new-home__side-page-content .venue-gallery .venue-gallery__item, .col-xs-4, .supporter-item.supporter-item--small, .col-xs-5, .col-xs-6, .venue-gallery__item, .supporter-item.supporter-item--middle, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .supporter-item.supporter-item--big {
+.col-xs-1, .col-xs-2, .col-xs-3, .new-home__side-page-content .venue-gallery .venue-gallery__item, .col-xs-4, .col-xs-5, .col-xs-6, .venue-gallery__item, .supporter-item.supporter-item--small, .supporter-item.supporter-item--middle, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .supporter-item.supporter-item--big {
   float: left; }
 
 .col-xs-1 {
@@ -1584,13 +1584,13 @@ pre {
 .col-xs-3, .new-home__side-page-content .venue-gallery .venue-gallery__item {
   width: 25%; }
 
-.col-xs-4, .supporter-item.supporter-item--small {
+.col-xs-4 {
   width: 33.33333%; }
 
 .col-xs-5 {
   width: 41.66667%; }
 
-.col-xs-6, .venue-gallery__item, .supporter-item.supporter-item--middle {
+.col-xs-6, .venue-gallery__item, .supporter-item.supporter-item--small, .supporter-item.supporter-item--middle {
   width: 50%; }
 
 .col-xs-7 {
@@ -6627,7 +6627,7 @@ a.footer__main-sponsor-link {
   margin: 65px auto 0px auto; }
 
 .supporter-list__container {
-  padding-bottom: 60px; }
+  padding-bottom: 20px; }
 
 .supporter-title .supporter-title__img {
   width: 100%;
@@ -6666,7 +6666,8 @@ a.footer__main-sponsor-link {
       .supporter-item .supporter-item__content a img {
         display: inline-block;
         max-width: 100%;
-        vertical-align: middle; }
+        vertical-align: middle;
+        height: auto; }
 
 .supporter-separator {
   border-top: 5px solid #031930;

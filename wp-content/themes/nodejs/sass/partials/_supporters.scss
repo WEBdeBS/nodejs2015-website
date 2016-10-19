@@ -4,7 +4,7 @@
 
 .supporter-list__container{
 	@extend .row;
-	padding-bottom: 60px;
+	padding-bottom: 20px;
 }
 
 .supporter-title{
@@ -34,7 +34,7 @@
 
 	&.supporter-item--small{
 		@extend .col-sm-3;
-		@extend .col-xs-4;
+		@extend .col-xs-6;
 	}
 
 	&.supporter-item--middle{
@@ -77,6 +77,7 @@
 				display: inline-block;
 				max-width: 100%;
 				vertical-align: middle;
+				height: auto;
 			}
 		}
 	}
