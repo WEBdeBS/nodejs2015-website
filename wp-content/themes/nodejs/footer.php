@@ -19,7 +19,7 @@
 					</div>
 					<div class="footer__box footer__box--sponsors">
 						<div class="footer__main-sponsor">
-							<div class="footer__main-sponsor-text">Main Conf<br/>Spinsor</div>
+							<div class="footer__main-sponsor-text">Main Conf<br/>Sponsor</div>
 							<a class="footer__main-sponsor-link" href="http://www.nearform.com/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/nearform.png" alt="Your logo here"></a>
 						</div>
 						<?php 
